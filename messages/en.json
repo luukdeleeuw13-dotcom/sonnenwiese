@@ -72,7 +72,9 @@
     "winter": "Winter",
     "lightboxClose": "Close",
     "lightboxPrev": "Previous photo",
-    "lightboxNext": "Next photo"
+    "lightboxNext": "Next photo",
+    "hallStorage": "Hallway & storage",
+    "toilet": "Toilet"
   },
   "surroundings": {
     "title": "The surroundings",

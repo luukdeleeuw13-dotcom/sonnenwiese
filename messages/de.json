@@ -72,7 +72,9 @@
     "winter": "Winter",
     "lightboxClose": "Schließen",
     "lightboxPrev": "Vorheriges Foto",
-    "lightboxNext": "Nächstes Foto"
+    "lightboxNext": "Nächstes Foto",
+    "hallStorage": "Flur & Abstellraum",
+    "toilet": "WC"
   },
   "surroundings": {
     "title": "Die Umgebung",

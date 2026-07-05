@@ -32,14 +32,14 @@ export default function ApartmentPage({
 
       <Section
         title={t("livingTitle")}
-        image={{ alt: t("livingTitle"), variant: "interior" }}
+        image={{ src: "/photos/woonkamer-1.jpg", alt: t("livingTitle") }}
       >
         <p>{t("livingText")}</p>
       </Section>
 
       <Section
         title={t("kitchenTitle")}
-        image={{ alt: t("kitchenTitle"), variant: "interior" }}
+        image={{ src: "/photos/keuken-1.jpg", alt: t("kitchenTitle") }}
         reverse
       >
         <p>{t("kitchenText")}</p>
@@ -47,14 +47,14 @@ export default function ApartmentPage({
 
       <Section
         title={t("bedroomsTitle")}
-        image={{ alt: t("bedroomsTitle"), variant: "interior" }}
+        image={{ src: "/photos/slaapkamer-1.jpg", alt: t("bedroomsTitle") }}
       >
         <p>{t("bedroomsText")}</p>
       </Section>
 
       <Section
         title={t("bathroomTitle")}
-        image={{ alt: t("bathroomTitle"), variant: "interior" }}
+        image={{ src: "/photos/badkamer-1.jpg", alt: t("bathroomTitle") }}
         reverse
       >
         <p>{t("bathroomText")}</p>

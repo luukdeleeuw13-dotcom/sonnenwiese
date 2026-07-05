@@ -14,17 +14,48 @@ export default function GalleryPage({
   const ta = useTranslations("apartment");
   const ts = useTranslations("surroundings");
 
-  // Foto's per categorie. `src` invullen zodra echte foto's in public/photos/
-  // staan — zonder src rendert automatisch een placeholder.
-  const apartmentPhotos: GalleryPhoto[] = [
-    { alt: ta("livingTitle"), variant: "interior" },
-    { alt: ta("kitchenTitle"), variant: "interior" },
-    { alt: `${ta("bedroomsTitle")} 1`, variant: "interior" },
-    { alt: `${ta("bedroomsTitle")} 2`, variant: "interior" },
-    { alt: `${ta("bedroomsTitle")} 3`, variant: "interior" },
-    { alt: ta("gardenTitle"), variant: "garden" },
+  // Foto's van het appartement (overgenomen van de oude site), per ruimte.
+  const groups: { title: string; photos: GalleryPhoto[] }[] = [
+    {
+      title: ta("livingTitle"),
+      photos: [1, 2, 3, 4, 5, 6, 7].map((n) => ({
+        src: `/photos/woonkamer-${n}.jpg`,
+        alt: `${ta("livingTitle")} ${n}`,
+      })),
+    },
+    {
+      title: ta("kitchenTitle"),
+      photos: [1, 2].map((n) => ({
+        src: `/photos/keuken-${n}.jpg`,
+        alt: `${ta("kitchenTitle")} ${n}`,
+      })),
+    },
+    {
+      title: ta("bedroomsTitle"),
+      photos: [1, 2, 3, 4].map((n) => ({
+        src: `/photos/slaapkamer-${n}.jpg`,
+        alt: `${ta("bedroomsTitle")} ${n}`,
+      })),
+    },
+    {
+      title: ta("bathroomTitle"),
+      photos: [
+        { src: "/photos/badkamer-1.jpg", alt: ta("bathroomTitle") },
+        { src: "/photos/badkamer-2.jpg", alt: ta("bathroomTitle") },
+        { src: "/photos/wc-1.jpg", alt: t("toilet") },
+      ],
+    },
+    {
+      title: t("hallStorage"),
+      photos: [
+        { src: "/photos/hal-1.jpg", alt: t("hallStorage") },
+        { src: "/photos/berging-1.jpg", alt: t("hallStorage") },
+        { src: "/photos/berging-2.jpg", alt: t("hallStorage") },
+      ],
+    },
   ];
 
+  // Omgevingsfoto's zijn er nog niet — placeholders tot ze zijn aangeleverd.
   const surroundingsSummer: GalleryPhoto[] = [
     { alt: ts("villageTitle"), variant: "mountain" },
     { alt: "Hochkönig", variant: "mountain" },
@@ -44,12 +75,16 @@ export default function GalleryPage({
       </h1>
       <p className="mt-2 max-w-2xl text-timber">{t("intro")}</p>
 
-      <h2 className="mt-10 font-display text-2xl font-semibold text-bark">
-        {t("categoryApartment")}
-      </h2>
-      <div className="mt-4">
-        <Gallery photos={apartmentPhotos} />
-      </div>
+      {groups.map((group) => (
+        <section key={group.title}>
+          <h2 className="mt-10 font-display text-2xl font-semibold text-bark">
+            {group.title}
+          </h2>
+          <div className="mt-4">
+            <Gallery photos={group.photos} />
+          </div>
+        </section>
+      ))}
 
       <h2 className="mt-10 font-display text-2xl font-semibold text-bark">
         {t("categorySurroundings")} — {t("summer")}
