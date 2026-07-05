@@ -1,0 +1,170 @@
+{
+  "nav": {
+    "home": "Home",
+    "apartment": "Appartement",
+    "gallery": "Foto's",
+    "surroundings": "Omgeving",
+    "pricing": "Prijzen",
+    "availability": "Beschikbaarheid",
+    "practical": "Route & praktisch",
+    "menuOpen": "Menu openen",
+    "menuClose": "Menu sluiten",
+    "language": "Taal"
+  },
+  "footer": {
+    "tagline": "Ons familiehuis aan de rand van Maria Alm — voor vrienden, en vrienden van vrienden.",
+    "location": "Maria Alm, Salzburgerland, Oostenrijk",
+    "availabilityCta": "Bekijk beschikbaarheid"
+  },
+  "common": {
+    "photoComingSoon": "Foto volgt",
+    "bookCta": "Bekijk beschikbaarheid",
+    "contactCta": "Doe een aanvraag"
+  },
+  "home": {
+    "heroTitle": "Welkom in Sonnenwiese",
+    "heroSubtitle": "Ons familiehuis aan de rand van Maria Alm, met uitzicht op het Hochkönig-gebergte. Voor 6 tot 8 personen, zomer én winter.",
+    "heroCta": "Bekijk beschikbaarheid",
+    "highlightsTitle": "In het kort",
+    "highlightGuests": "6–8 personen",
+    "highlightGuestsText": "Drie slaapkamers, ruime woonkamer en een zonnige tuin — genoeg plek voor het hele gezelschap.",
+    "highlightSki": "Skigebied Hochkönig",
+    "highlightSkiText": "150 km piste voor de deur: de skilift is 5 minuten rijden en de skibus stopt op 300 meter.",
+    "highlightVillage": "Maria Alm om de hoek",
+    "highlightVillageText": "Winkels en restaurants op 10 minuten lopen, in een van de mooiste dorpjes van het Salzburgerland.",
+    "introTitle": "Bij ons thuis in de bergen",
+    "introText": "Sonnenwiese is geen verhuurbedrijf — het is ons eigen vakantiehuis, dat we graag delen met vrienden en vrienden van vrienden. Je vindt er alles wat je thuis ook hebt, met de bergen als achtertuin. In de winter sta je binnen een paar minuten op de piste, in de zomer wandel je zo de weilanden en bergpaden op.",
+    "introCta": "Bekijk het appartement"
+  },
+  "apartment": {
+    "title": "Het appartement",
+    "intro": "Het appartement is in 2004 nieuw gebouwd en ingericht, en biedt comfortabel plek aan 6 tot 8 personen. Alles is er: een moderne keuken, drie slaapkamers, een zonnige tuin en een fantastisch uitzicht op de helling van het Hochkönig-gebergte.",
+    "livingTitle": "Woonkamer",
+    "livingText": "Een gezellige woonkamer met een ruime bank — dé plek om na een dag skiën of wandelen samen te komen. Satelliet-tv met Nederlandse zenders en internet zijn aanwezig.",
+    "kitchenTitle": "Keuken",
+    "kitchenText": "De moderne keuken is volledig uitgerust, met combi-oven en vaatwasser. Groot genoeg om met het hele gezelschap te koken.",
+    "bedroomsTitle": "Drie slaapkamers",
+    "bedroomsText": "Twee slaapkamers met een tweepersoonsbed en een derde slaapkamer met een stapelbed en een eenpersoonsbed. Zo slaapt iedereen — van 6 tot 8 personen — comfortabel.",
+    "bathroomTitle": "Badkamer & toilet",
+    "bathroomText": "Een complete badkamer en een apart toilet, zodat het 's ochtends nooit dringen is.",
+    "gardenTitle": "Zonnige tuin",
+    "gardenText": "De tuin ligt op de zon en heeft een tuinset — perfect voor een lange zomeravond of een kop koffie met uitzicht op de bergen.",
+    "amenitiesTitle": "Alle voorzieningen",
+    "amenities": {
+      "guests": "Geschikt voor 6–8 personen",
+      "bedrooms": "3 slaapkamers (2x tweepersoonsbed, 1x stapelbed + eenpersoonsbed)",
+      "kitchen": "Moderne keuken met combi-oven en vaatwasser",
+      "washer": "Wasmachine en droger",
+      "tv": "Satelliet-tv met Nederlandse zenders",
+      "internet": "Internet",
+      "bathroom": "Badkamer en apart toilet",
+      "garden": "Zonnige tuin met tuinset",
+      "view": "Uitzicht op het Hochkönig-gebergte",
+      "seasons": "Geschikt voor zomer én winter"
+    }
+  },
+  "gallery": {
+    "title": "Foto's",
+    "intro": "Een indruk van het appartement en de omgeving, in de zomer en in de winter.",
+    "categoryApartment": "Het appartement",
+    "categorySurroundings": "De omgeving",
+    "summer": "Zomer",
+    "winter": "Winter",
+    "lightboxClose": "Sluiten",
+    "lightboxPrev": "Vorige foto",
+    "lightboxNext": "Volgende foto"
+  },
+  "surroundings": {
+    "title": "De omgeving",
+    "intro": "Sonnenwiese ligt aan de rand van Maria Alm, een van de mooiste dorpjes van het Salzburgerland — het hele jaar door de moeite waard.",
+    "villageTitle": "Maria Alm",
+    "villageText": "Een authentiek Oostenrijks bergdorp met een gezellig centrum: winkels, restaurants en cafés op 10 minuten lopen van het appartement. Het beroemde kerkje met de hoge spits is het middelpunt van het dorp.",
+    "winterTitle": "Winter: skigebied Hochkönig",
+    "winterText": "Maria Alm hoort bij skigebied Hochkönig, onderdeel van Ski Amadé: 150 kilometer piste voor alle niveaus. De dichtstbijzijnde skilift ligt op 5 minuten rijden en de skibus stopt op 300 meter van het huis. Ook langlaufen, rodelen en winterwandelen kan er volop.",
+    "summerTitle": "Zomer: wandelen en bergen",
+    "summerText": "In de zomer is Maria Alm een paradijs voor wandelaars en fietsers. Van rustige wandelingen door de weilanden tot stevige bergtochten in het Hochkönig-massief — je stapt vanaf het huis zo de natuur in. Kabelbanen brengen je in de zomer ook zonder klimwerk naar boven.",
+    "distancesTitle": "Afstanden",
+    "distances": {
+      "skibus": "Skibus — 300 m",
+      "skilift": "Skilift — 5 min rijden",
+      "village": "Centrum Maria Alm — 10 min lopen",
+      "piste": "150 km piste in skigebied Hochkönig"
+    }
+  },
+  "pricing": {
+    "title": "Prijzen",
+    "intro": "De prijzen verschillen per seizoen. Hieronder vind je binnenkort het actuele overzicht.",
+    "comingSoonTitle": "Prijzen volgen binnenkort",
+    "comingSoonText": "We zetten de actuele prijzen per seizoen binnenkort op deze pagina. Wil je nu al weten wat een verblijf kost? Doe dan gerust een aanvraag via de beschikbaarheidspagina — je hoort het dan direct van ons.",
+    "includedTitle": "Altijd inbegrepen",
+    "included": {
+      "linen": "Bedlinnen en handdoeken",
+      "energy": "Gas, water en elektriciteit",
+      "internet": "Internet en satelliet-tv",
+      "cleaning": "Eindschoonmaak"
+    },
+    "includedNote": "Details over wat precies is inbegrepen volgen samen met de prijzen.",
+    "cta": "Bekijk beschikbaarheid"
+  },
+  "availability": {
+    "title": "Beschikbaarheid & reserveren",
+    "intro": "Bekijk in de kalender welke periodes nog vrij zijn en doe direct een aanvraag. We nemen zo snel mogelijk contact met je op.",
+    "calendarTitle": "Beschikbaarheid",
+    "calendarLegendBooked": "Bezet",
+    "calendarLegendSelected": "Jouw selectie",
+    "calendarHint": "Selecteer je aankomst- en vertrekdatum in de kalender.",
+    "formTitle": "Aanvraag doen"
+  },
+  "bookingForm": {
+    "name": "Naam",
+    "namePlaceholder": "Je volledige naam",
+    "email": "E-mailadres",
+    "emailPlaceholder": "jij@voorbeeld.nl",
+    "phone": "Telefoonnummer",
+    "phonePlaceholder": "Optioneel",
+    "dates": "Aankomst en vertrek",
+    "datesHint": "Kies eerst je aankomst- en vertrekdatum in de kalender hierboven.",
+    "datesSelected": "Geselecteerd: {from} tot {to}",
+    "guests": "Aantal personen",
+    "message": "Bericht",
+    "messagePlaceholder": "Vertel gerust wie er meekomen of stel je vraag (optioneel)",
+    "submit": "Verstuur aanvraag",
+    "submitting": "Versturen…",
+    "successTitle": "Aanvraag verstuurd!",
+    "successText": "Bedankt voor je aanvraag — we hebben hem goed ontvangen. Je hoort zo snel mogelijk van ons per e-mail of telefoon.",
+    "successAgain": "Nog een aanvraag doen",
+    "errorTitle": "Er ging iets mis",
+    "errorText": "Je aanvraag kon niet worden verstuurd. Probeer het nog eens, of neem rechtstreeks contact met ons op.",
+    "errorRetry": "Opnieuw proberen",
+    "validation": {
+      "nameRequired": "Vul je naam in.",
+      "emailRequired": "Vul je e-mailadres in.",
+      "emailInvalid": "Dit lijkt geen geldig e-mailadres.",
+      "datesRequired": "Kies je aankomst- en vertrekdatum in de kalender.",
+      "datesInvalid": "De vertrekdatum moet na de aankomstdatum liggen.",
+      "datesPast": "De aankomstdatum moet in de toekomst liggen.",
+      "guestsInvalid": "Kies een aantal personen tussen 1 en 8."
+    }
+  },
+  "practical": {
+    "title": "Route & praktisch",
+    "intro": "Alles wat je moet weten voor je verblijf: hoe je er komt, hoe aankomst en vertrek werken, en onze huisregels.",
+    "routeTitle": "Route",
+    "routeText": "Het appartement ligt aan de rand van Maria Alm in het Salzburgerland, Oostenrijk. Vanuit Nederland rijd je er in zo'n 10 uur naartoe: via München en Salzburg richting Bischofshofen, en dan via de B164 naar Maria Alm. Het exacte adres en een routebeschrijving sturen we je bij de bevestiging van je boeking.",
+    "arrivalTitle": "Aankomst & vertrek",
+    "arrivalText": "De precieze aankomst- en vertrektijden en de sleuteloverdracht stemmen we persoonlijk met je af na je boeking.",
+    "rulesTitle": "Huisregels",
+    "rulesText": "De huisregels volgen binnenkort op deze pagina. Belangrijkste in het kort: behandel het huis zoals je eigen huis — het is tenslotte óns huis, en we delen het graag met jou.",
+    "questionsTitle": "Vragen?",
+    "questionsText": "Doe een aanvraag via de beschikbaarheidspagina of stel je vraag in het berichtveld — we helpen je graag."
+  },
+  "notFound": {
+    "title": "Pagina niet gevonden",
+    "text": "Deze pagina bestaat niet (meer). Ga terug naar de homepagina.",
+    "cta": "Naar home"
+  },
+  "meta": {
+    "siteTitle": "Sonnenwiese — vakantieappartement Maria Alm",
+    "siteDescription": "Vakantieappartement voor 6–8 personen aan de rand van Maria Alm, Salzburgerland. Skigebied Hochkönig op 5 minuten, zomer en winter."
+  }
+}

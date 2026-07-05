@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@theme {
+  /* Warm-alpine palet */
+  --color-bark: #4a3728; /* diep warmbruin — koppen, footer */
+  --color-timber: #7c5c42; /* middenbruin — secundaire tekst, randen */
+  --color-cream: #faf6ee; /* warm gebroken wit — paginaachtergrond */
+  --color-snow: #ffffff; /* kaartachtergronden */
+  --color-meadow: #6b7f4f; /* gedempt alpengroen — accenten, links */
+  --color-meadow-dark: #55663e;
+  --color-sky: #7ea3b8; /* zacht bergluchtblauw — secundair accent */
+  --color-sun: #d98e46; /* warm amber — CTA-knoppen */
+  --color-sun-dark: #b87032; /* CTA hover */
+  --color-sand: #f0e8d8; /* subtiele vlakken/randen */
+
+  /* Typografie */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-fraunces), Georgia, serif;
+
+  --radius-card: 1rem;
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-bark);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* react-day-picker in het warm-alpine palet. `body .rdp-root` wint qua
+   specificiteit van de .rdp-root in de eigen stylesheet van de library,
+   die ná globals.css wordt geladen. */
+body .rdp-root {
+  --rdp-accent-color: var(--color-meadow-dark);
+  --rdp-accent-background-color: color-mix(
+    in srgb,
+    var(--color-meadow) 20%,
+    transparent
+  );
+  --rdp-today-color: var(--color-sun-dark);
+  --rdp-selected-border: 2px solid var(--color-meadow-dark);
+}
+
+/* Bevestigde (bezette) periodes */
+body .rdp-booked:not(.rdp-selected) {
+  background: var(--color-sand);
+  color: var(--color-timber);
+  text-decoration: line-through;
+  border-radius: 0;
+}

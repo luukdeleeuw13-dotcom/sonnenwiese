@@ -1,0 +1,170 @@
+{
+  "nav": {
+    "home": "Start",
+    "apartment": "Wohnung",
+    "gallery": "Fotos",
+    "surroundings": "Umgebung",
+    "pricing": "Preise",
+    "availability": "Verfügbarkeit",
+    "practical": "Anreise & Praktisches",
+    "menuOpen": "Menü öffnen",
+    "menuClose": "Menü schließen",
+    "language": "Sprache"
+  },
+  "footer": {
+    "tagline": "Unser Familienhaus am Rande von Maria Alm — für Freunde und Freunde von Freunden.",
+    "location": "Maria Alm, Salzburger Land, Österreich",
+    "availabilityCta": "Verfügbarkeit ansehen"
+  },
+  "common": {
+    "photoComingSoon": "Foto folgt",
+    "bookCta": "Verfügbarkeit ansehen",
+    "contactCta": "Anfrage stellen"
+  },
+  "home": {
+    "heroTitle": "Willkommen in der Sonnenwiese",
+    "heroSubtitle": "Unser Familienhaus am Rande von Maria Alm, mit Blick auf das Hochkönig-Massiv. Für 6 bis 8 Personen, im Sommer und im Winter.",
+    "heroCta": "Verfügbarkeit ansehen",
+    "highlightsTitle": "Auf einen Blick",
+    "highlightGuests": "6–8 Personen",
+    "highlightGuestsText": "Drei Schlafzimmer, ein geräumiges Wohnzimmer und ein sonniger Garten — genug Platz für die ganze Gruppe.",
+    "highlightSki": "Skigebiet Hochkönig",
+    "highlightSkiText": "150 km Piste vor der Tür: der Skilift ist 5 Autominuten entfernt, der Skibus hält in 300 Metern.",
+    "highlightVillage": "Maria Alm um die Ecke",
+    "highlightVillageText": "Geschäfte und Restaurants in 10 Gehminuten, in einem der schönsten Dörfer des Salzburger Landes.",
+    "introTitle": "Bei uns zu Hause in den Bergen",
+    "introText": "Die Sonnenwiese ist kein Vermietungsbetrieb — es ist unser eigenes Ferienhaus, das wir gerne mit Freunden und Freunden von Freunden teilen. Hier findest du alles, was du auch zu Hause hast, mit den Bergen als Garten. Im Winter stehst du in wenigen Minuten auf der Piste, im Sommer wanderst du direkt hinein in Wiesen und Bergpfade.",
+    "introCta": "Die Wohnung ansehen"
+  },
+  "apartment": {
+    "title": "Die Wohnung",
+    "intro": "Die Wohnung wurde 2004 neu gebaut und eingerichtet und bietet bequem Platz für 6 bis 8 Personen. Alles ist da: eine moderne Küche, drei Schlafzimmer, ein sonniger Garten und ein herrlicher Blick auf den Hang des Hochkönig-Massivs.",
+    "livingTitle": "Wohnzimmer",
+    "livingText": "Ein gemütliches Wohnzimmer mit großem Sofa — der perfekte Ort, um nach einem Tag auf der Piste oder in den Bergen zusammenzukommen. Satelliten-TV mit niederländischen Sendern und Internet sind vorhanden.",
+    "kitchenTitle": "Küche",
+    "kitchenText": "Die moderne Küche ist voll ausgestattet, mit Kombi-Backofen und Geschirrspüler. Groß genug, um mit der ganzen Gruppe zu kochen.",
+    "bedroomsTitle": "Drei Schlafzimmer",
+    "bedroomsText": "Zwei Schlafzimmer mit Doppelbett und ein drittes Schlafzimmer mit Etagenbett und Einzelbett. So schläft jeder — von 6 bis 8 Personen — bequem.",
+    "bathroomTitle": "Bad & WC",
+    "bathroomText": "Ein komplettes Badezimmer und ein separates WC, damit es morgens nie eng wird.",
+    "gardenTitle": "Sonniger Garten",
+    "gardenText": "Der Garten liegt in der Sonne und ist mit Gartenmöbeln ausgestattet — perfekt für lange Sommerabende oder einen Kaffee mit Bergblick.",
+    "amenitiesTitle": "Alle Ausstattungen",
+    "amenities": {
+      "guests": "Geeignet für 6–8 Personen",
+      "bedrooms": "3 Schlafzimmer (2x Doppelbett, 1x Etagenbett + Einzelbett)",
+      "kitchen": "Moderne Küche mit Kombi-Backofen und Geschirrspüler",
+      "washer": "Waschmaschine und Trockner",
+      "tv": "Satelliten-TV mit niederländischen Sendern",
+      "internet": "Internet",
+      "bathroom": "Badezimmer und separates WC",
+      "garden": "Sonniger Garten mit Gartenmöbeln",
+      "view": "Blick auf das Hochkönig-Massiv",
+      "seasons": "Geeignet für Sommer und Winter"
+    }
+  },
+  "gallery": {
+    "title": "Fotos",
+    "intro": "Ein Eindruck von der Wohnung und der Umgebung, im Sommer und im Winter.",
+    "categoryApartment": "Die Wohnung",
+    "categorySurroundings": "Die Umgebung",
+    "summer": "Sommer",
+    "winter": "Winter",
+    "lightboxClose": "Schließen",
+    "lightboxPrev": "Vorheriges Foto",
+    "lightboxNext": "Nächstes Foto"
+  },
+  "surroundings": {
+    "title": "Die Umgebung",
+    "intro": "Die Sonnenwiese liegt am Rande von Maria Alm, einem der schönsten Dörfer des Salzburger Landes — das ganze Jahr über einen Besuch wert.",
+    "villageTitle": "Maria Alm",
+    "villageText": "Ein authentisches österreichisches Bergdorf mit gemütlichem Ortskern: Geschäfte, Restaurants und Cafés in 10 Gehminuten von der Wohnung. Die berühmte Kirche mit ihrem hohen Turm ist der Mittelpunkt des Dorfes.",
+    "winterTitle": "Winter: Skigebiet Hochkönig",
+    "winterText": "Maria Alm gehört zum Skigebiet Hochkönig, Teil von Ski Amadé: 150 Kilometer Piste für alle Könnerstufen. Der nächste Skilift ist 5 Autominuten entfernt, der Skibus hält 300 Meter vom Haus. Auch Langlaufen, Rodeln und Winterwandern sind reichlich möglich.",
+    "summerTitle": "Sommer: Wandern und Berge",
+    "summerText": "Im Sommer ist Maria Alm ein Paradies für Wanderer und Radfahrer. Von gemütlichen Spaziergängen durch die Wiesen bis zu anspruchsvollen Bergtouren im Hochkönig-Massiv — direkt vom Haus aus geht es in die Natur. Die Bergbahnen bringen dich im Sommer auch ohne Kletterei nach oben.",
+    "distancesTitle": "Entfernungen",
+    "distances": {
+      "skibus": "Skibus — 300 m",
+      "skilift": "Skilift — 5 Autominuten",
+      "village": "Ortszentrum Maria Alm — 10 Gehminuten",
+      "piste": "150 km Piste im Skigebiet Hochkönig"
+    }
+  },
+  "pricing": {
+    "title": "Preise",
+    "intro": "Die Preise unterscheiden sich je nach Saison. Die aktuelle Übersicht findest du in Kürze hier.",
+    "comingSoonTitle": "Preise folgen in Kürze",
+    "comingSoonText": "Wir stellen die aktuellen Saisonpreise in Kürze auf diese Seite. Möchtest du jetzt schon wissen, was ein Aufenthalt kostet? Stelle einfach eine Anfrage über die Verfügbarkeitsseite — wir melden uns direkt bei dir.",
+    "includedTitle": "Immer inklusive",
+    "included": {
+      "linen": "Bettwäsche und Handtücher",
+      "energy": "Gas, Wasser und Strom",
+      "internet": "Internet und Satelliten-TV",
+      "cleaning": "Endreinigung"
+    },
+    "includedNote": "Details dazu, was genau inklusive ist, folgen zusammen mit den Preisen.",
+    "cta": "Verfügbarkeit ansehen"
+  },
+  "availability": {
+    "title": "Verfügbarkeit & Buchen",
+    "intro": "Sieh im Kalender nach, welche Zeiträume noch frei sind, und stelle direkt eine Anfrage. Wir melden uns so schnell wie möglich bei dir.",
+    "calendarTitle": "Verfügbarkeit",
+    "calendarLegendBooked": "Belegt",
+    "calendarLegendSelected": "Deine Auswahl",
+    "calendarHint": "Wähle dein An- und Abreisedatum im Kalender.",
+    "formTitle": "Anfrage stellen"
+  },
+  "bookingForm": {
+    "name": "Name",
+    "namePlaceholder": "Dein vollständiger Name",
+    "email": "E-Mail-Adresse",
+    "emailPlaceholder": "du@beispiel.de",
+    "phone": "Telefonnummer",
+    "phonePlaceholder": "Optional",
+    "dates": "Anreise und Abreise",
+    "datesHint": "Wähle zuerst dein An- und Abreisedatum im Kalender oben.",
+    "datesSelected": "Ausgewählt: {from} bis {to}",
+    "guests": "Anzahl Personen",
+    "message": "Nachricht",
+    "messagePlaceholder": "Erzähl uns gerne, wer mitkommt, oder stelle deine Frage (optional)",
+    "submit": "Anfrage senden",
+    "submitting": "Wird gesendet…",
+    "successTitle": "Anfrage gesendet!",
+    "successText": "Danke für deine Anfrage — sie ist gut bei uns angekommen. Du hörst so schnell wie möglich per E-Mail oder Telefon von uns.",
+    "successAgain": "Weitere Anfrage stellen",
+    "errorTitle": "Etwas ist schiefgelaufen",
+    "errorText": "Deine Anfrage konnte nicht gesendet werden. Versuche es noch einmal oder kontaktiere uns direkt.",
+    "errorRetry": "Erneut versuchen",
+    "validation": {
+      "nameRequired": "Bitte gib deinen Namen ein.",
+      "emailRequired": "Bitte gib deine E-Mail-Adresse ein.",
+      "emailInvalid": "Das scheint keine gültige E-Mail-Adresse zu sein.",
+      "datesRequired": "Wähle dein An- und Abreisedatum im Kalender.",
+      "datesInvalid": "Das Abreisedatum muss nach dem Anreisedatum liegen.",
+      "datesPast": "Das Anreisedatum muss in der Zukunft liegen.",
+      "guestsInvalid": "Wähle eine Personenzahl zwischen 1 und 8."
+    }
+  },
+  "practical": {
+    "title": "Anreise & Praktisches",
+    "intro": "Alles, was du für deinen Aufenthalt wissen musst: Anreise, An- und Abreisezeiten und unsere Hausregeln.",
+    "routeTitle": "Anreise",
+    "routeText": "Die Wohnung liegt am Rande von Maria Alm im Salzburger Land, Österreich. Aus den Niederlanden fährt man etwa 10 Stunden: über München und Salzburg Richtung Bischofshofen, dann über die B164 nach Maria Alm. Die genaue Adresse und eine Wegbeschreibung senden wir dir mit der Buchungsbestätigung.",
+    "arrivalTitle": "Ankunft & Abreise",
+    "arrivalText": "Die genauen An- und Abreisezeiten sowie die Schlüsselübergabe stimmen wir nach deiner Buchung persönlich mit dir ab.",
+    "rulesTitle": "Hausregeln",
+    "rulesText": "Die Hausregeln folgen in Kürze auf dieser Seite. Das Wichtigste in Kürze: Behandle das Haus wie dein eigenes — es ist schließlich unser Zuhause, und wir teilen es gerne mit dir.",
+    "questionsTitle": "Fragen?",
+    "questionsText": "Stelle eine Anfrage über die Verfügbarkeitsseite oder schreibe deine Frage ins Nachrichtenfeld — wir helfen gerne weiter."
+  },
+  "notFound": {
+    "title": "Seite nicht gefunden",
+    "text": "Diese Seite existiert nicht (mehr). Zurück zur Startseite.",
+    "cta": "Zur Startseite"
+  },
+  "meta": {
+    "siteTitle": "Sonnenwiese — Ferienwohnung Maria Alm",
+    "siteDescription": "Ferienwohnung für 6–8 Personen am Rande von Maria Alm, Salzburger Land. Skigebiet Hochkönig in 5 Minuten, Sommer und Winter."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls /opt/homebrew/bin 2>/dev/null | head; ls -la /usr/local/bin 2>/dev/null | head -20; find / -maxdepth 3 -iname \"*node*\" 2>/dev/null | head -20)",
+      "Bash(sw_vers)",
+      "Bash(xcode-select -p)",
+      "Read(//Applications/**)",
+      "Bash(curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh)",
+      "Bash(bash)",
+      "Bash(npm -v)",
+      "Bash(npx --yes create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --use-npm --no-turbopack)",
+      "Bash(rm -rf sonnenwiese)",
+      "Bash(npx --yes create-next-app@latest sonnenwiese --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --use-npm --no-turbopack)",
+      "Bash(npm install *)"
+    ]
+  }
+}

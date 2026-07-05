@@ -1,0 +1,170 @@
+{
+  "nav": {
+    "home": "Home",
+    "apartment": "Apartment",
+    "gallery": "Photos",
+    "surroundings": "Surroundings",
+    "pricing": "Prices",
+    "availability": "Availability",
+    "practical": "Directions & practical",
+    "menuOpen": "Open menu",
+    "menuClose": "Close menu",
+    "language": "Language"
+  },
+  "footer": {
+    "tagline": "Our family home on the edge of Maria Alm — for friends, and friends of friends.",
+    "location": "Maria Alm, Salzburgerland, Austria",
+    "availabilityCta": "Check availability"
+  },
+  "common": {
+    "photoComingSoon": "Photo coming soon",
+    "bookCta": "Check availability",
+    "contactCta": "Send a request"
+  },
+  "home": {
+    "heroTitle": "Welcome to Sonnenwiese",
+    "heroSubtitle": "Our family home on the edge of Maria Alm, overlooking the Hochkönig mountains. Sleeps 6 to 8, summer and winter alike.",
+    "heroCta": "Check availability",
+    "highlightsTitle": "At a glance",
+    "highlightGuests": "6–8 guests",
+    "highlightGuestsText": "Three bedrooms, a spacious living room and a sunny garden — plenty of room for the whole group.",
+    "highlightSki": "Hochkönig ski area",
+    "highlightSkiText": "150 km of slopes on your doorstep: the ski lift is a 5-minute drive and the ski bus stops 300 metres away.",
+    "highlightVillage": "Maria Alm around the corner",
+    "highlightVillageText": "Shops and restaurants a 10-minute walk away, in one of the prettiest villages of Salzburgerland.",
+    "introTitle": "Our home in the mountains",
+    "introText": "Sonnenwiese isn't a rental business — it's our own holiday home, which we love sharing with friends and friends of friends. You'll find everything you have at home, with the mountains as your back garden. In winter you're on the slopes within minutes; in summer you walk straight out into the meadows and mountain trails.",
+    "introCta": "See the apartment"
+  },
+  "apartment": {
+    "title": "The apartment",
+    "intro": "Newly built and furnished in 2004, the apartment comfortably sleeps 6 to 8 people. Everything is here: a modern kitchen, three bedrooms, a sunny garden and a wonderful view of the Hochkönig mountainside.",
+    "livingTitle": "Living room",
+    "livingText": "A cosy living room with a large sofa — the place to gather after a day of skiing or hiking. Satellite TV with Dutch channels and internet are available.",
+    "kitchenTitle": "Kitchen",
+    "kitchenText": "The modern kitchen is fully equipped, with a combi oven and dishwasher. Big enough to cook for the whole group.",
+    "bedroomsTitle": "Three bedrooms",
+    "bedroomsText": "Two bedrooms with a double bed and a third bedroom with a bunk bed and a single bed. Everyone — from 6 to 8 guests — sleeps comfortably.",
+    "bathroomTitle": "Bathroom & toilet",
+    "bathroomText": "A full bathroom and a separate toilet, so mornings never get crowded.",
+    "gardenTitle": "Sunny garden",
+    "gardenText": "The garden catches the sun and comes with garden furniture — perfect for long summer evenings or a coffee with a mountain view.",
+    "amenitiesTitle": "All amenities",
+    "amenities": {
+      "guests": "Sleeps 6–8 guests",
+      "bedrooms": "3 bedrooms (2x double bed, 1x bunk bed + single bed)",
+      "kitchen": "Modern kitchen with combi oven and dishwasher",
+      "washer": "Washing machine and dryer",
+      "tv": "Satellite TV with Dutch channels",
+      "internet": "Internet",
+      "bathroom": "Bathroom and separate toilet",
+      "garden": "Sunny garden with garden furniture",
+      "view": "View of the Hochkönig mountains",
+      "seasons": "Suitable for summer and winter"
+    }
+  },
+  "gallery": {
+    "title": "Photos",
+    "intro": "An impression of the apartment and its surroundings, in summer and in winter.",
+    "categoryApartment": "The apartment",
+    "categorySurroundings": "The surroundings",
+    "summer": "Summer",
+    "winter": "Winter",
+    "lightboxClose": "Close",
+    "lightboxPrev": "Previous photo",
+    "lightboxNext": "Next photo"
+  },
+  "surroundings": {
+    "title": "The surroundings",
+    "intro": "Sonnenwiese sits on the edge of Maria Alm, one of the prettiest villages of Salzburgerland — worth visiting all year round.",
+    "villageTitle": "Maria Alm",
+    "villageText": "An authentic Austrian mountain village with a charming centre: shops, restaurants and cafés a 10-minute walk from the apartment. The famous church with its tall spire is the heart of the village.",
+    "winterTitle": "Winter: Hochkönig ski area",
+    "winterText": "Maria Alm is part of the Hochkönig ski area, part of Ski Amadé: 150 kilometres of slopes for all levels. The nearest ski lift is a 5-minute drive and the ski bus stops 300 metres from the house. Cross-country skiing, tobogganing and winter hiking are also plentiful.",
+    "summerTitle": "Summer: hiking and mountains",
+    "summerText": "In summer Maria Alm is a paradise for hikers and cyclists. From gentle walks through the meadows to serious mountain hikes in the Hochkönig massif — you step straight from the house into nature. In summer, cable cars take you up without the climb, too.",
+    "distancesTitle": "Distances",
+    "distances": {
+      "skibus": "Ski bus — 300 m",
+      "skilift": "Ski lift — 5 min by car",
+      "village": "Maria Alm centre — 10 min walk",
+      "piste": "150 km of slopes in the Hochkönig ski area"
+    }
+  },
+  "pricing": {
+    "title": "Prices",
+    "intro": "Prices vary by season. You'll find the current overview here soon.",
+    "comingSoonTitle": "Prices coming soon",
+    "comingSoonText": "We'll publish the current seasonal prices on this page soon. Want to know what a stay costs right now? Just send a request via the availability page — we'll get back to you directly.",
+    "includedTitle": "Always included",
+    "included": {
+      "linen": "Bed linen and towels",
+      "energy": "Gas, water and electricity",
+      "internet": "Internet and satellite TV",
+      "cleaning": "Final cleaning"
+    },
+    "includedNote": "Details of exactly what's included will follow along with the prices.",
+    "cta": "Check availability"
+  },
+  "availability": {
+    "title": "Availability & booking",
+    "intro": "Check the calendar to see which periods are still free and send a request right away. We'll get back to you as soon as possible.",
+    "calendarTitle": "Availability",
+    "calendarLegendBooked": "Booked",
+    "calendarLegendSelected": "Your selection",
+    "calendarHint": "Select your arrival and departure dates in the calendar.",
+    "formTitle": "Send a request"
+  },
+  "bookingForm": {
+    "name": "Name",
+    "namePlaceholder": "Your full name",
+    "email": "Email address",
+    "emailPlaceholder": "you@example.com",
+    "phone": "Phone number",
+    "phonePlaceholder": "Optional",
+    "dates": "Arrival and departure",
+    "datesHint": "First pick your arrival and departure dates in the calendar above.",
+    "datesSelected": "Selected: {from} to {to}",
+    "guests": "Number of guests",
+    "message": "Message",
+    "messagePlaceholder": "Feel free to tell us who's coming or ask a question (optional)",
+    "submit": "Send request",
+    "submitting": "Sending…",
+    "successTitle": "Request sent!",
+    "successText": "Thanks for your request — we've received it safely. We'll get back to you as soon as possible by email or phone.",
+    "successAgain": "Send another request",
+    "errorTitle": "Something went wrong",
+    "errorText": "Your request could not be sent. Please try again, or contact us directly.",
+    "errorRetry": "Try again",
+    "validation": {
+      "nameRequired": "Please enter your name.",
+      "emailRequired": "Please enter your email address.",
+      "emailInvalid": "That doesn't look like a valid email address.",
+      "datesRequired": "Pick your arrival and departure dates in the calendar.",
+      "datesInvalid": "The departure date must be after the arrival date.",
+      "datesPast": "The arrival date must be in the future.",
+      "guestsInvalid": "Choose a number of guests between 1 and 8."
+    }
+  },
+  "practical": {
+    "title": "Directions & practical",
+    "intro": "Everything you need to know for your stay: how to get here, how arrival and departure work, and our house rules.",
+    "routeTitle": "Directions",
+    "routeText": "The apartment sits on the edge of Maria Alm in Salzburgerland, Austria. From the Netherlands it's about a 10-hour drive: via Munich and Salzburg towards Bischofshofen, then via the B164 to Maria Alm. We'll send you the exact address and directions with your booking confirmation.",
+    "arrivalTitle": "Arrival & departure",
+    "arrivalText": "We'll arrange the exact arrival and departure times and the key handover with you personally after your booking.",
+    "rulesTitle": "House rules",
+    "rulesText": "The house rules will follow on this page soon. The short version: treat the house as your own — it is our home, after all, and we love sharing it with you.",
+    "questionsTitle": "Questions?",
+    "questionsText": "Send a request via the availability page or ask your question in the message field — we're happy to help."
+  },
+  "notFound": {
+    "title": "Page not found",
+    "text": "This page doesn't exist (anymore). Head back to the homepage.",
+    "cta": "Go home"
+  },
+  "meta": {
+    "siteTitle": "Sonnenwiese — holiday apartment Maria Alm",
+    "siteDescription": "Holiday apartment for 6–8 guests on the edge of Maria Alm, Salzburgerland. Hochkönig ski area 5 minutes away, summer and winter."
+  }
+}
