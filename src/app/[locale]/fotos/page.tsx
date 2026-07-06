@@ -14,11 +14,11 @@ export default function GalleryPage({
   const ta = useTranslations("apartment");
   const ts = useTranslations("surroundings");
 
-  // Foto's van het appartement (overgenomen van de oude site), per ruimte.
+  // Foto's van het appartement (aangeleverd door de eigenaar), per ruimte.
   const groups: { title: string; photos: GalleryPhoto[] }[] = [
     {
       title: ta("livingTitle"),
-      photos: [1, 2, 3, 4, 5, 6, 7].map((n) => ({
+      photos: [1, 2, 3, 4, 5, 6].map((n) => ({
         src: `/photos/woonkamer-${n}.jpg`,
         alt: `${ta("livingTitle")} ${n}`,
       })),
@@ -32,26 +32,14 @@ export default function GalleryPage({
     },
     {
       title: ta("bedroomsTitle"),
-      photos: [1, 2, 3, 4].map((n) => ({
+      photos: [1, 2, 3].map((n) => ({
         src: `/photos/slaapkamer-${n}.jpg`,
         alt: `${ta("bedroomsTitle")} ${n}`,
       })),
     },
     {
       title: ta("bathroomTitle"),
-      photos: [
-        { src: "/photos/badkamer-1.jpg", alt: ta("bathroomTitle") },
-        { src: "/photos/badkamer-2.jpg", alt: ta("bathroomTitle") },
-        { src: "/photos/wc-1.jpg", alt: t("toilet") },
-      ],
-    },
-    {
-      title: t("hallStorage"),
-      photos: [
-        { src: "/photos/hal-1.jpg", alt: t("hallStorage") },
-        { src: "/photos/berging-1.jpg", alt: t("hallStorage") },
-        { src: "/photos/berging-2.jpg", alt: t("hallStorage") },
-      ],
+      photos: [{ src: "/photos/badkamer-1.jpg", alt: ta("bathroomTitle") }],
     },
   ];
 
