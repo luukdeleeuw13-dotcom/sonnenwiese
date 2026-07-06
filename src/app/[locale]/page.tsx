@@ -44,6 +44,7 @@ export default function HomePage({
       <Hero
         title={t("heroTitle")}
         subtitle={t("heroSubtitle")}
+        src="/photos/omgeving-hochkonig-zomer.jpg"
         alt="Sonnenwiese, Maria Alm"
         cta={
           <Link

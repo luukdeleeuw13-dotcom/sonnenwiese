@@ -21,14 +21,14 @@ export default function SurroundingsPage({
 
       <Section
         title={t("villageTitle")}
-        image={{ alt: t("villageTitle"), variant: "mountain" }}
+        image={{ src: "/photos/omgeving-kerk-maria-alm.jpg", alt: t("villageTitle") }}
       >
         <p>{t("villageText")}</p>
       </Section>
 
       <Section
         title={t("winterTitle")}
-        image={{ alt: t("winterTitle"), variant: "mountain" }}
+        image={{ src: "/photos/omgeving-hochkonig-winter.jpg", alt: t("winterTitle") }}
         reverse
       >
         <p>{t("winterText")}</p>
@@ -36,7 +36,7 @@ export default function SurroundingsPage({
 
       <Section
         title={t("summerTitle")}
-        image={{ alt: t("summerTitle"), variant: "garden" }}
+        image={{ src: "/photos/omgeving-hochkonig-zomer.jpg", alt: t("summerTitle") }}
       >
         <p>{t("summerText")}</p>
       </Section>

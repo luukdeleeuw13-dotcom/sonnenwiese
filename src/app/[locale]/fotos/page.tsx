@@ -55,17 +55,18 @@ export default function GalleryPage({
     },
   ];
 
-  // Omgevingsfoto's zijn er nog niet — placeholders tot ze zijn aangeleverd.
+  // Omgevingsfoto's via Wikimedia Commons (zie gallery.credits).
   const surroundingsSummer: GalleryPhoto[] = [
-    { alt: ts("villageTitle"), variant: "mountain" },
-    { alt: "Hochkönig", variant: "mountain" },
-    { alt: ts("summerTitle"), variant: "garden" },
+    { src: "/photos/omgeving-hochkonig-zomer.jpg", alt: "Hochkönig" },
+    { src: "/photos/omgeving-kerk-maria-alm.jpg", alt: ts("villageTitle") },
+    { src: "/photos/omgeving-maria-alm-lucht.jpg", alt: ts("villageTitle") },
+    { src: "/photos/omgeving-bergpanorama.jpg", alt: ts("summerTitle") },
   ];
 
   const surroundingsWinter: GalleryPhoto[] = [
-    { alt: ts("winterTitle"), variant: "mountain" },
-    { alt: `${ts("villageTitle")} — ${t("winter")}`, variant: "mountain" },
-    { alt: "Hochkönig", variant: "mountain" },
+    { src: "/photos/omgeving-hochkonig-winter.jpg", alt: ts("winterTitle") },
+    { src: "/photos/omgeving-alpengloed-1.jpg", alt: `Hochkönig — ${t("winter")}` },
+    { src: "/photos/omgeving-alpengloed-2.jpg", alt: `Hochkönig — ${t("winter")}` },
   ];
 
   return (
@@ -99,6 +100,8 @@ export default function GalleryPage({
       <div className="mt-4">
         <Gallery photos={surroundingsWinter} />
       </div>
+
+      <p className="mt-10 text-xs text-timber/70">{t("credits")}</p>
     </div>
   );
 }
