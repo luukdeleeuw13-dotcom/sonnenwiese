@@ -21,18 +21,23 @@ Zonder ingevulde `.env.local` werkt de hele site ook, alleen toont de
 kalender dan alles als vrij en geeft het aanvraagformulier een foutmelding
 bij versturen.
 
-## Hoe de boekingsflow werkt (v1)
+## Hoe de boekingsflow werkt
 
 1. Gast kiest een periode in de kalender op **Beschikbaarheid & reserveren**
    en vult het aanvraagformulier in.
 2. De aanvraag wordt opgeslagen in Supabase (status `pending`) en de eigenaar
-   krijgt een e-mail op `OWNER_NOTIFICATION_EMAIL`.
-3. De eigenaar opent Supabase → **Table Editor** → tabel `bookings` en zet de
-   status van de aanvraag op `confirmed` (of `rejected`).
-4. Bij `confirmed` is de periode direct geblokkeerd in de kalender op de site.
+   krijgt een e-mail op `OWNER_NOTIFICATION_EMAIL` met twee knoppen:
+   **Accepteren** en **Afwijzen** (beveiligd met een HMAC-token per aanvraag).
+3. Bij accepteren: de periode wordt direct geblokkeerd in de kalender én de
+   gast ontvangt automatisch een bevestigingsmail in de eigen taal (nl/de/en).
+   Bij afwijzen krijgt de gast een nette afwijsmail.
+4. Op **/admin** (wachtwoord: env var `ADMIN_PASSWORD`) staat het volledige
+   overzicht: nieuwe aanvragen, komende boekingen, en een formulier om
+   handmatig periodes te blokkeren (eigen gebruik/onderhoud).
 
-Fase 2 (gepland): accepteer/afwijs-knoppen in de e-mail, automatische
-bevestigingsmail naar de gast en een eenvoudig admin-overzicht.
+Let op: zolang er geen eigen domein is geverifieerd in Resend, worden mails
+alleen bezorgd op het e-mailadres van het Resend-account zelf. Gastmails
+werken dus pas volledig na domeinverificatie (Resend → Domains).
 
 ## Eenmalige installatie (accounts aanmaken)
 

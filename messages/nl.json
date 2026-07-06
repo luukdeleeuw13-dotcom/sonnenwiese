@@ -172,5 +172,11 @@
   "meta": {
     "siteTitle": "Sonnenwiese — vakantieappartement Maria Alm",
     "siteDescription": "Vakantieappartement voor 6–8 personen aan de rand van Maria Alm, Salzburgerland. Skigebied Hochkönig op 5 minuten, zomer en winter."
+  },
+  "email": {
+    "confirmSubject": "Je verblijf in Sonnenwiese is bevestigd ({from} – {to})",
+    "confirmBody": "Hoi {name},\n\nGoed nieuws: je aanvraag voor Sonnenwiese in Maria Alm is bevestigd!\n\nAankomst:  {from}\nVertrek:   {to}\nPersonen:  {guests}\n\nHet adres is Op Klinglerau 5, Saalfelden — praktisch gezien aan de rand van Maria Alm. Over de aankomsttijd en de sleuteloverdracht nemen we persoonlijk contact met je op.\n\nAlle praktische informatie vind je op {siteUrl}\n\nWe kijken ernaar uit — tot in de bergen!\n\nHartelijke groet,\nFamilie De Leeuw",
+    "rejectSubject": "Je aanvraag voor Sonnenwiese ({from} – {to})",
+    "rejectBody": "Hoi {name},\n\nDank voor je aanvraag voor Sonnenwiese in Maria Alm ({from} – {to}).\n\nHelaas kunnen we je verblijf in deze periode niet bevestigen — waarschijnlijk is de periode al bezet.\n\nKijk gerust op {siteUrl} voor de actuele beschikbaarheid; misschien lukt een andere periode wél. Je bent van harte welkom.\n\nHartelijke groet,\nFamilie De Leeuw"
   }
 }

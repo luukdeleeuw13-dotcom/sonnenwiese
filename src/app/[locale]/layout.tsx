@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
+import { SITE_URL } from "@/lib/config";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 
@@ -20,9 +21,6 @@ const fraunces = Fraunces({
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
-
-// Na de domein-omzetting wijzigen in https://www.sonnenwiese.nl
-const SITE_URL = "https://sonnenwiese.vercel.app";
 
 export async function generateMetadata({
   params,

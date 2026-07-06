@@ -172,5 +172,11 @@
   "meta": {
     "siteTitle": "Sonnenwiese — holiday apartment Maria Alm",
     "siteDescription": "Holiday apartment for 6–8 guests on the edge of Maria Alm, Salzburgerland. Hochkönig ski area 5 minutes away, summer and winter."
+  },
+  "email": {
+    "confirmSubject": "Your stay at Sonnenwiese is confirmed ({from} – {to})",
+    "confirmBody": "Hi {name},\n\nGood news: your request for Sonnenwiese in Maria Alm has been confirmed!\n\nArrival:   {from}\nDeparture: {to}\nGuests:    {guests}\n\nThe address is Op Klinglerau 5, Saalfelden — practically on the edge of Maria Alm. We'll be in touch personally about the arrival time and key handover.\n\nYou'll find all practical information at {siteUrl}\n\nWe're looking forward to it — see you in the mountains!\n\nWarm regards,\nDe Leeuw family",
+    "rejectSubject": "Your request for Sonnenwiese ({from} – {to})",
+    "rejectBody": "Hi {name},\n\nThanks for your request for Sonnenwiese in Maria Alm ({from} – {to}).\n\nUnfortunately we cannot confirm your stay for this period — most likely it is already booked.\n\nDo check {siteUrl} for current availability; perhaps another period will work. You are very welcome.\n\nWarm regards,\nDe Leeuw family"
   }
 }

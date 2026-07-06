@@ -172,5 +172,11 @@
   "meta": {
     "siteTitle": "Sonnenwiese — Ferienwohnung Maria Alm",
     "siteDescription": "Ferienwohnung für 6–8 Personen am Rande von Maria Alm, Salzburger Land. Skigebiet Hochkönig in 5 Minuten, Sommer und Winter."
+  },
+  "email": {
+    "confirmSubject": "Dein Aufenthalt in der Sonnenwiese ist bestätigt ({from} – {to})",
+    "confirmBody": "Hallo {name},\n\ngute Nachrichten: Deine Anfrage für die Sonnenwiese in Maria Alm ist bestätigt!\n\nAnreise:   {from}\nAbreise:   {to}\nPersonen:  {guests}\n\nDie Adresse ist Op Klinglerau 5, Saalfelden — praktisch am Rande von Maria Alm. Wegen der Ankunftszeit und der Schlüsselübergabe melden wir uns persönlich bei dir.\n\nAlle praktischen Informationen findest du auf {siteUrl}\n\nWir freuen uns — bis bald in den Bergen!\n\nHerzliche Grüße,\nFamilie De Leeuw",
+    "rejectSubject": "Deine Anfrage für die Sonnenwiese ({from} – {to})",
+    "rejectBody": "Hallo {name},\n\ndanke für deine Anfrage für die Sonnenwiese in Maria Alm ({from} – {to}).\n\nLeider können wir deinen Aufenthalt in diesem Zeitraum nicht bestätigen — wahrscheinlich ist der Zeitraum bereits belegt.\n\nSchau gerne auf {siteUrl} für die aktuelle Verfügbarkeit; vielleicht klappt ein anderer Zeitraum. Du bist herzlich willkommen.\n\nHerzliche Grüße,\nFamilie De Leeuw"
   }
 }

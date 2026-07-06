@@ -6,6 +6,7 @@ import { routing } from "./i18n/routing";
 export const proxy = createMiddleware(routing);
 
 export const config = {
-  // Alles behalve /api, Next-internals en statische bestanden met extensie.
-  matcher: ["/((?!api|_next|.*\\..*).*)"],
+  // Alles behalve /api, /admin (Nederlandstalig, geen taalprefix),
+  // Next-internals en statische bestanden met extensie.
+  matcher: ["/((?!api|admin|_next|.*\\..*).*)"],
 };
