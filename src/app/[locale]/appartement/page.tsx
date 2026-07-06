@@ -1,6 +1,7 @@
 import { setRequestLocale } from "next-intl/server";
 import { useTranslations } from "next-intl";
 import { use } from "react";
+import Image from "next/image";
 import Hero from "@/components/ui/Hero";
 import Section from "@/components/ui/Section";
 
@@ -45,12 +46,28 @@ export default function ApartmentPage({
         <p>{t("kitchenText")}</p>
       </Section>
 
-      <Section
-        title={t("bedroomsTitle")}
-        image={{ src: "/photos/slaapkamer-1.jpg", alt: t("bedroomsTitle") }}
-      >
-        <p>{t("bedroomsText")}</p>
-      </Section>
+      {/* Drie slaapkamers → drie foto's naast elkaar in plaats van één */}
+      <section className="mx-auto max-w-5xl px-4 py-8 sm:py-10">
+        <h2 className="font-display text-2xl font-semibold text-bark sm:text-3xl">
+          {t("bedroomsTitle")}
+        </h2>
+        <p className="mt-3 leading-relaxed text-timber">{t("bedroomsText")}</p>
+        <div className="mt-5 grid grid-cols-3 gap-3">
+          {[1, 2, 3].map((n) => (
+            <div
+              key={n}
+              className="relative aspect-[3/4] overflow-hidden rounded-card"
+            >
+              <Image
+                src={`/photos/slaapkamer-${n}.jpg`}
+                alt={`${t("bedroomsTitle")} ${n}`}
+                fill
+                className="object-cover"
+              />
+            </div>
+          ))}
+        </div>
+      </section>
 
       <Section
         title={t("bathroomTitle")}
