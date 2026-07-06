@@ -102,9 +102,9 @@ Alle teksten staan in [`messages/nl.json`](messages/nl.json),
 [`messages/de.json`](messages/de.json) en [`messages/en.json`](messages/en.json).
 Zelfde structuur in alle drie; pas per taal de waarden aan.
 
-## Nog aan te leveren (placeholders in de site)
+## Nog aan te leveren
 
-- Prijzen per seizoen (pagina **Prijzen** toont nu "volgt binnenkort")
-- Huisregels (pagina **Route & praktisch**)
-- Foto's (overal placeholders)
-- Het definitieve eigenaarsmailadres
+- Tuinfoto (laatste "Foto volgt"-placeholder, Appartement-pagina)
+- Het definitieve eigenaarsmailadres (`OWNER_NOTIFICATION_EMAIL`)
+- Domein-omzetting sonnenwiese.nl (DNS bij Yourhosting; records staan klaar
+  in Vercel) + daarna domeinverificatie in Resend voor gastmails

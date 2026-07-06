@@ -96,17 +96,43 @@
   },
   "pricing": {
     "title": "Preise",
-    "intro": "Die Preise unterscheiden sich je nach Saison. Die aktuelle Übersicht findest du in Kürze hier.",
-    "comingSoonTitle": "Preise folgen in Kürze",
-    "comingSoonText": "Wir stellen die aktuellen Saisonpreise in Kürze auf diese Seite. Möchtest du jetzt schon wissen, was ein Aufenthalt kostet? Stelle einfach eine Anfrage über die Verfügbarkeitsseite — wir melden uns direkt bei dir.",
-    "includedTitle": "Immer inklusive",
-    "included": {
-      "linen": "Bettwäsche und Handtücher",
-      "energy": "Gas, Wasser und Strom",
-      "internet": "Internet und Satelliten-TV",
-      "cleaning": "Endreinigung"
+    "intro": "Vermietet wird wochenweise: von Samstag 15.00 Uhr bis Samstag 10.00 Uhr (nach Absprache manchmal auch Sonntag–Sonntag). Dies sind die Preise für 2024/2025.",
+    "tableTitle": "Mietpreis pro Woche",
+    "rows": {
+      "winterHigh": {
+        "label": "Winter — Hochsaison (Schulferien)",
+        "price": "€ 1.750"
+      },
+      "winterLow": {
+        "label": "Winter — Nebensaison",
+        "price": "€ 900"
+      },
+      "summerHigh": {
+        "label": "Sommer — Hochsaison",
+        "price": "€ 650"
+      },
+      "summerLow": {
+        "label": "Sommer — Nebensaison",
+        "price": "€ 450"
+      }
     },
-    "includedNote": "Details dazu, was genau inklusive ist, folgen zusammen mit den Preisen.",
+    "includedTitle": "Inklusive",
+    "included": {
+      "energy": "Strom und Wasser",
+      "internet": "Internet und Satelliten-TV (mit niederländischen Sendern)"
+    },
+    "extrasTitle": "Zusätzlich",
+    "extras": {
+      "cleaning": "Endreinigung — € 50",
+      "tax": "Ortstaxe — € 1,10 p.P. pro Nacht (ab 14 Jahren), € 0,40 für Kinder bis 14 Jahre",
+      "linen": "Bettwäsche und Handtücher — bitte selbst mitbringen"
+    },
+    "paymentTitle": "Gut zu wissen",
+    "payment": {
+      "deposit": "Nach der Bestätigung zahlst du innerhalb von 14 Tagen eine Anzahlung; den Rest spätestens 6 Wochen vor Anreise.",
+      "cancel": "Bei Stornierung mehr als 6 Wochen vor Anreise sind 50% der Miete fällig; bei 4 Wochen oder weniger die volle Miete. Eine Reiserücktrittsversicherung kann über uns abgeschlossen werden (3,5% des Gesamtbetrags).",
+      "pets": "Haustiere sind willkommen — bitte vorher kurz melden."
+    },
     "cta": "Verfügbarkeit ansehen"
   },
   "availability": {
@@ -154,15 +180,23 @@
     "title": "Anreise & Praktisches",
     "intro": "Alles, was du für deinen Aufenthalt wissen musst: Anreise, An- und Abreisezeiten und unsere Hausregeln.",
     "routeTitle": "Anreise",
-    "routeText": "Die Wohnung liegt am Op Klinglerau 5 — offiziell knapp in Saalfelden, praktisch aber am Rande von Maria Alm; wir selbst sagen immer Maria Alm. Aus den Niederlanden fährt man etwa 10 Stunden: über München und Salzburg Richtung Bischofshofen, dann über die B164 nach Maria Alm.",
+    "routeText": "Die Wohnung liegt am Klinglerau 5 (Wohnung Top 1, Erdgeschoss), 5760 Saalfelden — offiziell knapp in Saalfelden, praktisch aber am Rande von Maria Alm; wir selbst sagen immer Maria Alm. Aus den Niederlanden fährt man etwa 10 Stunden: über München und Salzburg Richtung Bischofshofen, dann über die B164 nach Maria Alm.",
     "arrivalTitle": "Ankunft & Abreise",
-    "arrivalText": "Die genauen An- und Abreisezeiten sowie die Schlüsselübergabe stimmen wir nach deiner Buchung persönlich mit dir ab.",
+    "arrivalText": "Vermietet wird wochenweise, von Samstag bis Samstag: Anreise ab 15.00 Uhr, Abreise bis spätestens 10.00 Uhr. Die Schlüsselübergabe stimmen wir persönlich mit dir ab.",
     "rulesTitle": "Hausregeln",
-    "rulesText": "Die Hausregeln folgen in Kürze auf dieser Seite. Das Wichtigste in Kürze: Behandle das Haus wie dein eigenes — es ist schließlich unser Zuhause, und wir teilen es gerne mit dir.",
+    "rulesText": "Es ist und bleibt unser Familienhaus — mit ein paar Absprachen bleibt es für alle schön:",
     "questionsTitle": "Fragen?",
     "questionsText": "Stelle eine Anfrage über die Verfügbarkeitsseite oder schreibe deine Frage ins Nachrichtenfeld — wir helfen gerne weiter.",
     "mapTitle": "Lage",
-    "mapOpenGoogle": "In Google Maps öffnen"
+    "mapOpenGoogle": "In Google Maps öffnen",
+    "rules": {
+      "smoking": "Rauchen ist in der Wohnung nicht gestattet",
+      "pets": "Haustiere sind willkommen — bitte vorher kurz melden",
+      "ski": "Ski und Skischuhe bitte in den Skiraum im Keller",
+      "trash": "Hausmüll (auch Glas und Papier) entsorgst du selbst",
+      "kitchen": "Bitte die Küche — inklusive Backofen und Geschirrspüler — sauber hinterlassen",
+      "key": "Verlorener Schlüssel: € 20 Gebühr"
+    }
   },
   "notFound": {
     "title": "Seite nicht gefunden",
@@ -175,7 +209,7 @@
   },
   "email": {
     "confirmSubject": "Dein Aufenthalt in der Sonnenwiese ist bestätigt ({from} – {to})",
-    "confirmBody": "Hallo {name},\n\ngute Nachrichten: Deine Anfrage für die Sonnenwiese in Maria Alm ist bestätigt!\n\nAnreise:   {from}\nAbreise:   {to}\nPersonen:  {guests}\n\nDie Adresse ist Op Klinglerau 5, Saalfelden — praktisch am Rande von Maria Alm. Wegen der Ankunftszeit und der Schlüsselübergabe melden wir uns persönlich bei dir.\n\nAlle praktischen Informationen findest du auf {siteUrl}\n\nWir freuen uns — bis bald in den Bergen!\n\nHerzliche Grüße,\nFamilie De Leeuw",
+    "confirmBody": "Hallo {name},\n\ngute Nachrichten: Deine Anfrage für die Sonnenwiese in Maria Alm ist bestätigt!\n\nAnreise:   {from}\nAbreise:   {to}\nPersonen:  {guests}\n\nDie Adresse ist Klinglerau 5 (Top 1), 5760 Saalfelden — praktisch am Rande von Maria Alm. Wegen der Ankunftszeit und der Schlüsselübergabe melden wir uns persönlich bei dir.\n\nAlle praktischen Informationen findest du auf {siteUrl}\n\nWir freuen uns — bis bald in den Bergen!\n\nHerzliche Grüße,\nFamilie De Leeuw",
     "rejectSubject": "Deine Anfrage für die Sonnenwiese ({from} – {to})",
     "rejectBody": "Hallo {name},\n\ndanke für deine Anfrage für die Sonnenwiese in Maria Alm ({from} – {to}).\n\nLeider können wir deinen Aufenthalt in diesem Zeitraum nicht bestätigen — wahrscheinlich ist der Zeitraum bereits belegt.\n\nSchau gerne auf {siteUrl} für die aktuelle Verfügbarkeit; vielleicht klappt ein anderer Zeitraum. Du bist herzlich willkommen.\n\nHerzliche Grüße,\nFamilie De Leeuw"
   }

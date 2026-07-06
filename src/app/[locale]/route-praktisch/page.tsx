@@ -45,7 +45,7 @@ export default function PracticalPage({
           />
         </div>
         <a
-          href="https://www.google.com/maps/search/?api=1&query=Klinglerau%205%2C%205760%20Saalfelden%20am%20Steinernen%20Meer%2C%20%C3%96sterreich"
+          href="https://www.google.com/maps/search/?api=1&query=Klinglerau%205%2C%205760%20Saalfelden%20am%20Steinernen%20Meer%2C%20Austria"
           target="_blank"
           rel="noopener noreferrer"
           className="mt-3 inline-block text-sm font-semibold text-meadow-dark underline-offset-4 hover:underline"
@@ -58,9 +58,30 @@ export default function PracticalPage({
         <p>{t("arrivalText")}</p>
       </Section>
 
-      {/* Huisregels zijn nog niet aangeleverd — bewuste placeholder. */}
       <Section title={t("rulesTitle")}>
         <p>{t("rulesText")}</p>
+        <ul className="mt-2 space-y-2">
+          {(["smoking", "pets", "ski", "trash", "kitchen", "key"] as const).map(
+            (key) => (
+              <li key={key} className="flex items-start gap-2">
+                <svg
+                  className="mt-1 shrink-0 text-meadow"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <polyline points="4 12 10 18 20 6" />
+                </svg>
+                {t(`rules.${key}`)}
+              </li>
+            )
+          )}
+        </ul>
       </Section>
 
       <section className="mx-auto max-w-5xl px-4 py-8">

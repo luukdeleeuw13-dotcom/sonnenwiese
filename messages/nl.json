@@ -96,17 +96,43 @@
   },
   "pricing": {
     "title": "Prijzen",
-    "intro": "De prijzen verschillen per seizoen. Hieronder vind je binnenkort het actuele overzicht.",
-    "comingSoonTitle": "Prijzen volgen binnenkort",
-    "comingSoonText": "We zetten de actuele prijzen per seizoen binnenkort op deze pagina. Wil je nu al weten wat een verblijf kost? Doe dan gerust een aanvraag via de beschikbaarheidspagina — je hoort het dan direct van ons.",
-    "includedTitle": "Altijd inbegrepen",
-    "included": {
-      "linen": "Bedlinnen en handdoeken",
-      "energy": "Gas, water en elektriciteit",
-      "internet": "Internet en satelliet-tv",
-      "cleaning": "Eindschoonmaak"
+    "intro": "Huren gaat per week: van zaterdag 15.00 uur tot zaterdag 10.00 uur (soms is zondag–zondag mogelijk, in overleg). Dit zijn de prijzen voor 2024/2025.",
+    "tableTitle": "Huurprijs per week",
+    "rows": {
+      "winterHigh": {
+        "label": "Winter — hoogseizoen (schoolvakanties)",
+        "price": "€ 1.750"
+      },
+      "winterLow": {
+        "label": "Winter — laagseizoen",
+        "price": "€ 900"
+      },
+      "summerHigh": {
+        "label": "Zomer — hoogseizoen",
+        "price": "€ 650"
+      },
+      "summerLow": {
+        "label": "Zomer — laagseizoen",
+        "price": "€ 450"
+      }
     },
-    "includedNote": "Details over wat precies is inbegrepen volgen samen met de prijzen.",
+    "includedTitle": "Inbegrepen",
+    "included": {
+      "energy": "Elektriciteit en water",
+      "internet": "Internet en satelliet-tv (met Nederlandse zenders)"
+    },
+    "extrasTitle": "Bijkomend",
+    "extras": {
+      "cleaning": "Eindschoonmaak — € 50",
+      "tax": "Verblijfsbelasting — € 1,10 p.p. per nacht (vanaf 14 jaar), € 0,40 voor kinderen tot 14 jaar",
+      "linen": "Bedlinnen en handdoeken — zelf meenemen"
+    },
+    "paymentTitle": "Goed om te weten",
+    "payment": {
+      "deposit": "Na de bevestiging betaal je binnen 14 dagen een aanbetaling; het restant uiterlijk 6 weken voor aankomst.",
+      "cancel": "Bij annulering meer dan 6 weken voor aankomst ben je 50% van de huur verschuldigd; bij 4 weken of minder de volledige huur. Een annuleringsverzekering afsluiten kan via ons (3,5% van het totaalbedrag).",
+      "pets": "Huisdieren zijn welkom — graag vooraf even melden."
+    },
     "cta": "Bekijk beschikbaarheid"
   },
   "availability": {
@@ -154,15 +180,23 @@
     "title": "Route & praktisch",
     "intro": "Alles wat je moet weten voor je verblijf: hoe je er komt, hoe aankomst en vertrek werken, en onze huisregels.",
     "routeTitle": "Route",
-    "routeText": "Het appartement ligt aan Op Klinglerau 5 — officieel nét in Saalfelden, maar praktisch gezien aan de rand van Maria Alm; wij zeggen zelf altijd Maria Alm. Vanuit Nederland rijd je er in zo'n 10 uur naartoe: via München en Salzburg richting Bischofshofen, en dan via de B164 naar Maria Alm.",
+    "routeText": "Het appartement ligt aan Klinglerau 5 (appartement Top 1, begane grond), 5760 Saalfelden — officieel nét in Saalfelden, maar praktisch gezien aan de rand van Maria Alm; wij zeggen zelf altijd Maria Alm. Vanuit Nederland rijd je er in zo'n 10 uur naartoe: via München en Salzburg richting Bischofshofen, en dan via de B164 naar Maria Alm.",
     "arrivalTitle": "Aankomst & vertrek",
-    "arrivalText": "De precieze aankomst- en vertrektijden en de sleuteloverdracht stemmen we persoonlijk met je af na je boeking.",
+    "arrivalText": "Gehuurd wordt per week, van zaterdag tot zaterdag: aankomst vanaf 15.00 uur, vertrek uiterlijk 10.00 uur. De sleuteloverdracht stemmen we persoonlijk met je af.",
     "rulesTitle": "Huisregels",
-    "rulesText": "De huisregels volgen binnenkort op deze pagina. Belangrijkste in het kort: behandel het huis zoals je eigen huis — het is tenslotte óns huis, en we delen het graag met jou.",
+    "rulesText": "Het is en blijft ons familiehuis — met een paar afspraken houden we het voor iedereen fijn:",
     "questionsTitle": "Vragen?",
     "questionsText": "Doe een aanvraag via de beschikbaarheidspagina of stel je vraag in het berichtveld — we helpen je graag.",
     "mapTitle": "Locatie",
-    "mapOpenGoogle": "Openen in Google Maps"
+    "mapOpenGoogle": "Openen in Google Maps",
+    "rules": {
+      "smoking": "Roken is in het appartement niet toegestaan",
+      "pets": "Huisdieren zijn welkom — graag vooraf even melden",
+      "ski": "Ski's en skischoenen graag in de skiruimte in de kelder",
+      "trash": "Huisvuil (ook glas en papier) voer je zelf af",
+      "kitchen": "Laat de keuken — inclusief oven en vaatwasser — schoon achter",
+      "key": "Zoekgeraakte sleutel: € 20 vergoeding"
+    }
   },
   "notFound": {
     "title": "Pagina niet gevonden",
@@ -175,7 +209,7 @@
   },
   "email": {
     "confirmSubject": "Je verblijf in Sonnenwiese is bevestigd ({from} – {to})",
-    "confirmBody": "Hoi {name},\n\nGoed nieuws: je aanvraag voor Sonnenwiese in Maria Alm is bevestigd!\n\nAankomst:  {from}\nVertrek:   {to}\nPersonen:  {guests}\n\nHet adres is Op Klinglerau 5, Saalfelden — praktisch gezien aan de rand van Maria Alm. Over de aankomsttijd en de sleuteloverdracht nemen we persoonlijk contact met je op.\n\nAlle praktische informatie vind je op {siteUrl}\n\nWe kijken ernaar uit — tot in de bergen!\n\nHartelijke groet,\nFamilie De Leeuw",
+    "confirmBody": "Hoi {name},\n\nGoed nieuws: je aanvraag voor Sonnenwiese in Maria Alm is bevestigd!\n\nAankomst:  {from}\nVertrek:   {to}\nPersonen:  {guests}\n\nHet adres is Klinglerau 5 (Top 1), 5760 Saalfelden — praktisch gezien aan de rand van Maria Alm. Over de aankomsttijd en de sleuteloverdracht nemen we persoonlijk contact met je op.\n\nAlle praktische informatie vind je op {siteUrl}\n\nWe kijken ernaar uit — tot in de bergen!\n\nHartelijke groet,\nFamilie De Leeuw",
     "rejectSubject": "Je aanvraag voor Sonnenwiese ({from} – {to})",
     "rejectBody": "Hoi {name},\n\nDank voor je aanvraag voor Sonnenwiese in Maria Alm ({from} – {to}).\n\nHelaas kunnen we je verblijf in deze periode niet bevestigen — waarschijnlijk is de periode al bezet.\n\nKijk gerust op {siteUrl} voor de actuele beschikbaarheid; misschien lukt een andere periode wél. Je bent van harte welkom.\n\nHartelijke groet,\nFamilie De Leeuw"
   }

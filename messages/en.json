@@ -96,17 +96,43 @@
   },
   "pricing": {
     "title": "Prices",
-    "intro": "Prices vary by season. You'll find the current overview here soon.",
-    "comingSoonTitle": "Prices coming soon",
-    "comingSoonText": "We'll publish the current seasonal prices on this page soon. Want to know what a stay costs right now? Just send a request via the availability page — we'll get back to you directly.",
-    "includedTitle": "Always included",
-    "included": {
-      "linen": "Bed linen and towels",
-      "energy": "Gas, water and electricity",
-      "internet": "Internet and satellite TV",
-      "cleaning": "Final cleaning"
+    "intro": "Rental is per week: from Saturday 3 pm to Saturday 10 am (Sunday–Sunday is sometimes possible by arrangement). These are the prices for 2024/2025.",
+    "tableTitle": "Rent per week",
+    "rows": {
+      "winterHigh": {
+        "label": "Winter — high season (school holidays)",
+        "price": "€ 1,750"
+      },
+      "winterLow": {
+        "label": "Winter — low season",
+        "price": "€ 900"
+      },
+      "summerHigh": {
+        "label": "Summer — high season",
+        "price": "€ 650"
+      },
+      "summerLow": {
+        "label": "Summer — low season",
+        "price": "€ 450"
+      }
     },
-    "includedNote": "Details of exactly what's included will follow along with the prices.",
+    "includedTitle": "Included",
+    "included": {
+      "energy": "Electricity and water",
+      "internet": "Internet and satellite TV (with Dutch channels)"
+    },
+    "extrasTitle": "Additional",
+    "extras": {
+      "cleaning": "Final cleaning — € 50",
+      "tax": "Tourist tax — € 1.10 p.p. per night (14 and over), € 0.40 for children under 14",
+      "linen": "Bed linen and towels — please bring your own"
+    },
+    "paymentTitle": "Good to know",
+    "payment": {
+      "deposit": "After confirmation you pay a deposit within 14 days; the remainder no later than 6 weeks before arrival.",
+      "cancel": "If you cancel more than 6 weeks before arrival, 50% of the rent is due; at 4 weeks or less, the full rent. Cancellation insurance can be arranged through us (3.5% of the total).",
+      "pets": "Pets are welcome — please let us know in advance."
+    },
     "cta": "Check availability"
   },
   "availability": {
@@ -154,15 +180,23 @@
     "title": "Directions & practical",
     "intro": "Everything you need to know for your stay: how to get here, how arrival and departure work, and our house rules.",
     "routeTitle": "Directions",
-    "routeText": "The apartment is at Op Klinglerau 5 — officially just inside Saalfelden, but practically on the edge of Maria Alm; we always say Maria Alm ourselves. From the Netherlands it's about a 10-hour drive: via Munich and Salzburg towards Bischofshofen, then via the B164 to Maria Alm.",
+    "routeText": "The apartment is at Klinglerau 5 (apartment Top 1, ground floor), 5760 Saalfelden — officially just inside Saalfelden, but practically on the edge of Maria Alm; we always say Maria Alm ourselves. From the Netherlands it's about a 10-hour drive: via Munich and Salzburg towards Bischofshofen, then via the B164 to Maria Alm.",
     "arrivalTitle": "Arrival & departure",
-    "arrivalText": "We'll arrange the exact arrival and departure times and the key handover with you personally after your booking.",
+    "arrivalText": "Rental is per week, Saturday to Saturday: arrival from 3 pm, departure by 10 am. We'll arrange the key handover with you personally.",
     "rulesTitle": "House rules",
-    "rulesText": "The house rules will follow on this page soon. The short version: treat the house as your own — it is our home, after all, and we love sharing it with you.",
+    "rulesText": "It is and remains our family home — a few agreements keep it enjoyable for everyone:",
     "questionsTitle": "Questions?",
     "questionsText": "Send a request via the availability page or ask your question in the message field — we're happy to help.",
     "mapTitle": "Location",
-    "mapOpenGoogle": "Open in Google Maps"
+    "mapOpenGoogle": "Open in Google Maps",
+    "rules": {
+      "smoking": "Smoking is not allowed in the apartment",
+      "pets": "Pets are welcome — please let us know in advance",
+      "ski": "Please keep skis and ski boots in the ski room in the basement",
+      "trash": "You dispose of household waste (including glass and paper) yourself",
+      "kitchen": "Please leave the kitchen — including oven and dishwasher — clean",
+      "key": "Lost key: € 20 fee"
+    }
   },
   "notFound": {
     "title": "Page not found",
@@ -175,7 +209,7 @@
   },
   "email": {
     "confirmSubject": "Your stay at Sonnenwiese is confirmed ({from} – {to})",
-    "confirmBody": "Hi {name},\n\nGood news: your request for Sonnenwiese in Maria Alm has been confirmed!\n\nArrival:   {from}\nDeparture: {to}\nGuests:    {guests}\n\nThe address is Op Klinglerau 5, Saalfelden — practically on the edge of Maria Alm. We'll be in touch personally about the arrival time and key handover.\n\nYou'll find all practical information at {siteUrl}\n\nWe're looking forward to it — see you in the mountains!\n\nWarm regards,\nDe Leeuw family",
+    "confirmBody": "Hi {name},\n\nGood news: your request for Sonnenwiese in Maria Alm has been confirmed!\n\nArrival:   {from}\nDeparture: {to}\nGuests:    {guests}\n\nThe address is Klinglerau 5 (Top 1), 5760 Saalfelden — practically on the edge of Maria Alm. We'll be in touch personally about the arrival time and key handover.\n\nYou'll find all practical information at {siteUrl}\n\nWe're looking forward to it — see you in the mountains!\n\nWarm regards,\nDe Leeuw family",
     "rejectSubject": "Your request for Sonnenwiese ({from} – {to})",
     "rejectBody": "Hi {name},\n\nThanks for your request for Sonnenwiese in Maria Alm ({from} – {to}).\n\nUnfortunately we cannot confirm your stay for this period — most likely it is already booked.\n\nDo check {siteUrl} for current availability; perhaps another period will work. You are very welcome.\n\nWarm regards,\nDe Leeuw family"
   }
