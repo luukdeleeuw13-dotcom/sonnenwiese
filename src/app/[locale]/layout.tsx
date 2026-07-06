@@ -21,6 +21,9 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
+// Na de domein-omzetting wijzigen in https://www.sonnenwiese.nl
+const SITE_URL = "https://sonnenwiese.vercel.app";
+
 export async function generateMetadata({
   params,
 }: {
@@ -29,8 +32,20 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "meta" });
   return {
+    metadataBase: new URL(SITE_URL),
     title: t("siteTitle"),
     description: t("siteDescription"),
+    openGraph: {
+      title: t("siteTitle"),
+      description: t("siteDescription"),
+      type: "website",
+      locale,
+      siteName: "Sonnenwiese",
+      images: [{ url: "/og.jpg", width: 1200, height: 630 }],
+    },
+    twitter: {
+      card: "summary_large_image",
+    },
   };
 }
 

@@ -146,7 +146,8 @@
       "datesRequired": "Wähle dein An- und Abreisedatum im Kalender.",
       "datesInvalid": "Das Abreisedatum muss nach dem Anreisedatum liegen.",
       "datesPast": "Das Anreisedatum muss in der Zukunft liegen.",
-      "guestsInvalid": "Wähle eine Personenzahl zwischen 1 und 8."
+      "guestsInvalid": "Wähle eine Personenzahl zwischen 1 und 8.",
+      "datesUnavailable": "Dieser Zeitraum ist (teilweise) bereits belegt. Wähle einen anderen Zeitraum im Kalender."
     }
   },
   "practical": {

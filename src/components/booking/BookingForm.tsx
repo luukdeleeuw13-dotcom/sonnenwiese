@@ -30,6 +30,7 @@ export default function BookingForm({
   const [phone, setPhone] = useState("");
   const [guests, setGuests] = useState(6);
   const [message, setMessage] = useState("");
+  const [website, setWebsite] = useState(""); // honeypot — mensen laten dit leeg
   const [errors, setErrors] = useState<FieldErrors>({});
   const [status, setStatus] = useState<Status>("idle");
 
@@ -81,13 +82,14 @@ export default function BookingForm({
           endDate: format(range!.to!, "yyyy-MM-dd"),
           guests,
           message: message.trim() || undefined,
+          website: website || undefined,
           locale,
         }),
       });
       const json = await res.json();
       if (res.ok && json.ok) {
         setStatus("success");
-      } else if (res.status === 400 && json.errors) {
+      } else if ((res.status === 400 || res.status === 409) && json.errors) {
         setErrors(json.errors);
         setStatus("idle");
       } else {
@@ -110,6 +112,20 @@ export default function BookingForm({
 
   return (
     <form onSubmit={submit} noValidate>
+      {/* Honeypot tegen spam-bots: onzichtbaar voor mensen */}
+      <div aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
+        <label>
+          Website
+          <input
+            type="text"
+            tabIndex={-1}
+            autoComplete="off"
+            value={website}
+            onChange={(e) => setWebsite(e.target.value)}
+          />
+        </label>
+      </div>
+
       {/* Geselecteerde periode uit de kalender */}
       <div className="rounded-lg bg-sand/60 px-3 py-2.5 text-sm text-bark">
         <span className="font-medium">{t("dates")}: </span>

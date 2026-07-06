@@ -17,6 +17,15 @@ export async function POST(request: Request) {
     );
   }
 
+  // Honeypot: echte bezoekers zien dit veld niet. Is het ingevuld, dan is
+  // het een bot — doe alsof alles gelukt is, maar sla niets op.
+  if (
+    typeof (body as Record<string, unknown>)?.["website"] === "string" &&
+    ((body as Record<string, unknown>)["website"] as string).length > 0
+  ) {
+    return NextResponse.json({ ok: true, id: "ok" });
+  }
+
   const result = validateBooking(body);
   if (!result.ok) {
     return NextResponse.json(
@@ -32,6 +41,27 @@ export async function POST(request: Request) {
   }
 
   const supabase = getSupabaseServerClient();
+
+  // Weiger aanvragen die overlappen met een al bevestigde boeking. De
+  // kalender blokkeert dit ook client-side, maar de server is de waarheid.
+  const { data: overlapping, error: overlapError } = await supabase
+    .from("bookings")
+    .select("id")
+    .eq("status", "confirmed")
+    .lt("start_date", booking.endDate)
+    .gt("end_date", booking.startDate)
+    .limit(1);
+
+  if (overlapError) {
+    console.error("Failed to check overlap:", overlapError);
+    return NextResponse.json({ ok: false }, { status: 500 });
+  }
+  if (overlapping && overlapping.length > 0) {
+    return NextResponse.json(
+      { ok: false, errors: { dates: "datesUnavailable" } },
+      { status: 409 }
+    );
+  }
   const { data, error } = await supabase
     .from("bookings")
     .insert({

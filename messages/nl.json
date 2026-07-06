@@ -146,7 +146,8 @@
       "datesRequired": "Kies je aankomst- en vertrekdatum in de kalender.",
       "datesInvalid": "De vertrekdatum moet na de aankomstdatum liggen.",
       "datesPast": "De aankomstdatum moet in de toekomst liggen.",
-      "guestsInvalid": "Kies een aantal personen tussen 1 en 8."
+      "guestsInvalid": "Kies een aantal personen tussen 1 en 8.",
+      "datesUnavailable": "Deze periode is (deels) al bezet. Kies een andere periode in de kalender."
     }
   },
   "practical": {

@@ -146,7 +146,8 @@
       "datesRequired": "Pick your arrival and departure dates in the calendar.",
       "datesInvalid": "The departure date must be after the arrival date.",
       "datesPast": "The arrival date must be in the future.",
-      "guestsInvalid": "Choose a number of guests between 1 and 8."
+      "guestsInvalid": "Choose a number of guests between 1 and 8.",
+      "datesUnavailable": "This period is (partly) already booked. Please pick a different period in the calendar."
     }
   },
   "practical": {
