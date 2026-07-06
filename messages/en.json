@@ -154,13 +154,15 @@
     "title": "Directions & practical",
     "intro": "Everything you need to know for your stay: how to get here, how arrival and departure work, and our house rules.",
     "routeTitle": "Directions",
-    "routeText": "The apartment sits on the edge of Maria Alm in Salzburgerland, Austria. From the Netherlands it's about a 10-hour drive: via Munich and Salzburg towards Bischofshofen, then via the B164 to Maria Alm. We'll send you the exact address and directions with your booking confirmation.",
+    "routeText": "The apartment is at Op Klinglerau 5 — officially just inside Saalfelden, but practically on the edge of Maria Alm; we always say Maria Alm ourselves. From the Netherlands it's about a 10-hour drive: via Munich and Salzburg towards Bischofshofen, then via the B164 to Maria Alm.",
     "arrivalTitle": "Arrival & departure",
     "arrivalText": "We'll arrange the exact arrival and departure times and the key handover with you personally after your booking.",
     "rulesTitle": "House rules",
     "rulesText": "The house rules will follow on this page soon. The short version: treat the house as your own — it is our home, after all, and we love sharing it with you.",
     "questionsTitle": "Questions?",
-    "questionsText": "Send a request via the availability page or ask your question in the message field — we're happy to help."
+    "questionsText": "Send a request via the availability page or ask your question in the message field — we're happy to help.",
+    "mapTitle": "Location",
+    "mapOpenGoogle": "Open in Google Maps"
   },
   "notFound": {
     "title": "Page not found",

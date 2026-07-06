@@ -154,13 +154,15 @@
     "title": "Route & praktisch",
     "intro": "Alles wat je moet weten voor je verblijf: hoe je er komt, hoe aankomst en vertrek werken, en onze huisregels.",
     "routeTitle": "Route",
-    "routeText": "Het appartement ligt aan de rand van Maria Alm in het Salzburgerland, Oostenrijk. Vanuit Nederland rijd je er in zo'n 10 uur naartoe: via München en Salzburg richting Bischofshofen, en dan via de B164 naar Maria Alm. Het exacte adres en een routebeschrijving sturen we je bij de bevestiging van je boeking.",
+    "routeText": "Het appartement ligt aan Op Klinglerau 5 — officieel nét in Saalfelden, maar praktisch gezien aan de rand van Maria Alm; wij zeggen zelf altijd Maria Alm. Vanuit Nederland rijd je er in zo'n 10 uur naartoe: via München en Salzburg richting Bischofshofen, en dan via de B164 naar Maria Alm.",
     "arrivalTitle": "Aankomst & vertrek",
     "arrivalText": "De precieze aankomst- en vertrektijden en de sleuteloverdracht stemmen we persoonlijk met je af na je boeking.",
     "rulesTitle": "Huisregels",
     "rulesText": "De huisregels volgen binnenkort op deze pagina. Belangrijkste in het kort: behandel het huis zoals je eigen huis — het is tenslotte óns huis, en we delen het graag met jou.",
     "questionsTitle": "Vragen?",
-    "questionsText": "Doe een aanvraag via de beschikbaarheidspagina of stel je vraag in het berichtveld — we helpen je graag."
+    "questionsText": "Doe een aanvraag via de beschikbaarheidspagina of stel je vraag in het berichtveld — we helpen je graag.",
+    "mapTitle": "Locatie",
+    "mapOpenGoogle": "Openen in Google Maps"
   },
   "notFound": {
     "title": "Pagina niet gevonden",

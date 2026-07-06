@@ -154,13 +154,15 @@
     "title": "Anreise & Praktisches",
     "intro": "Alles, was du für deinen Aufenthalt wissen musst: Anreise, An- und Abreisezeiten und unsere Hausregeln.",
     "routeTitle": "Anreise",
-    "routeText": "Die Wohnung liegt am Rande von Maria Alm im Salzburger Land, Österreich. Aus den Niederlanden fährt man etwa 10 Stunden: über München und Salzburg Richtung Bischofshofen, dann über die B164 nach Maria Alm. Die genaue Adresse und eine Wegbeschreibung senden wir dir mit der Buchungsbestätigung.",
+    "routeText": "Die Wohnung liegt am Op Klinglerau 5 — offiziell knapp in Saalfelden, praktisch aber am Rande von Maria Alm; wir selbst sagen immer Maria Alm. Aus den Niederlanden fährt man etwa 10 Stunden: über München und Salzburg Richtung Bischofshofen, dann über die B164 nach Maria Alm.",
     "arrivalTitle": "Ankunft & Abreise",
     "arrivalText": "Die genauen An- und Abreisezeiten sowie die Schlüsselübergabe stimmen wir nach deiner Buchung persönlich mit dir ab.",
     "rulesTitle": "Hausregeln",
     "rulesText": "Die Hausregeln folgen in Kürze auf dieser Seite. Das Wichtigste in Kürze: Behandle das Haus wie dein eigenes — es ist schließlich unser Zuhause, und wir teilen es gerne mit dir.",
     "questionsTitle": "Fragen?",
-    "questionsText": "Stelle eine Anfrage über die Verfügbarkeitsseite oder schreibe deine Frage ins Nachrichtenfeld — wir helfen gerne weiter."
+    "questionsText": "Stelle eine Anfrage über die Verfügbarkeitsseite oder schreibe deine Frage ins Nachrichtenfeld — wir helfen gerne weiter.",
+    "mapTitle": "Lage",
+    "mapOpenGoogle": "In Google Maps öffnen"
   },
   "notFound": {
     "title": "Seite nicht gefunden",
