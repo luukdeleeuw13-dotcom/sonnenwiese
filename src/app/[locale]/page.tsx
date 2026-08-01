@@ -1,9 +1,32 @@
-import { setRequestLocale } from "next-intl/server";
+import type { Metadata } from "next";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 import { useTranslations } from "next-intl";
 import { use } from "react";
 import { Link } from "@/i18n/navigation";
+import { alternatesFor } from "@/lib/metadata";
+import { pathFor } from "@/lib/routes";
 import Hero from "@/components/ui/Hero";
 import HighlightCard from "@/components/ui/HighlightCard";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "meta" });
+  // De homepage draagt de sitenaam zelf al; geen template-suffix erbij.
+  return {
+    title: { absolute: t("siteTitle") },
+    description: t("siteDescription"),
+    alternates: alternatesFor(locale, ""),
+    openGraph: {
+      title: t("siteTitle"),
+      description: t("siteDescription"),
+      url: pathFor(locale, ""),
+    },
+  };
+}
 
 const icons = {
   guests: (

@@ -171,11 +171,23 @@ export default async function AdminPage({
         <h1 className="font-display text-3xl font-semibold text-bark">
           Beheer
         </h1>
-        <form action={logout}>
-          <button className="text-sm text-timber underline-offset-2 hover:underline">
-            Uitloggen
-          </button>
-        </form>
+        <div className="flex items-center gap-4">
+          {/* Bewust een gewone <a>: /admin/export is geen pagina maar een
+              CSV-download. Met <Link> zou Next client-side willen navigeren
+              en komt het bestand niet binnen. */}
+          <a
+            href="/admin/export"
+            download
+            className="text-sm text-timber underline-offset-2 hover:underline"
+          >
+            Back-up downloaden
+          </a>
+          <form action={logout}>
+            <button className="text-sm text-timber underline-offset-2 hover:underline">
+              Uitloggen
+            </button>
+          </form>
+        </div>
       </div>
 
       <h2 className="mt-8 font-display text-xl font-semibold text-bark">

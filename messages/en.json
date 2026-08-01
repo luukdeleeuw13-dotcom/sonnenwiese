@@ -203,6 +203,12 @@
     "text": "This page doesn't exist (anymore). Head back to the homepage.",
     "cta": "Go home"
   },
+  "error": {
+    "title": "Something went wrong",
+    "text": "This page could not be loaded just now. Please try again — if it keeps failing, let us know and we'll handle your request personally.",
+    "retry": "Try again",
+    "home": "Go home"
+  },
   "meta": {
     "siteTitle": "Sonnenwiese — holiday apartment Maria Alm",
     "siteDescription": "Holiday apartment for 6–8 guests on the edge of Maria Alm, Salzburgerland. Hochkönig ski area 5 minutes away, summer and winter."

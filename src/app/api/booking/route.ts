@@ -5,8 +5,15 @@ import {
   isSupabaseConfigured,
 } from "@/lib/supabase/server";
 import { sendBookingNotification } from "@/lib/email/sendBookingNotification";
+import { clientKey, isRateLimited } from "@/lib/rateLimit";
 
 export async function POST(request: Request) {
+  // De honeypot vangt domme bots; dit vangt iemand die het formulier
+  // gericht blijft inschieten.
+  if (isRateLimited(clientKey(request))) {
+    return NextResponse.json({ ok: false }, { status: 429 });
+  }
+
   let body: unknown;
   try {
     body = await request.json();
@@ -84,11 +91,22 @@ export async function POST(request: Request) {
   }
 
   // De aanvraag staat veilig in de database; een mislukte mail mag de
-  // aanvraag voor de gast niet laten mislukken. Alleen loggen.
+  // aanvraag voor de gast niet laten mislukken. Wel één keer opnieuw
+  // proberen: de meeste mailfouten zijn tijdelijk. Lukt het dan nog niet,
+  // dan is de aanvraag nog steeds zichtbaar op /admin.
   try {
     await sendBookingNotification(booking, data.id);
-  } catch (mailError) {
-    console.error("Failed to send owner notification email:", mailError);
+  } catch (firstError) {
+    console.error("Owner notification failed, retrying once:", firstError);
+    try {
+      await sendBookingNotification(booking, data.id);
+    } catch (mailError) {
+      console.error(
+        `AANVRAAG ZONDER MAIL — id ${data.id} staat wel in de database ` +
+          `maar de eigenaar is niet gemaild:`,
+        mailError
+      );
+    }
   }
 
   return NextResponse.json({ ok: true, id: data.id });

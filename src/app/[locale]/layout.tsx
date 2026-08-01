@@ -31,7 +31,12 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: "meta" });
   return {
     metadataBase: new URL(SITE_URL),
-    title: t("siteTitle"),
+    // Pagina's zetten alleen hun eigen titel; het template plakt de
+    // sitenaam eraan vast, zodat elk tabblad en zoekresultaat uniek is.
+    title: {
+      default: t("siteTitle"),
+      template: "%s — Sonnenwiese",
+    },
     description: t("siteDescription"),
     openGraph: {
       title: t("siteTitle"),

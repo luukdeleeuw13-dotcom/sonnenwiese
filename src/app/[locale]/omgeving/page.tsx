@@ -1,8 +1,25 @@
-import { setRequestLocale } from "next-intl/server";
+import type { Metadata } from "next";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 import { useTranslations } from "next-intl";
 import { use } from "react";
+import { buildMetadata } from "@/lib/metadata";
 import Hero from "@/components/ui/Hero";
 import Section from "@/components/ui/Section";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "surroundings" });
+  return buildMetadata({
+    locale,
+    route: "omgeving",
+    title: t("title"),
+    description: t("intro"),
+  });
+}
 
 const distanceKeys = ["skibus", "skilift", "village", "piste"] as const;
 

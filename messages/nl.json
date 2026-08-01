@@ -203,6 +203,12 @@
     "text": "Deze pagina bestaat niet (meer). Ga terug naar de homepagina.",
     "cta": "Naar home"
   },
+  "error": {
+    "title": "Er ging iets mis",
+    "text": "Deze pagina kon even niet geladen worden. Probeer het opnieuw — blijft het misgaan, laat het ons dan weten, dan regelen we je aanvraag persoonlijk.",
+    "retry": "Opnieuw proberen",
+    "home": "Naar home"
+  },
   "meta": {
     "siteTitle": "Sonnenwiese — vakantieappartement Maria Alm",
     "siteDescription": "Vakantieappartement voor 6–8 personen aan de rand van Maria Alm, Salzburgerland. Skigebied Hochkönig op 5 minuten, zomer en winter."

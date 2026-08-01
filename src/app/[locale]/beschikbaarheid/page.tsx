@@ -1,14 +1,31 @@
+import type { Metadata } from "next";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import {
   getSupabaseServerClient,
   isSupabaseConfigured,
 } from "@/lib/supabase/server";
+import { buildMetadata } from "@/lib/metadata";
 import BookingSection, {
   type BookedRange,
 } from "@/components/booking/BookingSection";
 
 // Kalender moet altijd de actuele stand tonen — niet statisch cachen.
 export const dynamic = "force-dynamic";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "availability" });
+  return buildMetadata({
+    locale,
+    route: "beschikbaarheid",
+    title: t("title"),
+    description: t("intro"),
+  });
+}
 
 async function getConfirmedRanges(): Promise<BookedRange[]> {
   // Zonder Supabase-configuratie (bv. lokale dev vóór het aanmaken van

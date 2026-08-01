@@ -1,9 +1,26 @@
-import { setRequestLocale } from "next-intl/server";
+import type { Metadata } from "next";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 import { useTranslations } from "next-intl";
 import { use } from "react";
 import Image from "next/image";
+import { buildMetadata } from "@/lib/metadata";
 import Hero from "@/components/ui/Hero";
 import Section from "@/components/ui/Section";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "apartment" });
+  return buildMetadata({
+    locale,
+    route: "appartement",
+    title: t("title"),
+    description: t("intro"),
+  });
+}
 
 const amenityKeys = [
   "guests",

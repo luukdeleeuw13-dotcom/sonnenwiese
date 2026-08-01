@@ -203,6 +203,12 @@
     "text": "Diese Seite existiert nicht (mehr). Zurück zur Startseite.",
     "cta": "Zur Startseite"
   },
+  "error": {
+    "title": "Etwas ist schiefgelaufen",
+    "text": "Diese Seite konnte gerade nicht geladen werden. Bitte versuchen Sie es erneut — falls es weiterhin nicht klappt, melden Sie sich bei uns, dann kümmern wir uns persönlich um Ihre Anfrage.",
+    "retry": "Erneut versuchen",
+    "home": "Zur Startseite"
+  },
   "meta": {
     "siteTitle": "Sonnenwiese — Ferienwohnung Maria Alm",
     "siteDescription": "Ferienwohnung für 6–8 Personen am Rande von Maria Alm, Salzburger Land. Skigebiet Hochkönig in 5 Minuten, Sommer und Winter."

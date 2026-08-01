@@ -1,8 +1,25 @@
-import { setRequestLocale } from "next-intl/server";
+import type { Metadata } from "next";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 import { useTranslations } from "next-intl";
 import { use } from "react";
 import { Link } from "@/i18n/navigation";
+import { buildMetadata } from "@/lib/metadata";
 import Section from "@/components/ui/Section";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "practical" });
+  return buildMetadata({
+    locale,
+    route: "route-praktisch",
+    title: t("title"),
+    description: t("intro"),
+  });
+}
 
 export default function PracticalPage({
   params,

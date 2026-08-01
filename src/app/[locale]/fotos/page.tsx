@@ -1,7 +1,24 @@
-import { setRequestLocale } from "next-intl/server";
+import type { Metadata } from "next";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 import { useTranslations } from "next-intl";
 import { use } from "react";
+import { buildMetadata } from "@/lib/metadata";
 import Gallery, { type GalleryPhoto } from "@/components/ui/Gallery";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "gallery" });
+  return buildMetadata({
+    locale,
+    route: "fotos",
+    title: t("title"),
+    description: t("intro"),
+  });
+}
 
 export default function GalleryPage({
   params,

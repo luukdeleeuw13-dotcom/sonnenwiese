@@ -1,7 +1,24 @@
-import { setRequestLocale } from "next-intl/server";
+import type { Metadata } from "next";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 import { useTranslations } from "next-intl";
 import { use } from "react";
 import { Link } from "@/i18n/navigation";
+import { buildMetadata } from "@/lib/metadata";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "pricing" });
+  return buildMetadata({
+    locale,
+    route: "prijzen",
+    title: t("title"),
+    description: t("intro"),
+  });
+}
 
 const rowKeys = ["winterHigh", "winterLow", "summerHigh", "summerLow"] as const;
 const includedKeys = ["energy", "internet"] as const;
