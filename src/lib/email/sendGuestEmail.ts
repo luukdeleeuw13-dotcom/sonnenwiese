@@ -1,4 +1,4 @@
-import { Resend } from "resend";
+import { sendEmail } from "./send";
 import { format } from "date-fns";
 import { nl, de, enGB } from "date-fns/locale";
 import { SITE_URL } from "@/lib/config";
@@ -56,8 +56,7 @@ export async function sendGuestEmail(
     vars
   );
 
-  const resend = new Resend(process.env.RESEND_API_KEY);
-  await resend.emails.send({
+  await sendEmail({
     from: process.env.RESEND_FROM_EMAIL!,
     to: booking.email,
     replyTo: process.env.OWNER_NOTIFICATION_EMAIL,

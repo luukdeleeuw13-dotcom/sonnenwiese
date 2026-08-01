@@ -1,4 +1,4 @@
-import { Resend } from "resend";
+import { sendEmail } from "./send";
 import { SITE_URL } from "@/lib/config";
 import { createActionToken } from "@/lib/booking/actionToken";
 import type { BookingInput } from "@/lib/supabase/types";
@@ -10,8 +10,6 @@ export async function sendBookingNotification(
   booking: BookingInput,
   bookingId: string
 ) {
-  const resend = new Resend(process.env.RESEND_API_KEY);
-
   const token = createActionToken(bookingId);
   const actionUrl = (action: "accept" | "reject") =>
     `${SITE_URL}/api/booking/action?id=${bookingId}&token=${token}&action=${action}`;
@@ -74,7 +72,7 @@ export async function sendBookingNotification(
     `Overzicht:  ${SITE_URL}/admin`,
   ].join("\n");
 
-  await resend.emails.send({
+  await sendEmail({
     from: process.env.RESEND_FROM_EMAIL!,
     to: process.env.OWNER_NOTIFICATION_EMAIL!,
     replyTo: booking.email,
