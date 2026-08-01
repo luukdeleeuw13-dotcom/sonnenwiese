@@ -74,8 +74,7 @@
     "lightboxPrev": "Previous photo",
     "lightboxNext": "Next photo",
     "hallStorage": "Hallway & storage",
-    "toilet": "Toilet",
-    "credits": "Surroundings photos via Wikimedia Commons: © Aconcagua, Geertivp, Pinzgauer, mawieser and Thomas Fabian (CC BY-SA licences)."
+    "toilet": "Toilet"
   },
   "surroundings": {
     "title": "The surroundings",
@@ -92,7 +91,8 @@
       "skilift": "Ski lift — 5 min by car",
       "village": "Maria Alm centre — 10 min walk",
       "piste": "150 km of slopes in the Hochkönig ski area"
-    }
+    },
+    "credits": "Photos on this page: © Aconcagua and Geertivp, via Wikimedia Commons (CC BY-SA)."
   },
   "pricing": {
     "title": "Prices",

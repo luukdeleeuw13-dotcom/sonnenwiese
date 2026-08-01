@@ -74,8 +74,7 @@
     "lightboxPrev": "Vorige foto",
     "lightboxNext": "Volgende foto",
     "hallStorage": "Hal & berging",
-    "toilet": "Toilet",
-    "credits": "Omgevingsfoto's via Wikimedia Commons: © Aconcagua, Geertivp, Pinzgauer, mawieser en Thomas Fabian (licenties CC BY-SA)."
+    "toilet": "Toilet"
   },
   "surroundings": {
     "title": "De omgeving",
@@ -92,7 +91,8 @@
       "skilift": "Skilift — 5 min rijden",
       "village": "Centrum Maria Alm — 10 min lopen",
       "piste": "150 km piste in skigebied Hochkönig"
-    }
+    },
+    "credits": "Foto's op deze pagina: © Aconcagua en Geertivp, via Wikimedia Commons (CC BY-SA)."
   },
   "pricing": {
     "title": "Prijzen",

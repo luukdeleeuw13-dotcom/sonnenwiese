@@ -74,8 +74,7 @@
     "lightboxPrev": "Vorheriges Foto",
     "lightboxNext": "Nächstes Foto",
     "hallStorage": "Flur & Abstellraum",
-    "toilet": "WC",
-    "credits": "Umgebungsfotos über Wikimedia Commons: © Aconcagua, Geertivp, Pinzgauer, mawieser und Thomas Fabian (Lizenzen CC BY-SA)."
+    "toilet": "WC"
   },
   "surroundings": {
     "title": "Die Umgebung",
@@ -92,7 +91,8 @@
       "skilift": "Skilift — 5 Autominuten",
       "village": "Ortszentrum Maria Alm — 10 Gehminuten",
       "piste": "150 km Piste im Skigebiet Hochkönig"
-    }
+    },
+    "credits": "Fotos auf dieser Seite: © Aconcagua und Geertivp, über Wikimedia Commons (CC BY-SA)."
   },
   "pricing": {
     "title": "Preise",

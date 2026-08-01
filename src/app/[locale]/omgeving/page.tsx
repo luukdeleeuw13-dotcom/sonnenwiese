@@ -26,18 +26,13 @@ export default function SurroundingsPage({
         <p>{t("villageText")}</p>
       </Section>
 
-      <Section
-        title={t("winterTitle")}
-        image={{ src: "/photos/omgeving-hochkonig-winter.jpg", alt: t("winterTitle") }}
-        reverse
-      >
+      {/* Winter/zomer-foto's van de omgeving volgen nog (eigen foto's van de
+          eigenaar) — bewust placeholder tot die zijn aangeleverd. */}
+      <Section title={t("winterTitle")} image={{ alt: t("winterTitle"), variant: "mountain" }} reverse>
         <p>{t("winterText")}</p>
       </Section>
 
-      <Section
-        title={t("summerTitle")}
-        image={{ src: "/photos/omgeving-hochkonig-zomer.jpg", alt: t("summerTitle") }}
-      >
+      <Section title={t("summerTitle")} image={{ alt: t("summerTitle"), variant: "mountain" }}>
         <p>{t("summerText")}</p>
       </Section>
 
@@ -69,6 +64,10 @@ export default function SurroundingsPage({
           </ul>
         </div>
       </section>
+
+      <p className="mx-auto max-w-5xl px-4 pb-8 text-xs text-timber/70">
+        {t("credits")}
+      </p>
     </>
   );
 }
