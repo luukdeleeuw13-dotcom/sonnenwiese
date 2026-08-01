@@ -12,11 +12,29 @@ export type BookedRange = { from: string; to: string }; // yyyy-MM-dd
 // de gekozen periode in de kalender is de periode van de aanvraag.
 export default function BookingSection({
   bookedRanges,
+  unavailable = false,
 }: {
   bookedRanges: BookedRange[];
+  unavailable?: boolean;
 }) {
   const t = useTranslations("availability");
   const [range, setRange] = useState<DateRange | undefined>();
+
+  // Kunnen we de bevestigde boekingen niet ophalen, dan tonen we géén
+  // kalender. Een lege kalender zou "alles vrij" beweren terwijl we het
+  // simpelweg niet weten — dat is erger dan geen kalender.
+  if (unavailable) {
+    return (
+      <div className="mt-8 rounded-card border border-sun bg-sand p-6 text-bark">
+        <h2 className="font-display text-xl font-semibold">
+          {t("unavailableTitle")}
+        </h2>
+        <p className="mt-2 max-w-xl leading-relaxed text-timber">
+          {t("unavailableText")}
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="mt-8 grid gap-8 lg:grid-cols-2">

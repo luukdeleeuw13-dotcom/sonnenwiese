@@ -142,7 +142,9 @@
     "calendarLegendBooked": "Booked",
     "calendarLegendSelected": "Your selection",
     "calendarHint": "Select your arrival and departure dates in the calendar.",
-    "formTitle": "Send a request"
+    "formTitle": "Send a request",
+    "unavailableTitle": "Availability temporarily unavailable",
+    "unavailableText": "We can't read the calendar right now, and we'd rather show no calendar than one that might be wrong. Please try again in a few minutes — it's usually resolved within a quarter of an hour."
   },
   "bookingForm": {
     "name": "Name",

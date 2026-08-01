@@ -27,10 +27,14 @@ export async function generateMetadata({
   });
 }
 
-async function getConfirmedRanges(): Promise<BookedRange[]> {
+type AvailabilityResult =
+  | { ok: true; ranges: BookedRange[] }
+  | { ok: false; ranges: never[] };
+
+async function getConfirmedRanges(): Promise<AvailabilityResult> {
   // Zonder Supabase-configuratie (bv. lokale dev vóór het aanmaken van
   // accounts) toont de kalender gewoon alles als vrij.
-  if (!isSupabaseConfigured()) return [];
+  if (!isSupabaseConfigured()) return { ok: true, ranges: [] };
 
   try {
     const today = new Date().toISOString().slice(0, 10);
@@ -43,15 +47,18 @@ async function getConfirmedRanges(): Promise<BookedRange[]> {
 
     if (error) {
       console.error("Failed to fetch confirmed bookings:", error);
-      return [];
+      return { ok: false, ranges: [] };
     }
-    return (data ?? []).map((row) => ({
-      from: row.start_date,
-      to: row.end_date,
-    }));
+    return {
+      ok: true,
+      ranges: (data ?? []).map((row) => ({
+        from: row.start_date,
+        to: row.end_date,
+      })),
+    };
   } catch (e) {
     console.error("Failed to fetch confirmed bookings:", e);
-    return [];
+    return { ok: false, ranges: [] };
   }
 }
 
@@ -63,16 +70,23 @@ export default async function AvailabilityPage({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("availability");
-  const bookedRanges = await getConfirmedRanges();
+  const availability = await getConfirmedRanges();
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-10">
       <h1 className="font-display text-3xl font-semibold text-bark sm:text-4xl">
         {t("title")}
       </h1>
-      <p className="mt-2 max-w-2xl text-timber">{t("intro")}</p>
+      {/* De intro verwijst naar de kalender; die tonen we niet als we de
+          beschikbaarheid niet kunnen ophalen. */}
+      {availability.ok && (
+        <p className="mt-2 max-w-2xl text-timber">{t("intro")}</p>
+      )}
 
-      <BookingSection bookedRanges={bookedRanges} />
+      <BookingSection
+        bookedRanges={availability.ranges}
+        unavailable={!availability.ok}
+      />
     </div>
   );
 }

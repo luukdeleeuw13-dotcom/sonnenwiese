@@ -142,7 +142,9 @@
     "calendarLegendBooked": "Bezet",
     "calendarLegendSelected": "Jouw selectie",
     "calendarHint": "Selecteer je aankomst- en vertrekdatum in de kalender.",
-    "formTitle": "Aanvraag doen"
+    "formTitle": "Aanvraag doen",
+    "unavailableTitle": "Beschikbaarheid tijdelijk niet op te halen",
+    "unavailableText": "We kunnen de agenda op dit moment niet uitlezen, dus we laten liever geen kalender zien dan een kalender die misschien niet klopt. Probeer het over een paar minuten opnieuw — het is bijna altijd binnen een kwartier verholpen."
   },
   "bookingForm": {
     "name": "Naam",

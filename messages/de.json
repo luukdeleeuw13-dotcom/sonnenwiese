@@ -142,7 +142,9 @@
     "calendarLegendBooked": "Belegt",
     "calendarLegendSelected": "Deine Auswahl",
     "calendarHint": "Wähle dein An- und Abreisedatum im Kalender.",
-    "formTitle": "Anfrage stellen"
+    "formTitle": "Anfrage stellen",
+    "unavailableTitle": "Verfügbarkeit vorübergehend nicht abrufbar",
+    "unavailableText": "Wir können den Belegungsplan gerade nicht auslesen. Lieber zeigen wir keinen Kalender als einen, der möglicherweise nicht stimmt. Bitte versuchen Sie es in ein paar Minuten erneut — meist ist es innerhalb einer Viertelstunde behoben."
   },
   "bookingForm": {
     "name": "Name",
