@@ -1,7 +1,7 @@
 import { sendEmail } from "./send";
 import { format } from "date-fns";
 import { nl, de, enGB } from "date-fns/locale";
-import { SITE_URL } from "@/lib/config";
+import { SITE_URL, ownerEmails } from "@/lib/config";
 import type { BookingRow } from "@/lib/supabase/types";
 
 const dateLocales = { nl, de, en: enGB } as const;
@@ -59,7 +59,9 @@ export async function sendGuestEmail(
   await sendEmail({
     from: process.env.RESEND_FROM_EMAIL!,
     to: booking.email,
-    replyTo: process.env.OWNER_NOTIFICATION_EMAIL,
+    // Antwoordt de gast op de bevestiging, dan komt dat bij iedereen die
+    // meekijkt binnen — niet alleen bij wie toevallig geaccepteerd heeft.
+    replyTo: ownerEmails(),
     subject,
     text: body,
   });

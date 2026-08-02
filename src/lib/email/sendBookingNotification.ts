@@ -1,5 +1,5 @@
 import { sendEmail } from "./send";
-import { SITE_URL } from "@/lib/config";
+import { SITE_URL, ownerEmails } from "@/lib/config";
 import { createActionToken } from "@/lib/booking/actionToken";
 import type { BookingInput } from "@/lib/supabase/types";
 
@@ -74,7 +74,7 @@ export async function sendBookingNotification(
 
   await sendEmail({
     from: process.env.RESEND_FROM_EMAIL!,
-    to: process.env.OWNER_NOTIFICATION_EMAIL!,
+    to: ownerEmails(),
     replyTo: booking.email,
     subject: `Nieuwe aanvraag: ${booking.startDate} t/m ${booking.endDate} (${booking.guests} pers.)`,
     html,
