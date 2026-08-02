@@ -39,6 +39,27 @@ Let op: zolang er geen eigen domein is geverifieerd in Resend, worden mails
 alleen bezorgd op het e-mailadres van het Resend-account zelf. Gastmails
 werken dus pas volledig na domeinverificatie (Resend → Domains).
 
+## Wat de site zelf doet (cron)
+
+Drie taken lopen automatisch; het schema staat in
+[`vercel.json`](vercel.json) en de tijden zijn **UTC** (in de zomer twee uur
+achter op Nederland):
+
+| Taak | Wanneer | Wat |
+| --- | --- | --- |
+| `/api/cron/keepalive` | dagelijks 06:00 | één query, zodat Supabase het gratis project niet pauzeert |
+| `/api/cron/cleanup` | dagelijks 03:30 | aanvragen en vragen ouder dan een jaar verwijderen (privacyverklaring) |
+| `/api/cron/backup` | zondag 05:00 | alle boekingen en vragen als CSV mailen naar `OWNER_NOTIFICATION_EMAIL` |
+
+Vercel voert crons op het gratis plan hoogstens één keer per dag uit en niet
+op de minuut nauwkeurig (±59 min), dus de back-up ligt zondagochtend in de
+inbox. Zet op Vercel de env var `CRON_SECRET`: die stuurt Vercel als bearer
+token mee, en zonder het juiste token weigeren de drie taken. Voor de back-up
+is dat geen luxe — die verstuurt persoonsgegevens.
+
+Dezelfde bestanden zijn ook met de hand te downloaden, met de twee links
+rechtsboven op `/admin`.
+
 ## Eenmalige installatie (accounts aanmaken)
 
 ### 1. Supabase (database)
@@ -49,7 +70,15 @@ werken dus pas volledig na domeinverificatie (Resend → Domains).
    [`supabase/migrations/0001_init.sql`](supabase/migrations/0001_init.sql)
    en klik **Run**. Controleer in **Table Editor** dat de tabel `bookings`
    bestaat.
-3. Ga naar **Settings → API** en noteer:
+3. Herhaal dat voor
+   [`supabase/migrations/0002_inquiries.sql`](supabase/migrations/0002_inquiries.sql)
+   — dat maakt de tabel `inquiries` voor het vragenformulier. Draai de
+   migraties op volgorde; ze zijn allemaal veilig opnieuw uit te voeren
+   (`create table if not exists`).
+4. En daarna
+   [`supabase/migrations/0003_payments.sql`](supabase/migrations/0003_payments.sql)
+   — die voegt de nota- en betaalstatus toe aan `bookings`.
+5. Ga naar **Settings → API** en noteer:
    - de **Project URL** → env var `SUPABASE_URL`
    - de **service_role key** → env var `SUPABASE_SERVICE_ROLE_KEY`
 
