@@ -26,7 +26,15 @@ export default function Hero({
     >
       <div className="absolute inset-0">
         {src ? (
-          <Image src={src} alt={alt} fill priority className="object-cover" />
+          // hero-zoom: trage inzoom bij het laden, uit bij prefers-reduced-motion.
+          // De sectie eromheen heeft overflow-hidden, dus er steekt niets uit.
+          <Image
+            src={src}
+            alt={alt}
+            fill
+            priority
+            className="hero-zoom object-cover"
+          />
         ) : (
           <Placeholder variant="mountain" />
         )}

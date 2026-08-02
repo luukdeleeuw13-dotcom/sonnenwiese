@@ -23,7 +23,8 @@ export default function HighlightCard({
     </>
   );
 
-  const className = "rounded-card border border-sand bg-snow p-5";
+  const className =
+    "h-full rounded-card border border-sand bg-snow p-5 transition-[transform,box-shadow] duration-300 ease-out motion-reduce:transition-none";
 
   if (href) {
     return (
@@ -31,7 +32,9 @@ export default function HighlightCard({
         href={href}
         target="_blank"
         rel="noopener noreferrer"
-        className={`${className} block`}
+        // Alleen het aanklikbare kaartje komt omhoog; een kaartje dat oplicht
+        // maar nergens heen gaat is een loze belofte.
+        className={`${className} block hover:-translate-y-1 hover:shadow-lg hover:shadow-bark/5 motion-reduce:hover:translate-y-0`}
       >
         {inner}
       </a>
