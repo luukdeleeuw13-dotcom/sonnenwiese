@@ -15,12 +15,14 @@
     "tagline": "Unser eigenes Ferienhaus am Rande von Maria Alm, das wir gerne teilen.",
     "location": "Maria Alm, Salzburger Land, Österreich",
     "availabilityCta": "Verfügbarkeit ansehen",
+    "questions": "Fragen",
     "privacy": "Datenschutz"
   },
   "common": {
     "photoComingSoon": "Foto folgt",
     "bookCta": "Verfügbarkeit ansehen",
-    "contactCta": "Anfrage stellen"
+    "contactCta": "Anfrage stellen",
+    "questionCta": "Stell deine Frage"
   },
   "home": {
     "heroTitle": "Willkommen in Maria Alm",
@@ -160,8 +162,12 @@
     "calendarTitle": "Verfügbarkeit",
     "calendarLegendBooked": "Belegt",
     "calendarLegendSelected": "Deine Auswahl",
-    "calendarHint": "Wähle dein An- und Abreisedatum im Kalender.",
+    "calendarHint": "Vermietet wird pro ganze Woche, von Samstag bis Samstag. Klick die Woche an, in der du kommen möchtest — für einen längeren Aufenthalt klickst du eine zweite Woche an.",
+    "calendarOverlap": "Zwischen deiner ersten und letzten Woche liegt eine belegte Woche. Wähle bitte einen Zeitraum, der durchgehend frei ist.",
     "formTitle": "Anfrage stellen",
+    "questionTitle": "Passt keine ganze Woche?",
+    "questionText": "Wir vermieten von Samstag bis Samstag, aber etwas anderes ist nicht ausgeschlossen — frag ruhig nach. Auch alle übrigen Fragen zur Wohnung sind hier richtig.",
+    "questionCta": "Stell deine Frage",
     "unavailableTitle": "Verfügbarkeit vorübergehend nicht abrufbar",
     "unavailableText": "Wir können den Belegungsplan gerade nicht auslesen. Lieber zeigen wir keinen Kalender als einen, der möglicherweise nicht stimmt. Bitte versuchen Sie es in ein paar Minuten erneut — meist ist es innerhalb einer Viertelstunde behoben."
   },
@@ -173,7 +179,7 @@
     "phone": "Telefonnummer",
     "phonePlaceholder": "Optional",
     "dates": "Anreise und Abreise",
-    "datesHint": "Wähle zuerst dein An- und Abreisedatum im Kalender oben.",
+    "datesHint": "Wähle zuerst deine Woche oder Wochen im Kalender oben.",
     "datesSelected": "Ausgewählt: {from} bis {to}",
     "guests": "Anzahl Personen",
     "message": "Nachricht",
@@ -193,10 +199,41 @@
       "datesRequired": "Wähle dein An- und Abreisedatum im Kalender.",
       "datesInvalid": "Das Abreisedatum muss nach dem Anreisedatum liegen.",
       "datesPast": "Das Anreisedatum muss in der Zukunft liegen.",
+      "datesWholeWeeks": "Wir vermieten pro ganze Woche, von Samstag bis Samstag. Wähle deine Wochen im Kalender.",
       "guestsInvalid": "Wähle eine Personenzahl zwischen 1 und 8.",
       "datesUnavailable": "Dieser Zeitraum ist (teilweise) bereits belegt. Wähle einen anderen Zeitraum im Kalender."
     },
     "privacyNote": "Wir verwenden Ihre Angaben ausschließlich zur Beantwortung dieser Anfrage und löschen sie nach einem Jahr. Mehr dazu in unserer <link>Datenschutzerklärung</link>."
+  },
+  "inquiry": {
+    "title": "Eine Frage stellen",
+    "intro": "Wir vermieten pro ganze Woche, von Samstag bis Samstag — so bleiben keine einzelnen Tage übrig, mit denen niemand mehr etwas anfangen kann. Passt das nicht zu deinen Plänen, oder möchtest du etwas anderes wissen? Frag hier ruhig nach. Ein anderer Zeitraum ist nicht ausgeschlossen; wir schauen gerne, was möglich ist.",
+    "bookingHint": "Suchst du doch eine ganze Woche? Dann wähle sie direkt im <link>Kalender</link> — das geht schneller.",
+    "name": "Name",
+    "namePlaceholder": "Dein vollständiger Name",
+    "email": "E-Mail-Adresse",
+    "emailPlaceholder": "du@beispiel.de",
+    "phone": "Telefonnummer",
+    "phonePlaceholder": "Optional",
+    "period": "An welchen Zeitraum denkst du?",
+    "periodPlaceholder": "Zum Beispiel: Ende Juli, ein langes Wochenende (optional)",
+    "message": "Deine Frage",
+    "messagePlaceholder": "Wobei können wir dir helfen?",
+    "submit": "Frage senden",
+    "submitting": "Wird gesendet…",
+    "successTitle": "Deine Frage ist gesendet!",
+    "successText": "Danke — deine Frage ist gut bei uns angekommen. Wir beantworten sie so schnell wie möglich per E-Mail.",
+    "successAgain": "Weitere Frage stellen",
+    "errorTitle": "Etwas ist schiefgelaufen",
+    "errorText": "Deine Frage konnte nicht gesendet werden. Versuche es noch einmal oder schreib uns direkt eine E-Mail.",
+    "validation": {
+      "nameRequired": "Bitte gib deinen Namen ein.",
+      "emailRequired": "Bitte gib deine E-Mail-Adresse ein.",
+      "emailInvalid": "Das scheint keine gültige E-Mail-Adresse zu sein.",
+      "messageRequired": "Schreib bitte kurz, worum es bei deiner Frage geht."
+    },
+    "privacyNote": "Wir verwenden Ihre Angaben ausschließlich zur Beantwortung Ihrer Frage und löschen sie nach einem Jahr. Mehr dazu in unserer <link>Datenschutzerklärung</link>.",
+    "mailAlternative": "Lieber ganz normal mailen? Das geht auch, an <mail>mail@sonnenwiese.nl</mail>."
   },
   "practical": {
     "title": "Anreise & Praktisches",
@@ -208,7 +245,7 @@
     "rulesTitle": "Hausregeln",
     "rulesText": "Es ist und bleibt unser Familienhaus — mit ein paar Absprachen bleibt es für alle schön:",
     "questionsTitle": "Fragen?",
-    "questionsText": "Stelle eine Anfrage über die Verfügbarkeitsseite oder schreibe deine Frage ins Nachrichtenfeld — wir helfen gerne weiter.",
+    "questionsText": "Stelle eine Anfrage über die Verfügbarkeitsseite oder schick uns deine Frage über das Frageformular — wir helfen gerne weiter.",
     "mapTitle": "Lage",
     "mapOpenGoogle": "In Google Maps öffnen",
     "rules": {
@@ -236,6 +273,7 @@
       "locale": "die Sprache, in der Sie die Seite gelesen haben, damit wir in dieser Sprache antworten"
     },
     "dataFooter": "Mehr nicht. Keine Anschrift, kein Geburtsdatum, keine Zahlungsdaten — das besprechen wir persönlich, wenn Ihr Aufenthalt zustande kommt.",
+    "inquiryText": "Stellen Sie nur eine Frage, speichern wir weniger: Ihren Namen, Ihre E-Mail-Adresse, auf Wunsch Ihre Telefonnummer und den Zeitraum, an den Sie denken, sowie die Frage selbst. Auch das verschwindet nach einem Jahr.",
     "whyTitle": "Warum wir es speichern",
     "whyText": "Um zu prüfen, ob die Wohnung frei ist, Ihre Anfrage zu beantworten und Ihren Aufenthalt zu vereinbaren. Das ist der einzige Grund. Sie bekommen von uns keinen Newsletter, wir verkaufen nichts weiter, und Ihre Daten gehen nie für fremde Zwecke an Dritte.",
     "retentionTitle": "Wie lange",

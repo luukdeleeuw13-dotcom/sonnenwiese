@@ -15,12 +15,14 @@
     "tagline": "Ons eigen vakantiehuis aan de rand van Maria Alm, dat we graag delen.",
     "location": "Maria Alm, Salzburgerland, Oostenrijk",
     "availabilityCta": "Bekijk beschikbaarheid",
+    "questions": "Vragen",
     "privacy": "Privacy"
   },
   "common": {
     "photoComingSoon": "Foto volgt",
     "bookCta": "Bekijk beschikbaarheid",
-    "contactCta": "Doe een aanvraag"
+    "contactCta": "Doe een aanvraag",
+    "questionCta": "Stel je vraag"
   },
   "home": {
     "heroTitle": "Welkom in Maria Alm",
@@ -160,8 +162,12 @@
     "calendarTitle": "Beschikbaarheid",
     "calendarLegendBooked": "Bezet",
     "calendarLegendSelected": "Jouw selectie",
-    "calendarHint": "Selecteer je aankomst- en vertrekdatum in de kalender.",
+    "calendarHint": "De verhuur gaat per hele week, van zaterdag tot zaterdag. Klik de week aan waarin je wilt komen — klik een tweede week aan om langer te blijven.",
+    "calendarOverlap": "Tussen je eerste en laatste week zit een bezette week. Kies een periode die helemaal vrij is.",
     "formTitle": "Aanvraag doen",
+    "questionTitle": "Past er geen hele week?",
+    "questionText": "We verhuren van zaterdag tot zaterdag, maar daarbuiten is niet onmogelijk — vraag het gerust. Ook alle andere vragen over het appartement komen hier goed terecht.",
+    "questionCta": "Stel je vraag",
     "unavailableTitle": "Beschikbaarheid tijdelijk niet op te halen",
     "unavailableText": "We kunnen de agenda op dit moment niet uitlezen, dus we laten liever geen kalender zien dan een kalender die misschien niet klopt. Probeer het over een paar minuten opnieuw — het is bijna altijd binnen een kwartier verholpen."
   },
@@ -173,7 +179,7 @@
     "phone": "Telefoonnummer",
     "phonePlaceholder": "Optioneel",
     "dates": "Aankomst en vertrek",
-    "datesHint": "Kies eerst je aankomst- en vertrekdatum in de kalender hierboven.",
+    "datesHint": "Kies eerst je week of weken in de kalender hierboven.",
     "datesSelected": "Geselecteerd: {from} tot {to}",
     "guests": "Aantal personen",
     "message": "Bericht",
@@ -193,10 +199,41 @@
       "datesRequired": "Kies je aankomst- en vertrekdatum in de kalender.",
       "datesInvalid": "De vertrekdatum moet na de aankomstdatum liggen.",
       "datesPast": "De aankomstdatum moet in de toekomst liggen.",
+      "datesWholeWeeks": "We verhuren per hele week, van zaterdag tot zaterdag. Kies je weken in de kalender.",
       "guestsInvalid": "Kies een aantal personen tussen 1 en 8.",
       "datesUnavailable": "Deze periode is (deels) al bezet. Kies een andere periode in de kalender."
     },
     "privacyNote": "We gebruiken je gegevens alleen om deze aanvraag te beantwoorden en verwijderen ze na een jaar. Meer daarover lees je in onze <link>privacyverklaring</link>."
+  },
+  "inquiry": {
+    "title": "Een vraag stellen",
+    "intro": "We verhuren per hele week, van zaterdag tot zaterdag — zo blijven er geen losse dagen over waar niemand meer iets aan heeft. Past dat niet bij je plannen, of wil je iets anders weten? Stel het hier gerust. Een andere periode is niet uitgesloten; we kijken graag wat er kan.",
+    "bookingHint": "Zoek je juist wél een hele week? Kies hem dan direct in de <link>kalender</link> — dat gaat sneller.",
+    "name": "Naam",
+    "namePlaceholder": "Je volledige naam",
+    "email": "E-mailadres",
+    "emailPlaceholder": "jij@voorbeeld.nl",
+    "phone": "Telefoonnummer",
+    "phonePlaceholder": "Optioneel",
+    "period": "Welke periode heb je in gedachten?",
+    "periodPlaceholder": "Bijvoorbeeld: eind juli, een lang weekend (optioneel)",
+    "message": "Je vraag",
+    "messagePlaceholder": "Waar kunnen we je mee helpen?",
+    "submit": "Verstuur je vraag",
+    "submitting": "Versturen…",
+    "successTitle": "Je vraag is verstuurd!",
+    "successText": "Bedankt — we hebben je vraag goed ontvangen en beantwoorden hem zo snel mogelijk per e-mail.",
+    "successAgain": "Nog een vraag stellen",
+    "errorTitle": "Er ging iets mis",
+    "errorText": "Je vraag kon niet worden verstuurd. Probeer het nog eens, of mail ons rechtstreeks.",
+    "validation": {
+      "nameRequired": "Vul je naam in.",
+      "emailRequired": "Vul je e-mailadres in.",
+      "emailInvalid": "Dit lijkt geen geldig e-mailadres.",
+      "messageRequired": "Schrijf even waar je vraag over gaat."
+    },
+    "privacyNote": "We gebruiken je gegevens alleen om je vraag te beantwoorden en verwijderen ze na een jaar. Meer daarover lees je in onze <link>privacyverklaring</link>.",
+    "mailAlternative": "Liever gewoon mailen? Dat kan ook, naar <mail>mail@sonnenwiese.nl</mail>."
   },
   "practical": {
     "title": "Route & praktisch",
@@ -208,7 +245,7 @@
     "rulesTitle": "Huisregels",
     "rulesText": "Het is en blijft ons familiehuis — met een paar afspraken houden we het voor iedereen fijn:",
     "questionsTitle": "Vragen?",
-    "questionsText": "Doe een aanvraag via de beschikbaarheidspagina of stel je vraag in het berichtveld — we helpen je graag.",
+    "questionsText": "Doe een aanvraag via de beschikbaarheidspagina, of stel je vraag via het vragenformulier — we helpen je graag.",
     "mapTitle": "Locatie",
     "mapOpenGoogle": "Openen in Google Maps",
     "rules": {
@@ -236,6 +273,7 @@
       "locale": "de taal waarin je de site bekeek, zodat we in die taal terugmailen"
     },
     "dataFooter": "Meer niet. Geen adres, geen geboortedatum, geen betaalgegevens — dat regelen we persoonlijk als je verblijf doorgaat.",
+    "inquiryText": "Stel je alleen een vraag, dan bewaren we minder: je naam, je e-mailadres, eventueel je telefoonnummer en de periode waar je aan denkt, plus de vraag zelf. Ook die verdwijnt na een jaar.",
     "whyTitle": "Waarom we het bewaren",
     "whyText": "Om te kijken of het appartement vrij is, je aanvraag te beantwoorden en je verblijf af te spreken. Dat is de enige reden. Je krijgt geen nieuwsbrief van ons, we verkopen niets door, en je gegevens gaan nooit naar anderen voor hún doeleinden.",
     "retentionTitle": "Hoe lang",

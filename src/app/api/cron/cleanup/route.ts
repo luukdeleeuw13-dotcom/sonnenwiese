@@ -15,6 +15,9 @@ import {
 //     boekingen met end_date >= vandaag. Wie ruim een jaar vooruit boekt,
 //     zou anders uit de kalender verdwijnen terwijl het verblijf nog moet
 //     komen, en dan staan die dagen weer als vrij te boek.
+//
+// Vragen (tabel inquiries) hebben geen verblijf en dus maar één voorwaarde:
+// een jaar na binnenkomst gaan ze weg.
 export const dynamic = "force-dynamic";
 
 const RETENTION_DAYS = 365;
@@ -53,13 +56,31 @@ export async function GET(request: Request) {
 
     if (error) throw new Error(error.message);
 
+    // Vragen kennen geen verblijf en dus geen einddatum: hier telt alleen
+    // hoe lang we ze hebben. De privacyverklaring belooft ook voor vragen
+    // een jaar, dus dezelfde termijn.
+    const { data: inquiryData, error: inquiryError } = await supabase
+      .from("inquiries")
+      .delete()
+      .lt("created_at", cutoff)
+      .select("id");
+
+    if (inquiryError) throw new Error(inquiryError.message);
+
     const deleted = data?.length ?? 0;
-    if (deleted > 0) {
+    const deletedInquiries = inquiryData?.length ?? 0;
+    if (deleted > 0 || deletedInquiries > 0) {
       console.log(
-        `Bewaartermijn: ${deleted} aanvraag/aanvragen ouder dan ${RETENTION_DAYS} dagen verwijderd.`
+        `Bewaartermijn: ${deleted} aanvraag/aanvragen en ${deletedInquiries} ` +
+          `vraag/vragen ouder dan ${RETENTION_DAYS} dagen verwijderd.`
       );
     }
-    return NextResponse.json({ ok: true, deleted, cutoff });
+    return NextResponse.json({
+      ok: true,
+      deleted,
+      deletedInquiries,
+      cutoff,
+    });
   } catch (e) {
     // Mislukt dit stilzwijgend, dan blijven gegevens langer staan dan wat we
     // publiek beloven — dus loggen en de cron als mislukt markeren.

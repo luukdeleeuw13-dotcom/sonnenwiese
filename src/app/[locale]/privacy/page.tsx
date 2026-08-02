@@ -75,6 +75,10 @@ export default function PrivacyPage({
           ))}
         </ul>
         <p>{t("dataFooter")}</p>
+        {/* Het vragenformulier vraagt minder dan het boekingsformulier; dat
+            hoort hier te staan, anders belooft de verklaring iets anders
+            dan de site doet. */}
+        <p>{t("inquiryText")}</p>
       </Block>
 
       <Block title={t("whyTitle")}>

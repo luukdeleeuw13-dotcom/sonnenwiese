@@ -15,12 +15,14 @@
     "tagline": "Our own holiday home on the edge of Maria Alm, which we love to share.",
     "location": "Maria Alm, Salzburgerland, Austria",
     "availabilityCta": "Check availability",
+    "questions": "Questions",
     "privacy": "Privacy"
   },
   "common": {
     "photoComingSoon": "Photo coming soon",
     "bookCta": "Check availability",
-    "contactCta": "Send a request"
+    "contactCta": "Send a request",
+    "questionCta": "Ask your question"
   },
   "home": {
     "heroTitle": "Welcome to Maria Alm",
@@ -160,8 +162,12 @@
     "calendarTitle": "Availability",
     "calendarLegendBooked": "Booked",
     "calendarLegendSelected": "Your selection",
-    "calendarHint": "Select your arrival and departure dates in the calendar.",
+    "calendarHint": "We rent by the full week, Saturday to Saturday. Click the week you'd like to come — click a second week to stay longer.",
+    "calendarOverlap": "There's a booked week between your first and last week. Please pick a period that is free throughout.",
     "formTitle": "Send a request",
+    "questionTitle": "Doesn't a full week fit?",
+    "questionText": "We rent Saturday to Saturday, but something else isn't out of the question — just ask. Any other question about the apartment lands here too.",
+    "questionCta": "Ask your question",
     "unavailableTitle": "Availability temporarily unavailable",
     "unavailableText": "We can't read the calendar right now, and we'd rather show no calendar than one that might be wrong. Please try again in a few minutes — it's usually resolved within a quarter of an hour."
   },
@@ -173,7 +179,7 @@
     "phone": "Phone number",
     "phonePlaceholder": "Optional",
     "dates": "Arrival and departure",
-    "datesHint": "First pick your arrival and departure dates in the calendar above.",
+    "datesHint": "First pick your week or weeks in the calendar above.",
     "datesSelected": "Selected: {from} to {to}",
     "guests": "Number of guests",
     "message": "Message",
@@ -193,10 +199,41 @@
       "datesRequired": "Pick your arrival and departure dates in the calendar.",
       "datesInvalid": "The departure date must be after the arrival date.",
       "datesPast": "The arrival date must be in the future.",
+      "datesWholeWeeks": "We rent by the full week, Saturday to Saturday. Please pick your weeks in the calendar.",
       "guestsInvalid": "Choose a number of guests between 1 and 8.",
       "datesUnavailable": "This period is (partly) already booked. Please pick a different period in the calendar."
     },
     "privacyNote": "We use your details only to answer this request and delete them after a year. There's more about that in our <link>privacy statement</link>."
+  },
+  "inquiry": {
+    "title": "Ask a question",
+    "intro": "We rent by the full week, Saturday to Saturday — that way no odd days are left over that nobody can use. If that doesn't suit your plans, or you'd like to know something else, ask away here. A different period isn't ruled out; we're glad to see what's possible.",
+    "bookingHint": "Looking for a full week after all? Pick it straight from the <link>calendar</link> — that's quicker.",
+    "name": "Name",
+    "namePlaceholder": "Your full name",
+    "email": "Email address",
+    "emailPlaceholder": "you@example.com",
+    "phone": "Phone number",
+    "phonePlaceholder": "Optional",
+    "period": "Which period do you have in mind?",
+    "periodPlaceholder": "For example: late July, a long weekend (optional)",
+    "message": "Your question",
+    "messagePlaceholder": "What can we help you with?",
+    "submit": "Send your question",
+    "submitting": "Sending…",
+    "successTitle": "Your question has been sent!",
+    "successText": "Thank you — we've received your question and will answer it by email as soon as we can.",
+    "successAgain": "Ask another question",
+    "errorTitle": "Something went wrong",
+    "errorText": "Your question could not be sent. Please try again, or email us directly.",
+    "validation": {
+      "nameRequired": "Please enter your name.",
+      "emailRequired": "Please enter your email address.",
+      "emailInvalid": "That doesn't look like a valid email address.",
+      "messageRequired": "Please write a line about what your question is about."
+    },
+    "privacyNote": "We use your details only to answer your question and delete them after a year. There's more about that in our <link>privacy statement</link>.",
+    "mailAlternative": "Prefer plain email? That works too: <mail>mail@sonnenwiese.nl</mail>."
   },
   "practical": {
     "title": "Directions & practical",
@@ -208,7 +245,7 @@
     "rulesTitle": "House rules",
     "rulesText": "It is and remains our family home — a few agreements keep it enjoyable for everyone:",
     "questionsTitle": "Questions?",
-    "questionsText": "Send a request via the availability page or ask your question in the message field — we're happy to help.",
+    "questionsText": "Send a request via the availability page, or ask your question through the question form — we're happy to help.",
     "mapTitle": "Location",
     "mapOpenGoogle": "Open in Google Maps",
     "rules": {
@@ -236,6 +273,7 @@
       "locale": "the language you were reading the site in, so we reply in that language"
     },
     "dataFooter": "Nothing more. No home address, no date of birth, no payment details — we sort that out personally if your stay goes ahead.",
+    "inquiryText": "If you only ask a question, we keep less: your name, your email address, your phone number if you give it, the period you have in mind, and the question itself. That goes after a year too.",
     "whyTitle": "Why we keep it",
     "whyText": "To check whether the apartment is free, answer your request and arrange your stay. That is the only reason. You won't get a newsletter from us, we don't sell anything on, and your details never go to anyone else for their own purposes.",
     "retentionTitle": "How long",

@@ -8,6 +8,7 @@ export const SITE_ROUTES = [
   "omgeving",
   "prijzen",
   "beschikbaarheid",
+  "vragen",
   "route-praktisch",
   "privacy",
 ] as const;

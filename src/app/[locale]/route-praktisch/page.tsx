@@ -109,12 +109,22 @@ export default function PracticalPage({
           <p className="mt-3 max-w-2xl leading-relaxed text-timber">
             {t("questionsText")}
           </p>
-          <Link
-            href="/beschikbaarheid"
-            className="mt-5 inline-block rounded-lg bg-sun px-5 py-3 text-sm font-semibold text-snow transition-colors hover:bg-sun-dark"
-          >
-            {tc("contactCta")}
-          </Link>
+          <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-3">
+            <Link
+              href="/beschikbaarheid"
+              className="inline-block rounded-lg bg-sun px-5 py-3 text-sm font-semibold text-snow transition-colors hover:bg-sun-dark"
+            >
+              {tc("contactCta")}
+            </Link>
+            {/* Wie geen hele week zoekt of iets anders wil weten, heeft aan
+                een boekingsknop niets — vandaar de tweede weg. */}
+            <Link
+              href="/vragen"
+              className="text-sm font-semibold text-meadow-dark underline-offset-4 hover:underline"
+            >
+              {tc("questionCta")}
+            </Link>
+          </div>
         </div>
       </section>
     </div>
