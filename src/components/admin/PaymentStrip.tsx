@@ -7,14 +7,26 @@ import {
   paymentState,
 } from "@/lib/admin/payments";
 import {
+  applySuggestedPrice,
   togglePaymentMoment,
   setInvoiceRequired,
   setPrice,
 } from "@/app/admin/actions";
+import {
+  describeWeeks,
+  estimatePrice,
+  SEASONS_VALID_UNTIL,
+} from "@/lib/booking/seasons";
 import type { BookingRow } from "@/lib/supabase/types";
 
 function fmtDay(value: string): string {
   return format(new Date(value), "d MMM", { locale: nl });
+}
+
+// Mét jaartal: bij de looptijd van de seizoenstabel is "27 nov" zonder jaar
+// precies de vraag die je wilde beantwoorden.
+function fmtDayYear(value: string): string {
+  return format(new Date(value), "d MMMM yyyy", { locale: nl });
 }
 
 const badgeStyles = "rounded-full px-3 py-1 text-xs font-semibold";
@@ -35,6 +47,13 @@ export default function PaymentStrip({
 }) {
   const state = paymentState(booking);
   const attention = needsAttention(booking, today);
+
+  // Voorstel uit de seizoenstabel. Het blijft een vóórstel: er staat een knop
+  // om het over te nemen, niet een bedrag dat zichzelf invult. Een afspraak
+  // met een gast kan van de tabel afwijken, en dan hoort de tabel te wijken.
+  const estimate = estimatePrice(booking.start_date, booking.end_date);
+  const suggestion = estimate.ok ? estimate.totalCents : null;
+  const matchesTable = suggestion !== null && booking.price_cents === suggestion;
 
   return (
     <div
@@ -163,6 +182,44 @@ export default function PaymentStrip({
           </form>
         )}
       </div>
+
+      {state !== "notRequired" && (
+        <div className="mt-2 border-t border-sand pt-2 text-sm text-timber">
+          {estimate.ok && matchesTable && (
+            <span>
+              Volgens de seizoenstabel: {describeWeeks(estimate.weeks)}.
+            </span>
+          )}
+
+          {estimate.ok && !matchesTable && (
+            <form
+              action={applySuggestedPrice}
+              className="flex flex-wrap items-center gap-2"
+            >
+              <input type="hidden" name="id" value={booking.id} />
+              <span>
+                Tabel zegt{" "}
+                <strong className="text-bark">
+                  {formatEuro(estimate.totalCents)}
+                </strong>{" "}
+                — {describeWeeks(estimate.weeks)}.
+              </span>
+              <button className={buttonStyles}>Overnemen</button>
+            </form>
+          )}
+
+          {/* Buiten de looptijd van de tabel rekent de site bewust niets uit.
+              Beter een lege plek die om aandacht vraagt dan een bedrag uit een
+              verlopen schoolvakantiekalender. */}
+          {!estimate.ok && estimate.reason === "outside-table" && (
+            <span>
+              De seizoenstabel loopt tot{" "}
+              {fmtDayYear(`${SEASONS_VALID_UNTIL}T00:00:00`)} — vul het bedrag
+              met de hand in, of werk de tabel bij.
+            </span>
+          )}
+        </div>
+      )}
     </div>
   );
 }

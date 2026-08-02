@@ -14,6 +14,7 @@ import { sendGuestEmail } from "@/lib/email/sendGuestEmail";
 import { primaryOwnerEmail } from "@/lib/config";
 import { isOwnerBlock } from "@/lib/admin/bookings";
 import { parseEuro } from "@/lib/admin/payments";
+import { estimatePrice } from "@/lib/booking/seasons";
 import type { BookingRow } from "@/lib/supabase/types";
 
 export async function login(formData: FormData) {
@@ -168,6 +169,34 @@ export async function setPrice(formData: FormData) {
     .update({ price_cents: cents })
     .eq("id", id);
   if (error) console.error("Admin: bedrag bijwerken mislukt:", error);
+  revalidatePath("/admin");
+}
+
+// Het voorgestelde bedrag uit de seizoenstabel overnemen. Het bedrag komt
+// bewust niet uit het formulier maar wordt hier opnieuw uitgerekend uit de
+// datums in de database: een bedrag dat je van de browser aanneemt is een
+// bedrag dat je niet kent.
+export async function applySuggestedPrice(formData: FormData) {
+  await requireAdmin();
+  const id = String(formData.get("id") ?? "");
+  if (!id) return;
+
+  const supabase = getSupabaseServerClient();
+  const { data: booking } = await supabase
+    .from("bookings")
+    .select("start_date,end_date")
+    .eq("id", id)
+    .single<Pick<BookingRow, "start_date" | "end_date">>();
+  if (!booking) return;
+
+  const estimate = estimatePrice(booking.start_date, booking.end_date);
+  if (!estimate.ok) return;
+
+  const { error } = await supabase
+    .from("bookings")
+    .update({ price_cents: estimate.totalCents })
+    .eq("id", id);
+  if (error) console.error("Admin: voorstel overnemen mislukt:", error);
   revalidatePath("/admin");
 }
 

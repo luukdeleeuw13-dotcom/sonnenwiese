@@ -2,8 +2,11 @@ import type { Metadata } from "next";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { useTranslations } from "next-intl";
 import { use } from "react";
+import { format } from "date-fns";
+import { nl, de, enGB } from "date-fns/locale";
 import { Link } from "@/i18n/navigation";
 import { buildMetadata } from "@/lib/metadata";
+import { HIGH_SEASONS } from "@/lib/booking/seasons";
 
 export async function generateMetadata({
   params,
@@ -21,6 +24,38 @@ export async function generateMetadata({
 }
 
 const rowKeys = ["winterHigh", "winterLow", "summerHigh", "summerLow"] as const;
+
+// De hoogseizoensdatums komen uit dezelfde tabel als waarmee de nota wordt
+// berekend (lib/booking/seasons.ts). Ze hier nóg een keer intypen zou betekenen
+// dat de site en de rekensom volgend jaar stilletjes uit elkaar gaan lopen.
+const dateLocales = { nl, de, en: enGB } as const;
+
+function highSeasonDates(
+  season: "winterHigh" | "summerHigh",
+  locale: string,
+): string {
+  const dateLocale =
+    dateLocales[locale as keyof typeof dateLocales] ?? dateLocales.nl;
+  // Duits zet een punt achter het dagnummer: "19. Dezember", niet "19 Dezember".
+  const d = locale === "de" ? "d." : "d";
+  const day = (iso: string, pattern: string) =>
+    format(new Date(`${iso}T00:00:00`), pattern, { locale: dateLocale });
+
+  // Maand en jaar alleen herhalen waar ze verschillen: "13 – 27 februari 2027"
+  // leest nu eenmaal prettiger dan datzelfde jaartal twee keer.
+  const range = (from: string, to: string) => {
+    const sameYear = from.slice(0, 4) === to.slice(0, 4);
+    const sameMonth = sameYear && from.slice(5, 7) === to.slice(5, 7);
+    if (sameMonth) return `${day(from, d)} – ${day(to, `${d} MMMM yyyy`)}`;
+    if (sameYear)
+      return `${day(from, `${d} MMMM`)} – ${day(to, `${d} MMMM yyyy`)}`;
+    return `${day(from, `${d} MMMM yyyy`)} – ${day(to, `${d} MMMM yyyy`)}`;
+  };
+
+  return HIGH_SEASONS.filter((r) => r.season === season)
+    .map((r) => range(r.from, r.to))
+    .join(" · ");
+}
 const includedKeys = ["energy", "internet"] as const;
 const extrasKeys = ["cleaning", "tax", "linen"] as const;
 const paymentKeys = ["deposit", "cancel", "pets"] as const;
@@ -60,6 +95,32 @@ export default function PricingPage({
             ))}
           </tbody>
         </table>
+      </div>
+
+      {/* Welke week in welk seizoen valt. Zonder dit blok is de tabel hierboven
+          een prijslijst zonder kalender, en moet iedereen alsnog mailen. */}
+      <div className="mt-6 rounded-card border border-sand bg-snow p-6">
+        <h2 className="font-display text-xl font-semibold text-bark">
+          {t("seasons.title")}
+        </h2>
+        <dl className="mt-3 space-y-2.5">
+          {(
+            [
+              ["winterHigh", highSeasonDates("winterHigh", locale)],
+              ["summerHigh", highSeasonDates("summerHigh", locale)],
+              ["winterLow", t("seasons.winterLowValue")],
+              ["summerLow", t("seasons.summerLowValue")],
+            ] as const
+          ).map(([key, value]) => (
+            <div key={key} className="sm:flex sm:gap-3">
+              <dt className="font-semibold text-bark sm:w-52 sm:shrink-0">
+                {t(`seasons.${key}`)}
+              </dt>
+              <dd className="text-timber">{value}</dd>
+            </div>
+          ))}
+        </dl>
+        <p className="mt-4 text-sm text-timber">{t("seasons.note")}</p>
       </div>
 
       <div className="mt-6 grid gap-6 sm:grid-cols-2">

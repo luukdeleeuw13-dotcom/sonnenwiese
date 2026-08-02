@@ -117,25 +117,35 @@
   },
   "pricing": {
     "title": "Prices",
-    "intro": "Rental is per week: from Saturday 3 pm to Saturday 10 am (Sunday–Sunday is sometimes possible by arrangement). These are the prices for 2024/2025.",
+    "intro": "Rental is per week: from Saturday 3 pm to Saturday 10 am. These are the prices for winter 2026/2027 and summer 2027. If a full week doesn't fit your plans, do ask — more is often possible than the calendar shows.",
     "tableTitle": "Rent per week",
     "rows": {
       "winterHigh": {
         "label": "Winter — high season (school holidays)",
-        "price": "€ 1,750"
+        "price": "€ 1,850"
       },
       "winterLow": {
         "label": "Winter — low season",
-        "price": "€ 900"
+        "price": "€ 800"
       },
       "summerHigh": {
         "label": "Summer — high season",
-        "price": "€ 650"
+        "price": "€ 700"
       },
       "summerLow": {
         "label": "Summer — low season",
         "price": "€ 450"
       }
+    },
+    "seasons": {
+      "title": "Which week falls in which season",
+      "winterHigh": "High season, winter",
+      "summerHigh": "High season, summer",
+      "winterLow": "Low season, winter",
+      "summerLow": "Low season, summer",
+      "winterLowValue": "the remaining weeks from December through March",
+      "summerLowValue": "all other weeks of the year",
+      "note": "A rental week runs Saturday to Saturday. A week counts as high season if it falls entirely within one of these periods."
     },
     "includedTitle": "Included",
     "included": {
@@ -144,13 +154,13 @@
     },
     "extrasTitle": "Additional",
     "extras": {
-      "cleaning": "Final cleaning — € 50",
-      "tax": "Tourist tax — € 1.10 p.p. per night (14 and over), € 0.40 for children under 14",
+      "cleaning": "Final cleaning — € 50, payable on arrival",
+      "tax": "Tourist tax — € 1.10 p.p. per night (14 and over), € 0.40 for children under 14, payable on arrival",
       "linen": "Bed linen and towels — please bring your own"
     },
     "paymentTitle": "Good to know",
     "payment": {
-      "deposit": "After confirmation you pay a deposit within 14 days; the remainder no later than 6 weeks before arrival.",
+      "deposit": "After confirmation you'll receive a payment request for the rent, to be transferred to our Austrian account. Final cleaning and tourist tax are settled on site.",
       "cancel": "If you cancel more than 6 weeks before arrival, 50% of the rent is due; at 4 weeks or less, the full rent. Cancellation insurance can be arranged through us (3.5% of the total).",
       "pets": "Pets are welcome — please let us know in advance."
     },

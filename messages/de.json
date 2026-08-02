@@ -117,25 +117,35 @@
   },
   "pricing": {
     "title": "Preise",
-    "intro": "Vermietet wird wochenweise: von Samstag 15.00 Uhr bis Samstag 10.00 Uhr (nach Absprache manchmal auch Sonntag–Sonntag). Dies sind die Preise für 2024/2025.",
+    "intro": "Vermietet wird wochenweise: von Samstag 15.00 Uhr bis Samstag 10.00 Uhr. Dies sind die Preise für Winter 2026/2027 und Sommer 2027. Passt eine ganze Woche nicht in deine Pläne? Stell uns ruhig eine Frage — oft lässt sich mehr einrichten, als der Kalender zeigt.",
     "tableTitle": "Mietpreis pro Woche",
     "rows": {
       "winterHigh": {
         "label": "Winter — Hochsaison (Schulferien)",
-        "price": "€ 1.750"
+        "price": "€ 1.850"
       },
       "winterLow": {
         "label": "Winter — Nebensaison",
-        "price": "€ 900"
+        "price": "€ 800"
       },
       "summerHigh": {
         "label": "Sommer — Hochsaison",
-        "price": "€ 650"
+        "price": "€ 700"
       },
       "summerLow": {
         "label": "Sommer — Nebensaison",
         "price": "€ 450"
       }
+    },
+    "seasons": {
+      "title": "Welche Woche fällt in welche Saison",
+      "winterHigh": "Hochsaison Winter",
+      "summerHigh": "Hochsaison Sommer",
+      "winterLow": "Nebensaison Winter",
+      "summerLow": "Nebensaison Sommer",
+      "winterLowValue": "die übrigen Wochen von Dezember bis einschließlich März",
+      "summerLowValue": "alle übrigen Wochen des Jahres",
+      "note": "Die Mietwoche läuft von Samstag bis Samstag. Eine Woche zählt als Hochsaison, wenn sie vollständig in einen dieser Zeiträume fällt."
     },
     "includedTitle": "Inklusive",
     "included": {
@@ -144,13 +154,13 @@
     },
     "extrasTitle": "Zusätzlich",
     "extras": {
-      "cleaning": "Endreinigung — € 50",
-      "tax": "Ortstaxe — € 1,10 p.P. pro Nacht (ab 14 Jahren), € 0,40 für Kinder bis 14 Jahre",
+      "cleaning": "Endreinigung — € 50, vor Ort zu bezahlen",
+      "tax": "Ortstaxe — € 1,10 p.P. pro Nacht (ab 14 Jahren), € 0,40 für Kinder bis 14 Jahre, vor Ort zu bezahlen",
       "linen": "Bettwäsche und Handtücher — bitte selbst mitbringen"
     },
     "paymentTitle": "Gut zu wissen",
     "payment": {
-      "deposit": "Nach der Bestätigung zahlst du innerhalb von 14 Tagen eine Anzahlung; den Rest spätestens 6 Wochen vor Anreise.",
+      "deposit": "Nach der Bestätigung erhältst du eine Zahlungsaufforderung für die Miete auf unser österreichisches Konto. Endreinigung und Ortstaxe zahlst du vor Ort.",
       "cancel": "Bei Stornierung mehr als 6 Wochen vor Anreise sind 50% der Miete fällig; bei 4 Wochen oder weniger die volle Miete. Eine Reiserücktrittsversicherung kann über uns abgeschlossen werden (3,5% des Gesamtbetrags).",
       "pets": "Haustiere sind willkommen — bitte vorher kurz melden."
     },

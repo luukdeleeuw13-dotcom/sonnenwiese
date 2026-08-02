@@ -117,25 +117,35 @@
   },
   "pricing": {
     "title": "Prijzen",
-    "intro": "Huren gaat per week: van zaterdag 15.00 uur tot zaterdag 10.00 uur (soms is zondag–zondag mogelijk, in overleg). Dit zijn de prijzen voor 2024/2025.",
+    "intro": "Huren gaat per week: van zaterdag 15.00 uur tot zaterdag 10.00 uur. Dit zijn de prijzen voor winter 2026/2027 en zomer 2027. Past een hele week niet bij je plannen? Stel gerust een vraag — er is vaak meer mogelijk dan de kalender laat zien.",
     "tableTitle": "Huurprijs per week",
     "rows": {
       "winterHigh": {
         "label": "Winter — hoogseizoen (schoolvakanties)",
-        "price": "€ 1.750"
+        "price": "€ 1.850"
       },
       "winterLow": {
         "label": "Winter — laagseizoen",
-        "price": "€ 900"
+        "price": "€ 800"
       },
       "summerHigh": {
         "label": "Zomer — hoogseizoen",
-        "price": "€ 650"
+        "price": "€ 700"
       },
       "summerLow": {
         "label": "Zomer — laagseizoen",
         "price": "€ 450"
       }
+    },
+    "seasons": {
+      "title": "Welke week valt in welk seizoen",
+      "winterHigh": "Hoogseizoen winter",
+      "summerHigh": "Hoogseizoen zomer",
+      "winterLow": "Laagseizoen winter",
+      "summerLow": "Laagseizoen zomer",
+      "winterLowValue": "de overige weken van december tot en met maart",
+      "summerLowValue": "alle overige weken van het jaar",
+      "note": "De verhuurweek loopt van zaterdag tot zaterdag. Een week telt als hoogseizoen als hij daar helemaal binnen valt."
     },
     "includedTitle": "Inbegrepen",
     "included": {
@@ -144,13 +154,13 @@
     },
     "extrasTitle": "Bijkomend",
     "extras": {
-      "cleaning": "Eindschoonmaak — € 50",
-      "tax": "Verblijfsbelasting — € 1,10 p.p. per nacht (vanaf 14 jaar), € 0,40 voor kinderen tot 14 jaar",
+      "cleaning": "Eindschoonmaak — € 50, ter plaatse te voldoen",
+      "tax": "Verblijfsbelasting — € 1,10 p.p. per nacht (vanaf 14 jaar), € 0,40 voor kinderen tot 14 jaar, ter plaatse te voldoen",
       "linen": "Bedlinnen en handdoeken — zelf meenemen"
     },
     "paymentTitle": "Goed om te weten",
     "payment": {
-      "deposit": "Na de bevestiging betaal je binnen 14 dagen een aanbetaling; het restant uiterlijk 6 weken voor aankomst.",
+      "deposit": "Na de bevestiging krijg je een betaalverzoek voor de huur, over te maken naar onze Oostenrijkse rekening. De eindschoonmaak en de verblijfsbelasting reken je ter plaatse af.",
       "cancel": "Bij annulering meer dan 6 weken voor aankomst ben je 50% van de huur verschuldigd; bij 4 weken of minder de volledige huur. Een annuleringsverzekering afsluiten kan via ons (3,5% van het totaalbedrag).",
       "pets": "Huisdieren zijn welkom — graag vooraf even melden."
     },
