@@ -58,7 +58,7 @@ function highSeasonDates(
 }
 const includedKeys = ["energy", "internet"] as const;
 const extrasKeys = ["cleaning", "tax", "linen"] as const;
-const paymentKeys = ["deposit", "cancel", "pets"] as const;
+const paymentKeys = ["when", "pets"] as const;
 
 export default function PricingPage({
   params,

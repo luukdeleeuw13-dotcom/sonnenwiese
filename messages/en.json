@@ -160,8 +160,7 @@
     },
     "paymentTitle": "Good to know",
     "payment": {
-      "deposit": "Well before you travel you'll receive a payment request for the rent, to be transferred to our Austrian account. The amount must be received before you arrive. Final cleaning and tourist tax are settled on site.",
-      "cancel": "If you cancel more than 6 weeks before arrival, 50% of the rent is due; at 4 weeks or less, the full rent. Cancellation insurance can be arranged through us (3.5% of the total).",
+      "when": "Well before you travel you'll receive a payment request for the rent, to be transferred to our Austrian account. The amount must be received before you arrive. Final cleaning and tourist tax are settled on site.",
       "pets": "Pets are welcome — please let us know in advance."
     },
     "cta": "Check availability"
