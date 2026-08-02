@@ -1,4 +1,5 @@
 import type { BookingInput } from "@/lib/supabase/types";
+import { isChangeoverDate } from "@/lib/booking/weeks";
 
 const LOCALES = ["nl", "de", "en"] as const;
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -40,6 +41,12 @@ export function validateBooking(raw: unknown): BookingValidationResult {
   } else {
     const today = new Date().toISOString().slice(0, 10);
     if (startDate < today) errors.dates = "datesPast";
+    // De kalender laat alleen hele weken kiezen, maar de kalender is maar
+    // een hulpmiddel: wie het formulier omzeilt zou anders alsnog een halve
+    // week in de agenda kunnen zetten.
+    else if (!isChangeoverDate(startDate) || !isChangeoverDate(endDate)) {
+      errors.dates = "datesWholeWeeks";
+    }
   }
 
   const guests = typeof body.guests === "number" ? body.guests : NaN;

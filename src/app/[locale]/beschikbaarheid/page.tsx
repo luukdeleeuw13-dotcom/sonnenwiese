@@ -5,6 +5,7 @@ import {
   isSupabaseConfigured,
 } from "@/lib/supabase/server";
 import { buildMetadata } from "@/lib/metadata";
+import { Link } from "@/i18n/navigation";
 import BookingSection, {
   type BookedRange,
 } from "@/components/booking/BookingSection";
@@ -87,6 +88,23 @@ export default async function AvailabilityPage({
         bookedRanges={availability.ranges}
         unavailable={!availability.ok}
       />
+
+      {/* Staat bewust buiten BookingSection: juist als de kalender het niet
+          doet, moet er nog een manier zijn om ons te bereiken. */}
+      <section className="mt-10 rounded-card bg-sand/60 p-6 sm:p-8">
+        <h2 className="font-display text-xl font-semibold text-bark sm:text-2xl">
+          {t("questionTitle")}
+        </h2>
+        <p className="mt-2 max-w-2xl leading-relaxed text-timber">
+          {t("questionText")}
+        </p>
+        <Link
+          href="/vragen"
+          className="mt-4 inline-block rounded-lg border border-timber/30 bg-snow px-5 py-3 text-sm font-semibold text-bark transition-colors hover:border-timber"
+        >
+          {t("questionCta")}
+        </Link>
+      </section>
     </div>
   );
 }
