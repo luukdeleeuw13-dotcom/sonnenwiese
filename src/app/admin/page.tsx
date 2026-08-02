@@ -4,13 +4,20 @@ import {
   getSupabaseServerClient,
   isSupabaseConfigured,
 } from "@/lib/supabase/server";
-import type { BookingRow } from "@/lib/supabase/types";
+import type { BookingRow, InquiryRow } from "@/lib/supabase/types";
+import { isOwnerBlock } from "@/lib/admin/bookings";
+import { hasPaymentColumns } from "@/lib/admin/payments";
+import WeekPlanner from "@/components/admin/WeekPlanner";
+import NextGuest from "@/components/admin/NextGuest";
+import PaymentStrip from "@/components/admin/PaymentStrip";
 import {
   login,
   logout,
   setBookingStatus,
   deleteBooking,
   blockPeriod,
+  setInquiryHandled,
+  deleteInquiry,
 } from "./actions";
 
 export const dynamic = "force-dynamic";
@@ -34,15 +41,24 @@ function fmtDate(d: string): string {
   });
 }
 
-function BookingCard({ booking }: { booking: BookingRow }) {
+function BookingCard({
+  booking,
+  today,
+}: {
+  booking: BookingRow;
+  today: string;
+}) {
   const status = statusLabels[booking.status] ?? statusLabels.pending;
   // Handmatige blokkades: aangemaakt via het blokkeer-formulier (eigen
   // e-mailadres, 1 "gast", geen bericht, direct bevestigd).
-  const isBlock =
-    booking.email === process.env.OWNER_NOTIFICATION_EMAIL &&
+  const isBlock = booking.status === "confirmed" && isOwnerBlock(booking);
+  // De nota hoort bij een afspraak die staat: een aanvraag die nog kan worden
+  // afgewezen krijgt geen bedrag en geen betaalstatus.
+  const showPayment =
     booking.status === "confirmed" &&
-    booking.guests === 1 &&
-    !booking.message;
+    !isBlock &&
+    booking.end_date >= today &&
+    hasPaymentColumns(booking);
 
   return (
     <div className="rounded-card border border-sand bg-snow p-4">
@@ -73,6 +89,7 @@ function BookingCard({ booking }: { booking: BookingRow }) {
           {booking.message}
         </p>
       )}
+      {showPayment && <PaymentStrip booking={booking} today={today} />}
       <div className="mt-3 flex flex-wrap gap-2">
         {booking.status !== "confirmed" && (
           <form action={setBookingStatus}>
@@ -103,13 +120,91 @@ function BookingCard({ booking }: { booking: BookingRow }) {
   );
 }
 
+function fmtMoment(value: string): string {
+  return new Date(value).toLocaleString("nl-NL", {
+    day: "numeric",
+    month: "short",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+}
+
+// De onderwerpregel volgt de taal van de vraagsteller: die krijgt straks een
+// antwoord in zijn eigen taal, dan hoort de kop daar niet Nederlands te zijn.
+const replySubjects: Record<string, string> = {
+  nl: "Je vraag over Sonnenwiese",
+  de: "Deine Frage zu Sonnenwiese",
+  en: "Your question about Sonnenwiese",
+};
+
+// Een vraag is geen aanvraag: geen accepteren, geen afwijzen, en niets in de
+// kalender. Alleen beantwoorden — vandaar de mailto als voornaamste knop.
+function InquiryCard({ inquiry }: { inquiry: InquiryRow }) {
+  return (
+    <div className="rounded-card border border-sand bg-snow p-4">
+      <div className="flex flex-wrap items-center justify-between gap-2">
+        <p className="font-semibold text-bark">{inquiry.full_name}</p>
+        <span className="text-xs text-timber/70">
+          {fmtMoment(inquiry.created_at)}
+        </span>
+      </div>
+      <p className="mt-1 text-sm text-timber">
+        <a
+          href={`mailto:${inquiry.email}`}
+          className="underline-offset-2 hover:underline"
+        >
+          {inquiry.email}
+        </a>
+        {inquiry.phone && <> · {inquiry.phone}</>}
+        {" · "}
+        {inquiry.locale}
+      </p>
+      {inquiry.period && (
+        <p className="mt-1 text-sm text-timber">
+          Periode: <span className="font-medium">{inquiry.period}</span>
+        </p>
+      )}
+      <p className="mt-2 whitespace-pre-wrap rounded-lg bg-cream px-3 py-2 text-sm text-timber">
+        {inquiry.message}
+      </p>
+      <div className="mt-3 flex flex-wrap items-center gap-2">
+        <a
+          href={`mailto:${inquiry.email}?subject=${encodeURIComponent(
+            replySubjects[inquiry.locale] ?? replySubjects.nl
+          )}`}
+          className="rounded-lg bg-meadow px-4 py-2 text-sm font-semibold text-snow hover:bg-meadow-dark"
+        >
+          Beantwoorden
+        </a>
+        <form action={setInquiryHandled}>
+          <input type="hidden" name="id" value={inquiry.id} />
+          <input
+            type="hidden"
+            name="handled"
+            value={inquiry.handled ? "false" : "true"}
+          />
+          <button className="rounded-lg border border-sand bg-cream px-4 py-2 text-sm font-semibold text-timber hover:border-timber">
+            {inquiry.handled ? "↺ Heropenen" : "✓ Afgehandeld"}
+          </button>
+        </form>
+        <form action={deleteInquiry}>
+          <input type="hidden" name="id" value={inquiry.id} />
+          <button className="rounded-lg px-3 py-2 text-sm text-timber/70 hover:text-red-700">
+            Verwijderen
+          </button>
+        </form>
+      </div>
+    </div>
+  );
+}
+
 export default async function AdminPage({
   searchParams,
 }: {
-  searchParams: Promise<{ fout?: string }>;
+  searchParams: Promise<{ fout?: string; prijsfout?: string }>;
 }) {
   const loggedIn = await isAdmin();
-  const { fout } = await searchParams;
+  const { fout, prijsfout } = await searchParams;
 
   if (!loggedIn) {
     return (
@@ -148,11 +243,24 @@ export default async function AdminPage({
   }
 
   const supabase = getSupabaseServerClient();
-  const { data } = await supabase
-    .from("bookings")
-    .select("*")
-    .order("start_date", { ascending: true });
-  const bookings = (data ?? []) as BookingRow[];
+  const [bookingResult, inquiryResult] = await Promise.all([
+    supabase.from("bookings").select("*").order("start_date", { ascending: true }),
+    supabase
+      .from("inquiries")
+      .select("*")
+      .order("created_at", { ascending: false }),
+  ]);
+  const bookings = (bookingResult.data ?? []) as BookingRow[];
+  const inquiries = (inquiryResult.data ?? []) as InquiryRow[];
+  // Zolang migratie 0002 nog niet in Supabase is uitgevoerd, bestaat de
+  // tabel niet. Dat stil als "geen vragen" tonen zou betekenen dat er
+  // vragen binnenkomen die niemand ziet.
+  const inquiriesBroken = Boolean(inquiryResult.error);
+  if (inquiryResult.error) {
+    console.error("Admin: vragen ophalen mislukt:", inquiryResult.error);
+  }
+  const openInquiries = inquiries.filter((i) => !i.handled);
+  const handledInquiries = inquiries.filter((i) => i.handled);
 
   const today = new Date().toISOString().slice(0, 10);
   const pending = bookings.filter((b) => b.status === "pending");
@@ -164,6 +272,12 @@ export default async function AdminPage({
       b.status === "rejected" ||
       (b.status === "confirmed" && b.end_date < today)
   );
+  // Echte gasten: blokkades voor eigen gebruik komen niet logeren.
+  const upcomingGuests = upcoming.filter((b) => !isOwnerBlock(b));
+  // Net als bij de vragen: zolang migratie 0003 niet gedraaid heeft, bestaan
+  // de nota-kolommen niet. Dan is "nog geen nota" geen feit maar een gok.
+  const paymentsBroken =
+    bookings.length > 0 && !bookings.some((b) => hasPaymentColumns(b));
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-10">
@@ -180,7 +294,14 @@ export default async function AdminPage({
             download
             className="text-sm text-timber underline-offset-2 hover:underline"
           >
-            Back-up downloaden
+            Boekingen downloaden
+          </a>
+          <a
+            href="/admin/export?tabel=vragen"
+            download
+            className="text-sm text-timber underline-offset-2 hover:underline"
+          >
+            Vragen downloaden
           </a>
           <form action={logout}>
             <button className="text-sm text-timber underline-offset-2 hover:underline">
@@ -191,6 +312,23 @@ export default async function AdminPage({
       </div>
 
       <h2 className="mt-8 font-display text-xl font-semibold text-bark">
+        Eerstkomende bezoek
+      </h2>
+      {paymentsBroken && (
+        <p className="mt-3 rounded-card border border-red-200 bg-red-50 p-4 text-sm text-red-800">
+          De nota- en betaalstatus kan niet worden getoond. Is migratie{" "}
+          <code>0003_payments.sql</code> al uitgevoerd in Supabase?
+        </p>
+      )}
+      {prijsfout && (
+        <p className="mt-3 rounded-card border border-red-200 bg-red-50 p-4 text-sm text-red-800">
+          Dat bedrag kon ik niet lezen — er is niets gewijzigd. Schrijf het als{" "}
+          <code>1250</code> of <code>1250,00</code>.
+        </p>
+      )}
+      <NextGuest guests={upcomingGuests} today={today} />
+
+      <h2 className="mt-10 font-display text-xl font-semibold text-bark">
         Nieuwe aanvragen{" "}
         {pending.length > 0 && (
           <span className="ml-1 rounded-full bg-sun px-2.5 py-0.5 text-sm text-snow">
@@ -203,9 +341,42 @@ export default async function AdminPage({
           <p className="text-sm text-timber">Geen openstaande aanvragen. 🎉</p>
         )}
         {pending.map((b) => (
-          <BookingCard key={b.id} booking={b} />
+          <BookingCard key={b.id} booking={b} today={today} />
         ))}
       </div>
+
+      <h2 className="mt-10 font-display text-xl font-semibold text-bark">
+        Vragen{" "}
+        {openInquiries.length > 0 && (
+          <span className="ml-1 rounded-full bg-sun px-2.5 py-0.5 text-sm text-snow">
+            {openInquiries.length}
+          </span>
+        )}
+      </h2>
+      <div className="mt-3 space-y-3">
+        {inquiriesBroken && (
+          <p className="rounded-card border border-red-200 bg-red-50 p-4 text-sm text-red-800">
+            De vragen konden niet worden opgehaald. Is migratie{" "}
+            <code>0002_inquiries.sql</code> al uitgevoerd in Supabase?
+          </p>
+        )}
+        {!inquiriesBroken && openInquiries.length === 0 && (
+          <p className="text-sm text-timber">Geen openstaande vragen. 🎉</p>
+        )}
+        {openInquiries.map((i) => (
+          <InquiryCard key={i.id} inquiry={i} />
+        ))}
+      </div>
+
+      <h2 className="mt-10 font-display text-xl font-semibold text-bark">
+        Wekenplanning
+      </h2>
+      <p className="mt-1 text-sm text-timber">
+        Elk blokje is één verhuurweek, zaterdag tot zaterdag; het getal is de
+        aankomstdatum. Ga er met de muis op staan (of tik erop) om te zien wie
+        er ligt.
+      </p>
+      <WeekPlanner bookings={bookings} />
 
       <h2 className="mt-10 font-display text-xl font-semibold text-bark">
         Komende boekingen & blokkades
@@ -215,7 +386,7 @@ export default async function AdminPage({
           <p className="text-sm text-timber">Nog niets gepland.</p>
         )}
         {upcoming.map((b) => (
-          <BookingCard key={b.id} booking={b} />
+          <BookingCard key={b.id} booking={b} today={today} />
         ))}
       </div>
 
@@ -262,6 +433,19 @@ export default async function AdminPage({
         </button>
       </form>
 
+      {handledInquiries.length > 0 && (
+        <>
+          <h2 className="mt-10 font-display text-xl font-semibold text-bark">
+            Afgehandelde vragen
+          </h2>
+          <div className="mt-3 space-y-3 opacity-75">
+            {handledInquiries.map((i) => (
+              <InquiryCard key={i.id} inquiry={i} />
+            ))}
+          </div>
+        </>
+      )}
+
       {rest.length > 0 && (
         <>
           <h2 className="mt-10 font-display text-xl font-semibold text-bark">
@@ -269,7 +453,7 @@ export default async function AdminPage({
           </h2>
           <div className="mt-3 space-y-3">
             {rest.map((b) => (
-              <BookingCard key={b.id} booking={b} />
+              <BookingCard key={b.id} booking={b} today={today} />
             ))}
           </div>
         </>

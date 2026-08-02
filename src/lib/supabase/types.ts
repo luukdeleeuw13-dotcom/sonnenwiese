@@ -13,6 +13,38 @@ export type BookingRow = {
   phone: string | null;
   message: string | null;
   locale: string;
+
+  // Nota en betaling (zie 0003_payments.sql). Optioneel getypt omdat een
+  // database waarin die migratie nog niet gedraaid heeft deze velden
+  // helemaal niet meestuurt — dan is het `undefined`, niet `null`.
+  price_cents?: number | null;
+  invoice_required?: boolean;
+  invoice_sent_at?: string | null;
+  paid_at?: string | null;
+};
+
+// Rij in de Supabase-tabel `inquiries` (zie 0002_inquiries.sql): een vraag
+// die geen boekingsaanvraag is en dus niets in de kalender blokkeert.
+export type InquiryRow = {
+  id: string;
+  created_at: string;
+  full_name: string;
+  email: string;
+  phone: string | null;
+  period: string | null;
+  message: string;
+  locale: string;
+  handled: boolean;
+};
+
+// Gevalideerde invoer van het vragenformulier.
+export type InquiryInput = {
+  fullName: string;
+  email: string;
+  phone?: string;
+  period?: string;
+  message: string;
+  locale: "nl" | "de" | "en";
 };
 
 // Gevalideerde invoer van het aanvraagformulier.
