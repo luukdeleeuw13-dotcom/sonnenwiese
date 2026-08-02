@@ -35,9 +35,10 @@ bij versturen.
    overzicht: nieuwe aanvragen, komende boekingen, en een formulier om
    handmatig periodes te blokkeren (eigen gebruik/onderhoud).
 
-Let op: zolang er geen eigen domein is geverifieerd in Resend, worden mails
-alleen bezorgd op het e-mailadres van het Resend-account zelf. Gastmails
-werken dus pas volledig na domeinverificatie (Resend → Domains).
+Het domein is inmiddels geverifieerd in Resend en de afzender is
+`no-reply@sonnenwiese.nl`, dus gastmails worden gewoon bezorgd. (Zonder
+geverifieerd domein levert Resend alleen af op het adres van het eigen
+account — daar liep dit tot augustus 2026 tegenaan.)
 
 ## Wat de site zelf doet (cron)
 
@@ -134,6 +135,10 @@ Zelfde structuur in alle drie; pas per taal de waarden aan.
 ## Nog aan te leveren
 
 - Tuinfoto (laatste "Foto volgt"-placeholder, Appartement-pagina)
-- Het definitieve eigenaarsmailadres (`OWNER_NOTIFICATION_EMAIL`)
-- Domein-omzetting sonnenwiese.nl (DNS bij Yourhosting; records staan klaar
-  in Vercel) + daarna domeinverificatie in Resend voor gastmails
+- Een zomerse foto van de weide bij het huis. Bij de zomersectie op de
+  homepage staat nu een bergpanorama, terwijl de tekst over de weilanden
+  voor de deur gaat.
+
+Afgerond in augustus 2026 en dus hier weg: het eigenaarsmailadres, de
+domein-omzetting naar Vercel, de mailmigratie en de domeinverificatie in
+Resend.
