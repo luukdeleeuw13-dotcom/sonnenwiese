@@ -35,7 +35,25 @@
     "highlightVillageText": "Shops and restaurants a 10-minute walk away, in one of the prettiest villages of Salzburgerland.",
     "introTitle": "Our home in the mountains",
     "introText": "Sonnenwiese isn't a rental business — it's our own holiday home, which we love sharing with friends and friends of friends. You'll find everything you have at home, with the mountains as your back garden. In winter you're on the slopes within minutes; in summer you walk straight out into the meadows and mountain trails.",
-    "introCta": "See the apartment"
+    "introCta": "See the apartment",
+    "mosaicTitle": "A first look around",
+    "mosaicCta": "All photos",
+    "mosaic": {
+      "alpenglow": "Evening light on the Hochkönig",
+      "living": "The living room",
+      "village": "The church of Maria Alm",
+      "kitchen": "The kitchen",
+      "aerial": "Maria Alm from above"
+    },
+    "winterEyebrow": "Winter",
+    "winterTitle": "On the slopes within minutes",
+    "winterText": "The ski bus stops three hundred metres from the door and the nearest lift is a five-minute drive. Beyond it lies the Hochkönig region: a hundred and fifty kilometres of piste, from gentle blues to serious runs. There is cross-country skiing, tobogganing and winter walking too.",
+    "seasonCta": "More about the area",
+    "summerEyebrow": "Summer",
+    "summerTitle": "Straight from the door into the meadows",
+    "summerText": "A loop through the flower meadows before breakfast, or a full day out in the massif — no need to get in the car first. And if you would rather skip the climb, the cable car takes you up.",
+    "closingTitle": "Feel like coming over?",
+    "closingText": "See when the house is free and send a request. You will get a personal reply — usually within a few days."
   },
   "apartment": {
     "title": "The apartment",

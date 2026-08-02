@@ -35,7 +35,25 @@
     "highlightVillageText": "Winkels en restaurants op 10 minuten lopen, in een van de mooiste dorpjes van het Salzburgerland.",
     "introTitle": "Bij ons thuis in de bergen",
     "introText": "Sonnenwiese is geen verhuurbedrijf — het is ons eigen vakantiehuis, dat we graag delen met vrienden en vrienden van vrienden. Je vindt er alles wat je thuis ook hebt, met de bergen als achtertuin. In de winter sta je binnen een paar minuten op de piste, in de zomer wandel je zo de weilanden en bergpaden op.",
-    "introCta": "Bekijk het appartement"
+    "introCta": "Bekijk het appartement",
+    "mosaicTitle": "Even rondkijken",
+    "mosaicCta": "Alle foto's",
+    "mosaic": {
+      "alpenglow": "Avondlicht op het Hochkönig",
+      "living": "De woonkamer",
+      "village": "Het kerkje van Maria Alm",
+      "kitchen": "De keuken",
+      "aerial": "Maria Alm van bovenaf"
+    },
+    "winterEyebrow": "Winter",
+    "winterTitle": "Binnen een paar minuten op de piste",
+    "winterText": "De skibus stopt op driehonderd meter van de deur en de dichtstbijzijnde lift is vijf minuten rijden. Daarachter ligt het Hochkönig-gebied: honderdvijftig kilometer piste, van rustig blauw tot stevig werk. Langlaufen, rodelen en winterwandelen kan er ook volop.",
+    "seasonCta": "Meer over de omgeving",
+    "summerEyebrow": "Zomer",
+    "summerTitle": "Vanaf de voordeur zo de weilanden in",
+    "summerText": "Een rondje door de bloemenweiden voor het ontbijt, of een dagtocht het massief in — je hoeft er niet eerst voor in de auto. En wie het klimwerk liever overslaat, laat zich door de kabelbaan naar boven brengen.",
+    "closingTitle": "Zin om te komen?",
+    "closingText": "Kijk wanneer het huis vrij is en stuur een aanvraag. Je krijgt persoonlijk antwoord — meestal binnen een paar dagen."
   },
   "apartment": {
     "title": "Het appartement",

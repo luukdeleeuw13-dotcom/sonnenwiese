@@ -35,7 +35,25 @@
     "highlightVillageText": "Geschäfte und Restaurants in 10 Gehminuten, in einem der schönsten Dörfer des Salzburger Landes.",
     "introTitle": "Bei uns zu Hause in den Bergen",
     "introText": "Die Sonnenwiese ist kein Vermietungsbetrieb — es ist unser eigenes Ferienhaus, das wir gerne mit Freunden und Freunden von Freunden teilen. Hier findest du alles, was du auch zu Hause hast, mit den Bergen als Garten. Im Winter stehst du in wenigen Minuten auf der Piste, im Sommer wanderst du direkt hinein in Wiesen und Bergpfade.",
-    "introCta": "Die Wohnung ansehen"
+    "introCta": "Die Wohnung ansehen",
+    "mosaicTitle": "Ein erster Eindruck",
+    "mosaicCta": "Alle Fotos",
+    "mosaic": {
+      "alpenglow": "Abendlicht am Hochkönig",
+      "living": "Das Wohnzimmer",
+      "village": "Die Kirche von Maria Alm",
+      "kitchen": "Die Küche",
+      "aerial": "Maria Alm von oben"
+    },
+    "winterEyebrow": "Winter",
+    "winterTitle": "In wenigen Minuten auf der Piste",
+    "winterText": "Der Skibus hält dreihundert Meter vom Haus entfernt, der nächste Lift ist fünf Autominuten weg. Dahinter liegt die Region Hochkönig: hundertfünfzig Kilometer Piste, von gemütlich blau bis anspruchsvoll. Auch Langlaufen, Rodeln und Winterwandern sind möglich.",
+    "seasonCta": "Mehr über die Umgebung",
+    "summerEyebrow": "Sommer",
+    "summerTitle": "Direkt vor der Haustür in die Wiesen",
+    "summerText": "Eine Runde durch die Blumenwiesen vor dem Frühstück oder eine Tagestour ins Massiv — dafür müssen Sie sich nicht erst ins Auto setzen. Und wer den Aufstieg lieber auslässt, nimmt die Bergbahn nach oben.",
+    "closingTitle": "Lust zu kommen?",
+    "closingText": "Schauen Sie, wann das Haus frei ist, und schicken Sie eine Anfrage. Sie bekommen persönlich Antwort — meist innerhalb weniger Tage."
   },
   "apartment": {
     "title": "Die Wohnung",

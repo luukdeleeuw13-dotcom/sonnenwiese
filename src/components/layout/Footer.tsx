@@ -1,5 +1,6 @@
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import FooterCta from "./FooterCta";
 
 export default function Footer() {
   const t = useTranslations("footer");
@@ -18,12 +19,7 @@ export default function Footer() {
             {t("privacy")}
           </Link>
         </div>
-        <Link
-          href="/beschikbaarheid"
-          className="inline-block rounded-lg bg-sun px-5 py-3 text-center text-sm font-semibold text-snow transition-colors hover:bg-sun-dark"
-        >
-          {t("availabilityCta")}
-        </Link>
+        <FooterCta />
       </div>
     </footer>
   );
