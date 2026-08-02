@@ -14,7 +14,8 @@
   "footer": {
     "tagline": "Our family home on the edge of Maria Alm — for friends, and friends of friends.",
     "location": "Maria Alm, Salzburgerland, Austria",
-    "availabilityCta": "Check availability"
+    "availabilityCta": "Check availability",
+    "privacy": "Privacy"
   },
   "common": {
     "photoComingSoon": "Photo coming soon",
@@ -176,7 +177,8 @@
       "datesPast": "The arrival date must be in the future.",
       "guestsInvalid": "Choose a number of guests between 1 and 8.",
       "datesUnavailable": "This period is (partly) already booked. Please pick a different period in the calendar."
-    }
+    },
+    "privacyNote": "We use your details only to answer this request and delete them after a year. There's more about that in our <link>privacy statement</link>."
   },
   "practical": {
     "title": "Directions & practical",
@@ -199,6 +201,42 @@
       "kitchen": "Please leave the kitchen — including oven and dishwasher — clean",
       "key": "Lost key: € 20 fee"
     }
+  },
+  "privacy": {
+    "title": "Privacy",
+    "intro": "Sonnenwiese isn't a company, it's a family home — and that's how we treat your details too: we only ask for what we need to answer your request, and then we throw it away.",
+    "controllerTitle": "Who is responsible",
+    "controllerText": "Frits de Leeuw looks after Sonnenwiese and is responsible for the details that come in through this site. Questions about them? Write to <mail>mail@sonnenwiese.nl</mail> — it goes straight to him.",
+    "dataTitle": "What we ask of you",
+    "dataIntro": "If you send a request through the form, we store:",
+    "data": {
+      "name": "your name",
+      "email": "your email address",
+      "phone": "your phone number, if you fill it in — it isn't required",
+      "dates": "your arrival and departure dates and how many of you are coming",
+      "message": "your message, if you leave one",
+      "locale": "the language you were reading the site in, so we reply in that language"
+    },
+    "dataFooter": "Nothing more. No home address, no date of birth, no payment details — we sort that out personally if your stay goes ahead.",
+    "whyTitle": "Why we keep it",
+    "whyText": "To check whether the apartment is free, answer your request and arrange your stay. That is the only reason. You won't get a newsletter from us, we don't sell anything on, and your details never go to anyone else for their own purposes.",
+    "retentionTitle": "How long",
+    "retentionText": "One year. After that the site deletes your request automatically — every night, with no one involved. If you'd like it gone sooner, a short email is enough.",
+    "sharedTitle": "Who else sees it",
+    "sharedIntro": "Only the services that keep the site running. They may use your details for that purpose alone:",
+    "shared": {
+      "supabase": "Supabase — the database your request is stored in",
+      "resend": "Resend — sends the confirmation to you and the notification to us, from servers in Europe",
+      "vercel": "Vercel — runs the website itself",
+      "cloudflare": "Cloudflare — looks after the domain and forwards post sent to mail@sonnenwiese.nl"
+    },
+    "cookiesTitle": "Cookies",
+    "cookiesText": "We don't have any. No analytics, no advertising, no social media buttons looking over your shoulder. That's why you won't see a cookie notice here — there is simply nothing to accept. The map on the practical page comes from OpenStreetMap and doesn't set any either.",
+    "rightsTitle": "Your rights",
+    "rightsText": "You can always ask what we hold about you, have it corrected, or have it erased. One message to <mail>mail@sonnenwiese.nl</mail> is enough. If we can't work it out together, you can complain to the Dutch data protection authority or to the regulator in your own country.",
+    "securityTitle": "Security",
+    "securityText": "The site runs entirely over an encrypted connection, and the database can't be reached directly from the internet — only the site itself can get to it.",
+    "updated": "Last updated: 2 August 2026"
   },
   "notFound": {
     "title": "Page not found",

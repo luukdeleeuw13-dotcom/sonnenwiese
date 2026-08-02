@@ -14,7 +14,8 @@
   "footer": {
     "tagline": "Ons familiehuis aan de rand van Maria Alm — voor vrienden, en vrienden van vrienden.",
     "location": "Maria Alm, Salzburgerland, Oostenrijk",
-    "availabilityCta": "Bekijk beschikbaarheid"
+    "availabilityCta": "Bekijk beschikbaarheid",
+    "privacy": "Privacy"
   },
   "common": {
     "photoComingSoon": "Foto volgt",
@@ -176,7 +177,8 @@
       "datesPast": "De aankomstdatum moet in de toekomst liggen.",
       "guestsInvalid": "Kies een aantal personen tussen 1 en 8.",
       "datesUnavailable": "Deze periode is (deels) al bezet. Kies een andere periode in de kalender."
-    }
+    },
+    "privacyNote": "We gebruiken je gegevens alleen om deze aanvraag te beantwoorden en verwijderen ze na een jaar. Meer daarover lees je in onze <link>privacyverklaring</link>."
   },
   "practical": {
     "title": "Route & praktisch",
@@ -199,6 +201,42 @@
       "kitchen": "Laat de keuken — inclusief oven en vaatwasser — schoon achter",
       "key": "Zoekgeraakte sleutel: € 20 vergoeding"
     }
+  },
+  "privacy": {
+    "title": "Privacy",
+    "intro": "Sonnenwiese is geen bedrijf maar een familiehuis, en zo gaan we ook met je gegevens om: we vragen alleen wat nodig is om je aanvraag te beantwoorden, en daarna gooien we het weg.",
+    "controllerTitle": "Wie verantwoordelijk is",
+    "controllerText": "Frits de Leeuw beheert Sonnenwiese en is verantwoordelijk voor de gegevens die via deze site binnenkomen. Vragen daarover? Mail naar <mail>mail@sonnenwiese.nl</mail> — dat komt rechtstreeks bij hem terecht.",
+    "dataTitle": "Wat we van je vragen",
+    "dataIntro": "Doe je een aanvraag via het formulier, dan bewaren we:",
+    "data": {
+      "name": "je naam",
+      "email": "je e-mailadres",
+      "phone": "je telefoonnummer, als je dat invult — verplicht is het niet",
+      "dates": "de aankomst- en vertrekdatum en met hoeveel personen je komt",
+      "message": "je bericht, als je er een achterlaat",
+      "locale": "de taal waarin je de site bekeek, zodat we in die taal terugmailen"
+    },
+    "dataFooter": "Meer niet. Geen adres, geen geboortedatum, geen betaalgegevens — dat regelen we persoonlijk als je verblijf doorgaat.",
+    "whyTitle": "Waarom we het bewaren",
+    "whyText": "Om te kijken of het appartement vrij is, je aanvraag te beantwoorden en je verblijf af te spreken. Dat is de enige reden. Je krijgt geen nieuwsbrief van ons, we verkopen niets door, en je gegevens gaan nooit naar anderen voor hún doeleinden.",
+    "retentionTitle": "Hoe lang",
+    "retentionText": "Een jaar. Daarna verwijdert de site je aanvraag automatisch — dat gebeurt elke nacht, zonder dat er iemand aan te pas komt. Wil je eerder weg, dan is één mailtje genoeg.",
+    "sharedTitle": "Wie het nog meer ziet",
+    "sharedIntro": "Alleen de partijen die de site technisch draaiende houden. Zij mogen je gegevens uitsluitend gebruiken om die dienst te leveren, niet voor iets anders:",
+    "shared": {
+      "supabase": "Supabase — de database waarin je aanvraag wordt opgeslagen",
+      "resend": "Resend — verstuurt de bevestiging aan jou en de melding aan ons, vanaf servers in Europa",
+      "vercel": "Vercel — draait de website zelf",
+      "cloudflare": "Cloudflare — verzorgt het domein en stuurt post aan mail@sonnenwiese.nl door"
+    },
+    "cookiesTitle": "Cookies",
+    "cookiesText": "Die hebben we niet. Geen analytics, geen advertenties, geen meekijkende knoppen van sociale media. Daarom zie je hier ook geen cookiemelding — er valt eenvoudigweg niets te accepteren. De kaart op de praktische pagina komt van OpenStreetMap en plaatst er evenmin.",
+    "rightsTitle": "Je rechten",
+    "rightsText": "Je mag altijd opvragen wat we van je hebben, het laten aanpassen of het laten wissen. Eén bericht naar <mail>mail@sonnenwiese.nl</mail> volstaat. Kom je er met ons niet uit, dan kun je klagen bij de Nederlandse Autoriteit Persoonsgegevens of bij de toezichthouder in je eigen land.",
+    "securityTitle": "Beveiliging",
+    "securityText": "De site draait volledig over een beveiligde verbinding, en de database is niet rechtstreeks vanaf het internet te benaderen — alleen de site zelf kan erbij.",
+    "updated": "Laatst bijgewerkt: 2 augustus 2026"
   },
   "notFound": {
     "title": "Pagina niet gevonden",

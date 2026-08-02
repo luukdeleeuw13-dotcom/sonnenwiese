@@ -11,6 +11,12 @@ export default function Footer() {
           <p className="font-display text-lg font-semibold">Sonnenwiese</p>
           <p className="mt-1 max-w-md text-sm text-sand">{t("tagline")}</p>
           <p className="mt-2 text-sm text-sand/80">{t("location")}</p>
+          <Link
+            href="/privacy"
+            className="mt-3 inline-block text-sm text-sand/80 underline-offset-4 hover:text-cream hover:underline"
+          >
+            {t("privacy")}
+          </Link>
         </div>
         <Link
           href="/beschikbaarheid"

@@ -5,6 +5,7 @@ import type { DateRange } from "react-day-picker";
 import { useLocale, useTranslations } from "next-intl";
 import { format } from "date-fns";
 import { nl, de, enGB } from "date-fns/locale";
+import { Link } from "@/i18n/navigation";
 import BookingConfirmation from "./BookingConfirmation";
 
 const dateLocales = { nl, de, en: enGB } as const;
@@ -214,6 +215,21 @@ export default function BookingForm({
       >
         {status === "submitting" ? t("submitting") : t("submit")}
       </button>
+
+      {/* De AVG wil dat je vertelt wát er met de gegevens gebeurt op het
+          moment dat je ze vraagt — niet alleen ergens in een footer. */}
+      <p className="mt-3 text-center text-xs leading-relaxed text-timber/80">
+        {t.rich("privacyNote", {
+          link: (chunks) => (
+            <Link
+              href="/privacy"
+              className="underline underline-offset-2 hover:text-timber"
+            >
+              {chunks}
+            </Link>
+          ),
+        })}
+      </p>
     </form>
   );
 }

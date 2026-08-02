@@ -1,0 +1,65 @@
+import { NextResponse } from "next/server";
+import {
+  getSupabaseServerClient,
+  isSupabaseConfigured,
+} from "@/lib/supabase/server";
+
+// De privacyverklaring belooft dat aanvragen na een jaar verdwijnen. Een
+// bewaartermijn die je opschrijft maar niet uitvoert is erger dan geen
+// bewaartermijn noemen, dus voert deze taak hem elke nacht daadwerkelijk uit.
+//
+// We rekenen vanaf created_at, niet vanaf de verblijfsdatum: het gaat om hoe
+// lang wij de persoonsgegevens hebben, niet om wanneer iemand langskwam.
+export const dynamic = "force-dynamic";
+
+const RETENTION_DAYS = 365;
+
+export async function GET(request: Request) {
+  const secret = process.env.CRON_SECRET;
+  if (secret) {
+    const auth = request.headers.get("authorization");
+    if (auth !== `Bearer ${secret}`) {
+      return NextResponse.json({ ok: false }, { status: 401 });
+    }
+  }
+
+  if (!isSupabaseConfigured()) {
+    return NextResponse.json(
+      { ok: false, reason: "supabase-not-configured" },
+      { status: 500 }
+    );
+  }
+
+  const cutoff = new Date(
+    Date.now() - RETENTION_DAYS * 24 * 60 * 60 * 1000
+  ).toISOString();
+
+  try {
+    const supabase = getSupabaseServerClient();
+    // select() na delete geeft de verwijderde rijen terug, zodat we kunnen
+    // loggen hoeveel er weg zijn zonder de inhoud vast te houden.
+    const { data, error } = await supabase
+      .from("bookings")
+      .delete()
+      .lt("created_at", cutoff)
+      .select("id");
+
+    if (error) throw new Error(error.message);
+
+    const deleted = data?.length ?? 0;
+    if (deleted > 0) {
+      console.log(
+        `Bewaartermijn: ${deleted} aanvraag/aanvragen ouder dan ${RETENTION_DAYS} dagen verwijderd.`
+      );
+    }
+    return NextResponse.json({ ok: true, deleted, cutoff });
+  } catch (e) {
+    // Mislukt dit stilzwijgend, dan blijven gegevens langer staan dan wat we
+    // publiek beloven — dus loggen en de cron als mislukt markeren.
+    console.error("Opruimen van verlopen aanvragen mislukt:", e);
+    return NextResponse.json(
+      { ok: false, reason: "cleanup-failed" },
+      { status: 500 }
+    );
+  }
+}

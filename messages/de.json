@@ -14,7 +14,8 @@
   "footer": {
     "tagline": "Unser Familienhaus am Rande von Maria Alm — für Freunde und Freunde von Freunden.",
     "location": "Maria Alm, Salzburger Land, Österreich",
-    "availabilityCta": "Verfügbarkeit ansehen"
+    "availabilityCta": "Verfügbarkeit ansehen",
+    "privacy": "Datenschutz"
   },
   "common": {
     "photoComingSoon": "Foto folgt",
@@ -176,7 +177,8 @@
       "datesPast": "Das Anreisedatum muss in der Zukunft liegen.",
       "guestsInvalid": "Wähle eine Personenzahl zwischen 1 und 8.",
       "datesUnavailable": "Dieser Zeitraum ist (teilweise) bereits belegt. Wähle einen anderen Zeitraum im Kalender."
-    }
+    },
+    "privacyNote": "Wir verwenden Ihre Angaben ausschließlich zur Beantwortung dieser Anfrage und löschen sie nach einem Jahr. Mehr dazu in unserer <link>Datenschutzerklärung</link>."
   },
   "practical": {
     "title": "Anreise & Praktisches",
@@ -199,6 +201,42 @@
       "kitchen": "Bitte die Küche — inklusive Backofen und Geschirrspüler — sauber hinterlassen",
       "key": "Verlorener Schlüssel: € 20 Gebühr"
     }
+  },
+  "privacy": {
+    "title": "Datenschutz",
+    "intro": "Sonnenwiese ist kein Unternehmen, sondern ein Familienhaus — und so gehen wir auch mit Ihren Daten um: Wir fragen nur, was für die Beantwortung Ihrer Anfrage nötig ist, und löschen es danach wieder.",
+    "controllerTitle": "Wer verantwortlich ist",
+    "controllerText": "Frits de Leeuw betreut Sonnenwiese und ist verantwortlich für die Daten, die über diese Website eingehen. Fragen dazu? Schreiben Sie an <mail>mail@sonnenwiese.nl</mail> — das landet direkt bei ihm.",
+    "dataTitle": "Was wir von Ihnen erfragen",
+    "dataIntro": "Wenn Sie über das Formular anfragen, speichern wir:",
+    "data": {
+      "name": "Ihren Namen",
+      "email": "Ihre E-Mail-Adresse",
+      "phone": "Ihre Telefonnummer, falls Sie sie angeben — ein Pflichtfeld ist es nicht",
+      "dates": "An- und Abreisedatum sowie die Anzahl der Personen",
+      "message": "Ihre Nachricht, sofern Sie eine hinterlassen",
+      "locale": "die Sprache, in der Sie die Seite gelesen haben, damit wir in dieser Sprache antworten"
+    },
+    "dataFooter": "Mehr nicht. Keine Anschrift, kein Geburtsdatum, keine Zahlungsdaten — das besprechen wir persönlich, wenn Ihr Aufenthalt zustande kommt.",
+    "whyTitle": "Warum wir es speichern",
+    "whyText": "Um zu prüfen, ob die Wohnung frei ist, Ihre Anfrage zu beantworten und Ihren Aufenthalt zu vereinbaren. Das ist der einzige Grund. Sie bekommen von uns keinen Newsletter, wir verkaufen nichts weiter, und Ihre Daten gehen nie für fremde Zwecke an Dritte.",
+    "retentionTitle": "Wie lange",
+    "retentionText": "Ein Jahr. Danach löscht die Website Ihre Anfrage automatisch — jede Nacht, ganz ohne menschliches Zutun. Möchten Sie früher gelöscht werden, genügt eine kurze Mail.",
+    "sharedTitle": "Wer es sonst noch sieht",
+    "sharedIntro": "Nur die Dienstleister, die die Website technisch am Laufen halten. Sie dürfen Ihre Daten ausschließlich dafür verwenden:",
+    "shared": {
+      "supabase": "Supabase — die Datenbank, in der Ihre Anfrage gespeichert wird",
+      "resend": "Resend — versendet die Bestätigung an Sie und die Benachrichtigung an uns, von Servern in Europa",
+      "vercel": "Vercel — betreibt die Website selbst",
+      "cloudflare": "Cloudflare — verwaltet die Domain und leitet Post an mail@sonnenwiese.nl weiter"
+    },
+    "cookiesTitle": "Cookies",
+    "cookiesText": "Haben wir nicht. Keine Analyse-Tools, keine Werbung, keine mitlesenden Social-Media-Schaltflächen. Deshalb sehen Sie hier auch keinen Cookie-Hinweis — es gibt schlicht nichts zu akzeptieren. Die Karte auf der Praxis-Seite stammt von OpenStreetMap und setzt ebenfalls keine.",
+    "rightsTitle": "Ihre Rechte",
+    "rightsText": "Sie können jederzeit erfahren, was wir über Sie gespeichert haben, es berichtigen oder löschen lassen. Eine Nachricht an <mail>mail@sonnenwiese.nl</mail> genügt. Kommen wir nicht weiter, können Sie sich bei der niederländischen Datenschutzbehörde oder bei der Aufsichtsbehörde in Ihrem Land beschweren.",
+    "securityTitle": "Sicherheit",
+    "securityText": "Die Website läuft vollständig über eine verschlüsselte Verbindung, und die Datenbank ist aus dem Internet nicht direkt erreichbar — nur die Website selbst kommt heran.",
+    "updated": "Zuletzt aktualisiert: 2. August 2026"
   },
   "notFound": {
     "title": "Seite nicht gefunden",

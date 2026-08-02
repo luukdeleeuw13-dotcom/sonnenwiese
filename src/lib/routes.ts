@@ -9,6 +9,7 @@ export const SITE_ROUTES = [
   "prijzen",
   "beschikbaarheid",
   "route-praktisch",
+  "privacy",
 ] as const;
 
 export type SiteRoute = (typeof SITE_ROUTES)[number];
