@@ -16,6 +16,7 @@ import {
 import {
   describeWeeks,
   estimatePrice,
+  SEASONS_VALID_FROM,
   SEASONS_VALID_UNTIL,
 } from "@/lib/booking/seasons";
 import { paymentDetails } from "@/lib/config";
@@ -259,7 +260,15 @@ export default function PaymentStrip({
           {/* Buiten de looptijd van de tabel rekent de site bewust niets uit.
               Beter een lege plek die om aandacht vraagt dan een bedrag uit een
               verlopen schoolvakantiekalender. */}
-          {!estimate.ok && estimate.reason === "outside-table" && (
+          {!estimate.ok && estimate.reason === "before-table" && (
+            <span>
+              De seizoenstabel begint pas op{" "}
+              {fmtDayYear(`${SEASONS_VALID_FROM}T00:00:00`)} — dit verblijf valt
+              in het seizoen daarvóór, dus vul het bedrag met de hand in.
+            </span>
+          )}
+
+          {!estimate.ok && estimate.reason === "after-table" && (
             <span>
               De seizoenstabel loopt tot{" "}
               {fmtDayYear(`${SEASONS_VALID_UNTIL}T00:00:00`)} — vul het bedrag

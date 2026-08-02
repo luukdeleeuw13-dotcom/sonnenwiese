@@ -89,7 +89,7 @@ export type WeekPrice = {
 
 export type PriceEstimate =
   | { ok: true; weeks: WeekPrice[]; totalCents: number }
-  | { ok: false; reason: "not-whole-weeks" | "outside-table" };
+  | { ok: false; reason: "not-whole-weeks" | "before-table" | "after-table" };
 
 // Het voorstel voor een heel verblijf: elke week apart geprijsd en opgeteld.
 // Per week en niet per verblijf, omdat een verblijf over een seizoensgrens
@@ -106,7 +106,16 @@ export function estimatePrice(
   for (let offset = 0; offset < span; offset += 7) {
     const start = addDaysIso(startDate, offset);
     const season = seasonForWeek(start);
-    if (!season) return { ok: false, reason: "outside-table" };
+    // Aan welke kant de week buiten de tabel valt, bepaalt wat je eraan kunt
+    // doen: vóór het venster is de prijs van een verstreken seizoen en die
+    // komt er niet meer bij, ná het venster moet de tabel bijgewerkt worden.
+    // Eén gedeelde reden liet het beheerscherm naar het verkeerde eind wijzen.
+    if (!season) {
+      return {
+        ok: false,
+        reason: start < SEASONS_VALID_FROM ? "before-table" : "after-table",
+      };
+    }
     weeks.push({
       start,
       end: addDaysIso(start, 7),
