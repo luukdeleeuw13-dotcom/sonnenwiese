@@ -201,10 +201,14 @@ function InquiryCard({ inquiry }: { inquiry: InquiryRow }) {
 export default async function AdminPage({
   searchParams,
 }: {
-  searchParams: Promise<{ fout?: string; prijsfout?: string }>;
+  searchParams: Promise<{
+    fout?: string;
+    prijsfout?: string;
+    mailfout?: string;
+  }>;
 }) {
   const loggedIn = await isAdmin();
-  const { fout, prijsfout } = await searchParams;
+  const { fout, prijsfout, mailfout } = await searchParams;
 
   if (!loggedIn) {
     return (
@@ -324,6 +328,24 @@ export default async function AdminPage({
         <p className="mt-3 rounded-card border border-red-200 bg-red-50 p-4 text-sm text-red-800">
           Dat bedrag kon ik niet lezen — er is niets gewijzigd. Schrijf het als{" "}
           <code>1250</code> of <code>1250,00</code>.
+        </p>
+      )}
+      {/* Drie redenen waarom een betaalverzoek niet vertrok. In alle drie de
+          gevallen staat de nota nog steeds als "niet verstuurd" genoteerd:
+          verstuurd betekent hier verstuurd. */}
+      {mailfout && (
+        <p className="mt-3 rounded-card border border-red-200 bg-red-50 p-4 text-sm text-red-800">
+          {mailfout === "geenbedrag" &&
+            "Er staat nog geen bedrag bij dit verblijf — vul dat eerst in, dan kan het betaalverzoek weg."}
+          {mailfout === "geenrekening" && (
+            <>
+              De rekeninggegevens ontbreken. Zet <code>OWNER_IBAN</code> en{" "}
+              <code>OWNER_ACCOUNT_NAME</code> in de Vercel-omgeving en deploy
+              opnieuw.
+            </>
+          )}
+          {mailfout === "1" &&
+            "Het betaalverzoek kon niet worden verzonden. De nota staat nog als niet-verstuurd; probeer het zo nog eens."}
         </p>
       )}
       <NextGuest guests={upcomingGuests} today={today} />

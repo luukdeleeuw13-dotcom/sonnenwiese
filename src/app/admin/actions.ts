@@ -11,7 +11,8 @@ import {
 } from "@/lib/admin/auth";
 import { getSupabaseServerClient } from "@/lib/supabase/server";
 import { sendGuestEmail } from "@/lib/email/sendGuestEmail";
-import { primaryOwnerEmail } from "@/lib/config";
+import { sendPaymentEmail } from "@/lib/email/sendPaymentEmail";
+import { paymentDetails, primaryOwnerEmail } from "@/lib/config";
 import { isOwnerBlock } from "@/lib/admin/bookings";
 import { parseEuro } from "@/lib/admin/payments";
 import { estimatePrice } from "@/lib/booking/seasons";
@@ -197,6 +198,55 @@ export async function applySuggestedPrice(formData: FormData) {
     .update({ price_cents: estimate.totalCents })
     .eq("id", id);
   if (error) console.error("Admin: voorstel overnemen mislukt:", error);
+  revalidatePath("/admin");
+}
+
+// Het betaalverzoek naar de gast sturen, in zijn eigen taal, met bedrag,
+// rekeningnummer en betalingskenmerk erin.
+//
+// Bewust een knop en geen automatische taak. De site weet wanneer een nota
+// verstuurd zou moeten zijn, maar niet of er intussen iets anders is
+// afgesproken — een appje, een korting, familie die toch meebetaalt. Eén klik
+// is weinig gevraagd voor het verschil tussen een mail die klopt en een mail
+// die iemand moet rechtzetten.
+export async function sendInvoice(formData: FormData) {
+  await requireAdmin();
+  const id = String(formData.get("id") ?? "");
+  if (!id) return;
+
+  const supabase = getSupabaseServerClient();
+  const { data: booking } = await supabase
+    .from("bookings")
+    .select("*")
+    .eq("id", id)
+    .single<BookingRow>();
+  if (!booking) return;
+
+  if (typeof booking.price_cents !== "number") {
+    redirect("/admin?mailfout=geenbedrag");
+  }
+  if (!paymentDetails()) {
+    redirect("/admin?mailfout=geenrekening");
+  }
+
+  // De redirect hieronder mag niet in de try: `redirect()` werkt via een
+  // exception, en een catch eromheen zou hem opslokken.
+  let failed = false;
+  try {
+    await sendPaymentEmail(booking, "request");
+  } catch (e) {
+    console.error("Admin: betaalverzoek versturen mislukt:", e);
+    failed = true;
+  }
+  if (failed) redirect("/admin?mailfout=1");
+
+  // Pas noteren als de mail echt weg is: "verstuurd" moet betekenen dat er
+  // iets verstuurd is.
+  const { error } = await supabase
+    .from("bookings")
+    .update({ invoice_sent_at: new Date().toISOString() })
+    .eq("id", id);
+  if (error) console.error("Admin: nota-datum noteren mislukt:", error);
   revalidatePath("/admin");
 }
 

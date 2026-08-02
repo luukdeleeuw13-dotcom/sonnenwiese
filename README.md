@@ -42,7 +42,7 @@ account — daar liep dit tot augustus 2026 tegenaan.)
 
 ## Wat de site zelf doet (cron)
 
-Drie taken lopen automatisch; het schema staat in
+Vier taken lopen automatisch; het schema staat in
 [`vercel.json`](vercel.json) en de tijden zijn **UTC** (in de zomer twee uur
 achter op Nederland):
 
@@ -50,13 +50,46 @@ achter op Nederland):
 | --- | --- | --- |
 | `/api/cron/keepalive` | dagelijks 06:00 | één query, zodat Supabase het gratis project niet pauzeert |
 | `/api/cron/cleanup` | dagelijks 03:30 | aanvragen en vragen ouder dan een jaar verwijderen (privacyverklaring) |
+| `/api/cron/payment-check` | dagelijks 07:00 | vraagt de eigenaar of de huur van de eerstkomende gast binnen is |
 | `/api/cron/backup` | zondag 05:00 | alle boekingen en vragen als CSV mailen naar `OWNER_NOTIFICATION_EMAIL` |
 
 Vercel voert crons op het gratis plan hoogstens één keer per dag uit en niet
 op de minuut nauwkeurig (±59 min), dus de back-up ligt zondagochtend in de
 inbox. Zet op Vercel de env var `CRON_SECRET`: die stuurt Vercel als bearer
-token mee, en zonder het juiste token weigeren de drie taken. Voor de back-up
+token mee, en zonder het juiste token weigeren de vier taken. Voor de back-up
 is dat geen luxe — die verstuurt persoonsgegevens.
+
+## Het betaalverzoek
+
+Staat er een bedrag bij een bevestigde boeking, dan zet één knop in `/admin`
+het betaalverzoek naar de gast op de post: bedrag, rekening, IBAN en
+betalingskenmerk, in de taal waarin de aanvraag binnenkwam. Het bedrag komt uit
+de seizoenstabel ([`src/lib/booking/seasons.ts`](src/lib/booking/seasons.ts)),
+maar wordt nooit vanzelf ingevuld — je neemt het over met een klik, of je typt
+iets anders.
+
+De rekening staat in twee env vars, `OWNER_IBAN` en `OWNER_ACCOUNT_NAME`.
+Ontbreekt er één, dan blijft de knop weg en zegt het beheerscherm waarom;
+een betaalverzoek zonder rekeningnummer is slechter dan geen betaalverzoek.
+
+Drie dagen voor aankomst kijkt `/api/cron/payment-check` of de huur nog als
+openstaand genoteerd staat. Zo ja, dan gaat er **één** mail naar de eigenaren
+met twee knoppen:
+
+- **Ja, het geld is binnen** → het verblijf gaat op betaald en de gast krijgt
+  een korte bevestiging in de eigen taal.
+- **Nee, nog niets gezien** → de gast krijgt een vriendelijke herinnering met
+  het bedrag en de rekening erbij, en met de vraag of de berichten elkaar
+  gekruist hebben.
+
+Die omweg is opzet. De site weet niet wat er op de bankrekening staat, alleen
+wat er in het beheerscherm is aangevinkt. Een automatische herinnering zou dus
+een gast kunnen beschuldigen die keurig betaald heeft en bij wie alleen
+niemand het vinkje omzette. De computer signaleert, de mens oordeelt, en pas
+daarna gaat er iets naar de gast.
+
+De vraag komt hoogstens één keer per boeking (`payment_check_at`). Wie het niet
+zeker weet doet niets; in het beheerscherm kan het altijd met de hand.
 
 Dezelfde bestanden zijn ook met de hand te downloaden, met de twee links
 rechtsboven op `/admin`.
@@ -79,7 +112,11 @@ rechtsboven op `/admin`.
 4. En daarna
    [`supabase/migrations/0003_payments.sql`](supabase/migrations/0003_payments.sql)
    — die voegt de nota- en betaalstatus toe aan `bookings`.
-5. Ga naar **Settings → API** en noteer:
+5. En tot slot
+   [`supabase/migrations/0004_payment_flow.sql`](supabase/migrations/0004_payment_flow.sql)
+   — twee momenten erbij, zodat de betaalcontrole bijhoudt wat ze al gevraagd
+   en gestuurd heeft.
+6. Ga naar **Settings → API** en noteer:
    - de **Project URL** → env var `SUPABASE_URL`
    - de **service_role key** → env var `SUPABASE_SERVICE_ROLE_KEY`
 

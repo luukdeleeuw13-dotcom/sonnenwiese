@@ -28,3 +28,27 @@ export function ownerEmails(): string[] {
 export function primaryOwnerEmail(): string {
   return ownerEmails()[0] ?? CONTACT_EMAIL;
 }
+
+// Een IBAN wordt per vier tekens gelezen; zo staat hij ook op een afschrift
+// en zo tikt iemand hem zonder fouten over in zijn bankapp.
+export function formatIban(iban: string): string {
+  return iban
+    .replace(/\s+/g, "")
+    .toUpperCase()
+    .replace(/(.{4})/g, "$1 ")
+    .trim();
+}
+
+// De rekeninggegevens voor het betaalverzoek. Ze staan bewust in env vars en
+// niet in de code: dit is een openbare repo, en een rekeningnummer dat één
+// keer in de geschiedenis staat krijg je er nooit meer uit.
+//
+// Ontbreekt er één van de twee, dan geeft dit `null` en gaat er geen mail uit.
+// Een betaalverzoek zonder rekeningnummer is erger dan geen betaalverzoek: de
+// gast weet dan wél dat hij moet betalen, maar niet waarheen.
+export function paymentDetails(): { iban: string; accountName: string } | null {
+  const iban = (process.env.OWNER_IBAN ?? "").replace(/\s+/g, "");
+  const accountName = (process.env.OWNER_ACCOUNT_NAME ?? "").trim();
+  if (!iban || !accountName) return null;
+  return { iban: formatIban(iban), accountName };
+}

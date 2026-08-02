@@ -8,6 +8,7 @@ import {
 } from "@/lib/admin/payments";
 import {
   applySuggestedPrice,
+  sendInvoice,
   togglePaymentMoment,
   setInvoiceRequired,
   setPrice,
@@ -17,6 +18,7 @@ import {
   estimatePrice,
   SEASONS_VALID_UNTIL,
 } from "@/lib/booking/seasons";
+import { paymentDetails } from "@/lib/config";
 import type { BookingRow } from "@/lib/supabase/types";
 
 function fmtDay(value: string): string {
@@ -54,6 +56,13 @@ export default function PaymentStrip({
   const estimate = estimatePrice(booking.start_date, booking.end_date);
   const suggestion = estimate.ok ? estimate.totalCents : null;
   const matchesTable = suggestion !== null && booking.price_cents === suggestion;
+
+  // Het betaalverzoek kan pas weg als er een bedrag is én een rekening om het
+  // naartoe te sturen. Ontbreekt er iets, dan staat er geen dode knop maar de
+  // reden waarom hij er niet staat.
+  const hasAmount = typeof booking.price_cents === "number";
+  const hasAccount = paymentDetails() !== null;
+  const canSendInvoice = hasAmount && hasAccount;
 
   return (
     <div
@@ -112,12 +121,27 @@ export default function PaymentStrip({
 
       <div className="mt-3 flex flex-wrap items-center gap-2">
         {state === "todo" && (
-          <form action={togglePaymentMoment}>
-            <input type="hidden" name="id" value={booking.id} />
-            <input type="hidden" name="field" value="invoice_sent_at" />
-            <input type="hidden" name="value" value="on" />
-            <button className={primaryStyles}>✓ Nota verstuurd</button>
-          </form>
+          <>
+            {canSendInvoice && (
+              <form action={sendInvoice}>
+                <input type="hidden" name="id" value={booking.id} />
+                <button className={primaryStyles}>
+                  ✉ Betaalverzoek sturen
+                </button>
+              </form>
+            )}
+            {/* Blijft ook staan als de site het verzoek kan sturen: soms is
+                het al per app of telefonisch geregeld, en dan hoeft er geen
+                tweede mail achteraan. */}
+            <form action={togglePaymentMoment}>
+              <input type="hidden" name="id" value={booking.id} />
+              <input type="hidden" name="field" value="invoice_sent_at" />
+              <input type="hidden" name="value" value="on" />
+              <button className={canSendInvoice ? buttonStyles : primaryStyles}>
+                {canSendInvoice ? "✓ Zelf al gedaan" : "✓ Nota verstuurd"}
+              </button>
+            </form>
+          </>
         )}
         {state === "sent" && (
           <>
@@ -185,6 +209,30 @@ export default function PaymentStrip({
 
       {state !== "notRequired" && (
         <div className="mt-2 border-t border-sand pt-2 text-sm text-timber">
+          {state === "todo" && !hasAccount && (
+            <p className="mb-1.5 text-red-800">
+              Er zijn nog geen rekeninggegevens ingesteld (<code>OWNER_IBAN</code>{" "}
+              en <code>OWNER_ACCOUNT_NAME</code>), dus het betaalverzoek kan nog
+              niet verstuurd worden.
+            </p>
+          )}
+
+          {/* Wat de site zelf al gedaan heeft. Zonder deze twee regels zou je
+              bij een gast die belt niet weten of hij al iets van ons hoorde.
+              Geen punt achter de datum: "16 dec." brengt zijn eigen punt al
+              mee, en "16 dec.." leest als een typefout. */}
+          {(booking.payment_check_at || booking.reminder_sent_at) && (
+            <p className="mb-1.5">
+              {booking.payment_check_at && (
+                <>Betaalvraag naar jullie op {fmtDay(booking.payment_check_at)}</>
+              )}
+              {booking.payment_check_at && booking.reminder_sent_at && " · "}
+              {booking.reminder_sent_at && (
+                <>Herinnering naar de gast op {fmtDay(booking.reminder_sent_at)}</>
+              )}
+            </p>
+          )}
+
           {estimate.ok && matchesTable && (
             <span>
               Volgens de seizoenstabel: {describeWeeks(estimate.weeks)}.

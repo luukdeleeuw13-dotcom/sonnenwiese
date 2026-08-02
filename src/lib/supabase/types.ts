@@ -21,6 +21,11 @@ export type BookingRow = {
   invoice_required?: boolean;
   invoice_sent_at?: string | null;
   paid_at?: string | null;
+
+  // De betaalcontrole (zie 0004_payment_flow.sql): wanneer de eigenaar de
+  // vraag kreeg of er al betaald is, en wanneer de gast een herinnering kreeg.
+  payment_check_at?: string | null;
+  reminder_sent_at?: string | null;
 };
 
 // Rij in de Supabase-tabel `inquiries` (zie 0002_inquiries.sql): een vraag

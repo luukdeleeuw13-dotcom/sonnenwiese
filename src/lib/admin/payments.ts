@@ -5,6 +5,24 @@ import type { BookingRow } from "@/lib/supabase/types";
 // dat ze de sleutel krijgen.
 export const INVOICE_LEAD_DAYS = 14;
 
+// De datum die in het betaalverzoek staat: een week voor aankomst. Niet de
+// aankomstdag zelf, want een overboeking naar Oostenrijk is niet dezelfde dag
+// bijgeschreven — en een gast die op de valreep betaalt, komt aan terwijl het
+// geld nog onderweg is.
+export const PAYMENT_DUE_DAYS = 7;
+
+// Drie dagen voor aankomst vraagt de site aan de eigenaar of het geld er is.
+// Dat is vier dagen ná de datum in het betaalverzoek: laat genoeg om echt iets
+// te betekenen, vroeg genoeg om er nog wat aan te doen.
+export const PAYMENT_CHECK_DAYS = 3;
+
+// Datum waarop het geld er hoort te zijn — de datum die in het betaalverzoek
+// staat en waar de herinnering naar terugwijst.
+export function paymentDueDate(startDate: string): string {
+  const start = new Date(`${startDate}T00:00:00`);
+  return format(addDays(start, -PAYMENT_DUE_DAYS), "yyyy-MM-dd");
+}
+
 export type PaymentState =
   | "notRequired" // familie: er komt geen nota
   | "paid" // binnen

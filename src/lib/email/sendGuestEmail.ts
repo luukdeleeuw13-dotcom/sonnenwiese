@@ -1,10 +1,7 @@
 import { sendEmail } from "./send";
-import { format } from "date-fns";
-import { nl, de, enGB } from "date-fns/locale";
+import { emailLocale, formatLongDate } from "./localeDate";
 import { SITE_URL, ownerEmails } from "@/lib/config";
 import type { BookingRow } from "@/lib/supabase/types";
-
-const dateLocales = { nl, de, en: enGB } as const;
 
 type EmailMessages = {
   confirmSubject: string;
@@ -26,18 +23,13 @@ export async function sendGuestEmail(
   >,
   action: "confirmed" | "rejected"
 ) {
-  const locale = (
-    ["nl", "de", "en"].includes(booking.locale) ? booking.locale : "nl"
-  ) as keyof typeof dateLocales;
+  const locale = emailLocale(booking.locale);
 
   const messages: EmailMessages = (
     await import(`../../../messages/${locale}.json`)
   ).default.email;
 
-  const fmt = (d: string) =>
-    format(new Date(`${d}T00:00:00`), "d MMMM yyyy", {
-      locale: dateLocales[locale],
-    });
+  const fmt = (d: string) => formatLongDate(d, locale);
 
   const vars = {
     name: booking.full_name,

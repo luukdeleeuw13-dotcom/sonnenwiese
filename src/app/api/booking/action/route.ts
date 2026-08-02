@@ -1,34 +1,15 @@
-import { NextResponse } from "next/server";
 import {
   getSupabaseServerClient,
   isSupabaseConfigured,
 } from "@/lib/supabase/server";
 import { verifyActionToken } from "@/lib/booking/actionToken";
+import { resultPage as page } from "@/lib/booking/resultPage";
 import { sendGuestEmail } from "@/lib/email/sendGuestEmail";
-import { SITE_URL } from "@/lib/config";
 import type { BookingRow } from "@/lib/supabase/types";
 
 // Eigenaar klikt Accepteren of Afwijzen in de e-mail. Dit is een GET zodat
 // de link direct vanuit de mail werkt; de HMAC-token beschermt tegen
 // willekeurige aanroepen.
-
-function page(title: string, body: string, ok = true): NextResponse {
-  const html = `<!doctype html>
-<html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex"><title>${title} — Sonnenwiese</title></head>
-<body style="margin:0;background:#faf6ee;color:#4a3728;font-family:Helvetica,Arial,sans-serif;">
-  <div style="max-width:480px;margin:0 auto;padding:48px 24px;text-align:center;">
-    <div style="font-size:48px;">${ok ? "✅" : "⚠️"}</div>
-    <h1 style="font-family:Georgia,serif;font-size:28px;margin:16px 0 8px;">${title}</h1>
-    <p style="line-height:1.6;color:#7c5c42;">${body}</p>
-    <p style="margin-top:32px;"><a href="${SITE_URL}/admin" style="color:#55663e;font-weight:600;">Naar het aanvragenoverzicht →</a></p>
-  </div>
-</body></html>`;
-  return new NextResponse(html, {
-    status: ok ? 200 : 400,
-    headers: { "Content-Type": "text/html; charset=utf-8" },
-  }) as NextResponse;
-}
 
 export async function GET(request: Request) {
   const url = new URL(request.url);
