@@ -8,8 +8,13 @@ import {
 // bewaartermijn die je opschrijft maar niet uitvoert is erger dan geen
 // bewaartermijn noemen, dus voert deze taak hem elke nacht daadwerkelijk uit.
 //
-// We rekenen vanaf created_at, niet vanaf de verblijfsdatum: het gaat om hoe
-// lang wij de persoonsgegevens hebben, niet om wanneer iemand langskwam.
+// Twee voorwaarden, allebei nodig:
+//   created_at < een jaar geleden — het gaat om hoe lang wíj de gegevens
+//     hebben, niet om wanneer iemand langskwam.
+//   end_date < vandaag — de beschikbaarheidskalender leest bevestigde
+//     boekingen met end_date >= vandaag. Wie ruim een jaar vooruit boekt,
+//     zou anders uit de kalender verdwijnen terwijl het verblijf nog moet
+//     komen, en dan staan die dagen weer als vrij te boek.
 export const dynamic = "force-dynamic";
 
 const RETENTION_DAYS = 365;
@@ -33,6 +38,7 @@ export async function GET(request: Request) {
   const cutoff = new Date(
     Date.now() - RETENTION_DAYS * 24 * 60 * 60 * 1000
   ).toISOString();
+  const today = new Date().toISOString().slice(0, 10);
 
   try {
     const supabase = getSupabaseServerClient();
@@ -42,6 +48,7 @@ export async function GET(request: Request) {
       .from("bookings")
       .delete()
       .lt("created_at", cutoff)
+      .lt("end_date", today)
       .select("id");
 
     if (error) throw new Error(error.message);

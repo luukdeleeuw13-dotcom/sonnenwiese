@@ -221,11 +221,11 @@
     "whyTitle": "Warum wir es speichern",
     "whyText": "Um zu prüfen, ob die Wohnung frei ist, Ihre Anfrage zu beantworten und Ihren Aufenthalt zu vereinbaren. Das ist der einzige Grund. Sie bekommen von uns keinen Newsletter, wir verkaufen nichts weiter, und Ihre Daten gehen nie für fremde Zwecke an Dritte.",
     "retentionTitle": "Wie lange",
-    "retentionText": "Ein Jahr. Danach löscht die Website Ihre Anfrage automatisch — jede Nacht, ganz ohne menschliches Zutun. Möchten Sie früher gelöscht werden, genügt eine kurze Mail.",
+    "retentionText": "Ein Jahr nach Ihrer Anfrage. Danach löscht die Website sie automatisch — jede Nacht, ganz ohne menschliches Zutun. Liegt Ihr Aufenthalt weiter in der Zukunft, warten wir, bis er vorbei ist; sonst würde der Kalender diese Tage wieder als frei anzeigen. Möchten Sie früher gelöscht werden, genügt eine kurze Mail. Eine Ausnahme: Wird aus Ihrer Anfrage ein tatsächlicher Aufenthalt, landet die Rechnung in der Buchhaltung des Eigentümers. Diese muss er gesetzlich sieben Jahre aufbewahren — unabhängig von dieser Website.",
     "sharedTitle": "Wer es sonst noch sieht",
     "sharedIntro": "Nur die Dienstleister, die die Website technisch am Laufen halten. Sie dürfen Ihre Daten ausschließlich dafür verwenden:",
     "shared": {
-      "supabase": "Supabase — die Datenbank, in der Ihre Anfrage gespeichert wird",
+      "supabase": "Supabase — die Datenbank, in der Ihre Anfrage gespeichert wird, auf Servern in Frankfurt (Deutschland)",
       "resend": "Resend — versendet die Bestätigung an Sie und die Benachrichtigung an uns, von Servern in Europa",
       "vercel": "Vercel — betreibt die Website selbst",
       "cloudflare": "Cloudflare — verwaltet die Domain und leitet Post an mail@sonnenwiese.nl weiter"

@@ -221,11 +221,11 @@
     "whyTitle": "Waarom we het bewaren",
     "whyText": "Om te kijken of het appartement vrij is, je aanvraag te beantwoorden en je verblijf af te spreken. Dat is de enige reden. Je krijgt geen nieuwsbrief van ons, we verkopen niets door, en je gegevens gaan nooit naar anderen voor hún doeleinden.",
     "retentionTitle": "Hoe lang",
-    "retentionText": "Een jaar. Daarna verwijdert de site je aanvraag automatisch — dat gebeurt elke nacht, zonder dat er iemand aan te pas komt. Wil je eerder weg, dan is één mailtje genoeg.",
+    "retentionText": "Een jaar na je aanvraag. Daarna verwijdert de site hem automatisch — elke nacht, zonder dat er iemand aan te pas komt. Ligt je verblijf verder in de toekomst, dan wachten we tot dat voorbij is; anders zou de kalender die dagen weer als vrij tonen. Wil je eerder weg, dan is één mailtje genoeg. Eén uitzondering: wordt je aanvraag een echt verblijf, dan komt de factuur in de boekhouding van de eigenaar terecht. Die moet hij van de wet zeven jaar bewaren — dat staat los van deze website.",
     "sharedTitle": "Wie het nog meer ziet",
     "sharedIntro": "Alleen de partijen die de site technisch draaiende houden. Zij mogen je gegevens uitsluitend gebruiken om die dienst te leveren, niet voor iets anders:",
     "shared": {
-      "supabase": "Supabase — de database waarin je aanvraag wordt opgeslagen",
+      "supabase": "Supabase — de database waarin je aanvraag wordt opgeslagen, op servers in Frankfurt (Duitsland)",
       "resend": "Resend — verstuurt de bevestiging aan jou en de melding aan ons, vanaf servers in Europa",
       "vercel": "Vercel — draait de website zelf",
       "cloudflare": "Cloudflare — verzorgt het domein en stuurt post aan mail@sonnenwiese.nl door"

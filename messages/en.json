@@ -221,11 +221,11 @@
     "whyTitle": "Why we keep it",
     "whyText": "To check whether the apartment is free, answer your request and arrange your stay. That is the only reason. You won't get a newsletter from us, we don't sell anything on, and your details never go to anyone else for their own purposes.",
     "retentionTitle": "How long",
-    "retentionText": "One year. After that the site deletes your request automatically — every night, with no one involved. If you'd like it gone sooner, a short email is enough.",
+    "retentionText": "One year after your request. The site then deletes it automatically — every night, with no one involved. If your stay falls further ahead, we wait until it is over; otherwise the calendar would show those days as free again. If you'd like it gone sooner, a short email is enough. One exception: if your request turns into an actual stay, the invoice ends up in the owner's bookkeeping. He is legally required to keep that for seven years, separately from this website.",
     "sharedTitle": "Who else sees it",
     "sharedIntro": "Only the services that keep the site running. They may use your details for that purpose alone:",
     "shared": {
-      "supabase": "Supabase — the database your request is stored in",
+      "supabase": "Supabase — the database your request is stored in, on servers in Frankfurt, Germany",
       "resend": "Resend — sends the confirmation to you and the notification to us, from servers in Europe",
       "vercel": "Vercel — runs the website itself",
       "cloudflare": "Cloudflare — looks after the domain and forwards post sent to mail@sonnenwiese.nl"
