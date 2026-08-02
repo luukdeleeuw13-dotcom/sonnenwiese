@@ -152,15 +152,13 @@
       "energy": "Strom und Wasser",
       "internet": "Internet und Satelliten-TV (mit niederländischen Sendern)"
     },
-    "extrasTitle": "Zusätzlich",
+    "extrasTitle": "Selbst mitbringen",
     "extras": {
-      "cleaning": "Endreinigung — € 50, vor Ort zu bezahlen",
-      "tax": "Ortstaxe — € 1,10 p.P. pro Nacht (ab 14 Jahren), € 0,40 für Kinder bis 14 Jahre, vor Ort zu bezahlen",
-      "linen": "Bettwäsche und Handtücher — bitte selbst mitbringen"
+      "linen": "Bettwäsche und Handtücher"
     },
     "paymentTitle": "Gut zu wissen",
     "payment": {
-      "when": "Rechtzeitig vor der Abreise erhältst du eine Zahlungsaufforderung für die Miete auf unser österreichisches Konto. Der Betrag muss vor deiner Anreise eingegangen sein. Endreinigung und Ortstaxe zahlst du vor Ort.",
+      "when": "Rechtzeitig vor der Abreise erhältst du eine Zahlungsaufforderung für die Miete auf unser österreichisches Konto. Der Betrag muss vor deiner Anreise eingegangen sein. Mehr als die Miete zahlst du nicht.",
       "pets": "Haustiere sind willkommen — bitte vorher kurz melden."
     },
     "cta": "Verfügbarkeit ansehen"
@@ -324,10 +322,10 @@
     "rejectSubject": "Deine Anfrage für die Sonnenwiese ({from} – {to})",
     "rejectBody": "Hallo {name},\n\ndanke für deine Anfrage für die Sonnenwiese in Maria Alm ({from} – {to}).\n\nLeider können wir deinen Aufenthalt in diesem Zeitraum nicht bestätigen — wahrscheinlich ist der Zeitraum bereits belegt.\n\nSchau gerne auf {siteUrl} für die aktuelle Verfügbarkeit; vielleicht klappt ein anderer Zeitraum. Du bist herzlich willkommen.\n\nHerzliche Grüße,\nFamilie De Leeuw",
     "paymentSubject": "Zahlungsaufforderung für deinen Aufenthalt in der Sonnenwiese ({from} – {to})",
-    "paymentBody": "Hallo {name},\n\ndein Aufenthalt in der Sonnenwiese ist von {from} bis {to} vorgemerkt. Hier die Zahlungsaufforderung für die Miete.\n\nBetrag:            {amount}\nKontoinhaber:      {accountName}\nIBAN:              {iban}\nVerwendungszweck:  {reference}\n\nBitte bis spätestens {due} überweisen — der Betrag muss vor deiner Anreise eingegangen sein.\n\nDie Endreinigung und die Ortstaxe rechnest du vor Ort mit uns ab.\n\nStimmt etwas nicht, oder möchtest du etwas anderes vereinbaren? Antworte einfach auf diese Mail.\n\nHerzliche Grüße,\nFamilie De Leeuw",
+    "paymentBody": "Hallo {name},\n\ndein Aufenthalt in der Sonnenwiese ist von {from} bis {to} vorgemerkt. Hier die Zahlungsaufforderung für die Miete.\n\nBetrag:            {amount}\nKontoinhaber:      {accountName}\nIBAN:              {iban}\nVerwendungszweck:  {reference}\n\nBitte bis spätestens {due} überweisen — der Betrag muss vor deiner Anreise eingegangen sein. Mehr als das zahlst du nicht.\n\nStimmt etwas nicht, oder möchtest du etwas anderes vereinbaren? Antworte einfach auf diese Mail.\n\nHerzliche Grüße,\nFamilie De Leeuw",
     "reminderSubject": "Erinnerung: die Miete für die Sonnenwiese ({from} – {to})",
     "reminderBody": "Hallo {name},\n\nin ein paar Tagen kommst du in die Sonnenwiese, von {from} bis {to}. In unseren Unterlagen ist die Miete noch offen.\n\nBetrag:            {amount}\nKontoinhaber:      {accountName}\nIBAN:              {iban}\nVerwendungszweck:  {reference}\n\nHast du schon bezahlt? Dann haben sich unsere Nachrichten gekreuzt — sag uns kurz Bescheid, dann korrigieren wir das. Falls nicht, überweise den Betrag bitte vor deiner Anreise.\n\nHerzliche Grüße,\nFamilie De Leeuw",
     "receivedSubject": "Zahlung erhalten — bis bald in Maria Alm",
-    "receivedBody": "Hallo {name},\n\ndie Miete ({amount}) für deinen Aufenthalt von {from} bis {to} ist eingegangen. Vielen Dank!\n\nVor Ort rechnen wir nur noch die Endreinigung und die Ortstaxe ab.\n\nAlle praktischen Informationen — Anfahrt, Schlüssel, Parken — findest du auf {siteUrl}\n\nGute Reise und bis bald in den Bergen!\n\nHerzliche Grüße,\nFamilie De Leeuw"
+    "receivedBody": "Hallo {name},\n\ndie Miete ({amount}) für deinen Aufenthalt von {from} bis {to} ist eingegangen. Vielen Dank!\n\nAlle praktischen Informationen — Anfahrt, Schlüssel, Parken — findest du auf {siteUrl}\n\nGute Reise und bis bald in den Bergen!\n\nHerzliche Grüße,\nFamilie De Leeuw"
   }
 }

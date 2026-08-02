@@ -152,15 +152,13 @@
       "energy": "Electricity and water",
       "internet": "Internet and satellite TV (with Dutch channels)"
     },
-    "extrasTitle": "Additional",
+    "extrasTitle": "Bring your own",
     "extras": {
-      "cleaning": "Final cleaning — € 50, payable on arrival",
-      "tax": "Tourist tax — € 1.10 p.p. per night (14 and over), € 0.40 for children under 14, payable on arrival",
-      "linen": "Bed linen and towels — please bring your own"
+      "linen": "Bed linen and towels"
     },
     "paymentTitle": "Good to know",
     "payment": {
-      "when": "Well before you travel you'll receive a payment request for the rent, to be transferred to our Austrian account. The amount must be received before you arrive. Final cleaning and tourist tax are settled on site.",
+      "when": "Well before you travel you'll receive a payment request for the rent, to be transferred to our Austrian account. The amount must be received before you arrive. The rent is all you pay.",
       "pets": "Pets are welcome — please let us know in advance."
     },
     "cta": "Check availability"
@@ -324,10 +322,10 @@
     "rejectSubject": "Your request for Sonnenwiese ({from} – {to})",
     "rejectBody": "Hi {name},\n\nThanks for your request for Sonnenwiese in Maria Alm ({from} – {to}).\n\nUnfortunately we cannot confirm your stay for this period — most likely it is already booked.\n\nDo check {siteUrl} for current availability; perhaps another period will work. You are very welcome.\n\nWarm regards,\nDe Leeuw family",
     "paymentSubject": "Payment request for your stay at Sonnenwiese ({from} – {to})",
-    "paymentBody": "Hi {name},\n\nYour stay at Sonnenwiese is booked from {from} to {to}. Here is the payment request for the rent.\n\nAmount:     {amount}\nAccount:    {accountName}\nIBAN:       {iban}\nReference:  {reference}\n\nPlease transfer by {due} at the latest — the amount must be received before you arrive.\n\nFinal cleaning and tourist tax are settled with us on site.\n\nIs anything not right, or would you like to arrange something else? Just reply to this email.\n\nWarm regards,\nDe Leeuw family",
+    "paymentBody": "Hi {name},\n\nYour stay at Sonnenwiese is booked from {from} to {to}. Here is the payment request for the rent.\n\nAmount:     {amount}\nAccount:    {accountName}\nIBAN:       {iban}\nReference:  {reference}\n\nPlease transfer by {due} at the latest — the amount must be received before you arrive. This is all you pay.\n\nIs anything not right, or would you like to arrange something else? Just reply to this email.\n\nWarm regards,\nDe Leeuw family",
     "reminderSubject": "Reminder: the rent for Sonnenwiese ({from} – {to})",
     "reminderBody": "Hi {name},\n\nYou're arriving at Sonnenwiese in a few days, from {from} to {to}. Our records still show the rent as outstanding.\n\nAmount:     {amount}\nAccount:    {accountName}\nIBAN:       {iban}\nReference:  {reference}\n\nHave you already paid? Then our messages crossed — do let us know and we'll put it right. If not, please transfer the amount before you arrive.\n\nWarm regards,\nDe Leeuw family",
     "receivedSubject": "Payment received — see you soon in Maria Alm",
-    "receivedBody": "Hi {name},\n\nThe rent ({amount}) for your stay from {from} to {to} has arrived. Thank you!\n\nOn site we'll only settle the final cleaning and the tourist tax.\n\nAll practical information — the route, the key, parking — is at {siteUrl}\n\nHave a good trip, and see you in the mountains!\n\nWarm regards,\nDe Leeuw family"
+    "receivedBody": "Hi {name},\n\nThe rent ({amount}) for your stay from {from} to {to} has arrived. Thank you!\n\nAll practical information — the route, the key, parking — is at {siteUrl}\n\nHave a good trip, and see you in the mountains!\n\nWarm regards,\nDe Leeuw family"
   }
 }

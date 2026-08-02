@@ -152,15 +152,13 @@
       "energy": "Elektriciteit en water",
       "internet": "Internet en satelliet-tv (met Nederlandse zenders)"
     },
-    "extrasTitle": "Bijkomend",
+    "extrasTitle": "Zelf meenemen",
     "extras": {
-      "cleaning": "Eindschoonmaak — € 50, ter plaatse te voldoen",
-      "tax": "Verblijfsbelasting — € 1,10 p.p. per nacht (vanaf 14 jaar), € 0,40 voor kinderen tot 14 jaar, ter plaatse te voldoen",
-      "linen": "Bedlinnen en handdoeken — zelf meenemen"
+      "linen": "Bedlinnen en handdoeken"
     },
     "paymentTitle": "Goed om te weten",
     "payment": {
-      "when": "Ruim voor vertrek krijg je een betaalverzoek voor de huur, over te maken naar onze Oostenrijkse rekening. Het bedrag moet binnen zijn vóór je aankomt. De eindschoonmaak en de verblijfsbelasting reken je ter plaatse af.",
+      "when": "Ruim voor vertrek krijg je een betaalverzoek voor de huur, over te maken naar onze Oostenrijkse rekening. Het bedrag moet binnen zijn vóór je aankomt. Meer dan de huur betaal je niet.",
       "pets": "Huisdieren zijn welkom — graag vooraf even melden."
     },
     "cta": "Bekijk beschikbaarheid"
@@ -324,10 +322,10 @@
     "rejectSubject": "Je aanvraag voor Sonnenwiese ({from} – {to})",
     "rejectBody": "Hoi {name},\n\nDank voor je aanvraag voor Sonnenwiese in Maria Alm ({from} – {to}).\n\nHelaas kunnen we je verblijf in deze periode niet bevestigen — waarschijnlijk is de periode al bezet.\n\nKijk gerust op {siteUrl} voor de actuele beschikbaarheid; misschien lukt een andere periode wél. Je bent van harte welkom.\n\nHartelijke groet,\nFamilie De Leeuw",
     "paymentSubject": "Betaalverzoek voor je verblijf in Sonnenwiese ({from} – {to})",
-    "paymentBody": "Hoi {name},\n\nJe verblijf in Sonnenwiese staat genoteerd van {from} tot {to}. Hierbij het betaalverzoek voor de huur.\n\nBedrag:     {amount}\nRekening:   {accountName}\nIBAN:       {iban}\nKenmerk:    {reference}\n\nGraag uiterlijk {due} overmaken — het bedrag moet binnen zijn vóór je aankomt.\n\nDe eindschoonmaak en de verblijfsbelasting reken je ter plaatse met ons af.\n\nKlopt er iets niet, of wil je iets anders afspreken? Antwoord gerust op deze mail.\n\nHartelijke groet,\nFamilie De Leeuw",
+    "paymentBody": "Hoi {name},\n\nJe verblijf in Sonnenwiese staat genoteerd van {from} tot {to}. Hierbij het betaalverzoek voor de huur.\n\nBedrag:     {amount}\nRekening:   {accountName}\nIBAN:       {iban}\nKenmerk:    {reference}\n\nGraag uiterlijk {due} overmaken — het bedrag moet binnen zijn vóór je aankomt. Meer dan dit betaal je niet.\n\nKlopt er iets niet, of wil je iets anders afspreken? Antwoord gerust op deze mail.\n\nHartelijke groet,\nFamilie De Leeuw",
     "reminderSubject": "Herinnering: de huur voor Sonnenwiese ({from} – {to})",
     "reminderBody": "Hoi {name},\n\nOver een paar dagen kom je naar Sonnenwiese, van {from} tot {to}. In onze administratie staat de huur nog open.\n\nBedrag:     {amount}\nRekening:   {accountName}\nIBAN:       {iban}\nKenmerk:    {reference}\n\nHeb je al betaald? Dan hebben onze berichten elkaar gekruist — laat het even weten, dan zetten we het recht. Zo niet, dan graag vóór je aankomst overmaken.\n\nHartelijke groet,\nFamilie De Leeuw",
     "receivedSubject": "Betaling ontvangen — tot binnenkort in Maria Alm",
-    "receivedBody": "Hoi {name},\n\nDe huur ({amount}) voor je verblijf van {from} tot {to} is binnen. Dank je wel!\n\nTer plaatse rekenen we alleen nog de eindschoonmaak en de verblijfsbelasting af.\n\nAlle praktische informatie — de route, de sleutel, het parkeren — vind je op {siteUrl}\n\nGoede reis, en tot in de bergen!\n\nHartelijke groet,\nFamilie De Leeuw"
+    "receivedBody": "Hoi {name},\n\nDe huur ({amount}) voor je verblijf van {from} tot {to} is binnen. Dank je wel!\n\nAlle praktische informatie — de route, de sleutel, het parkeren — vind je op {siteUrl}\n\nGoede reis, en tot in de bergen!\n\nHartelijke groet,\nFamilie De Leeuw"
   }
 }
