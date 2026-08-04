@@ -5,6 +5,7 @@ import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import { SITE_URL } from "@/lib/config";
+import { OG_IMAGES } from "@/lib/metadata";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 
@@ -44,7 +45,7 @@ export async function generateMetadata({
       type: "website",
       locale,
       siteName: "Sonnenwiese",
-      images: [{ url: "/og.jpg", width: 1200, height: 630 }],
+      images: OG_IMAGES,
     },
     twitter: {
       card: "summary_large_image",

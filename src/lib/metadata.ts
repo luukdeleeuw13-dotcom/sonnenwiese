@@ -23,6 +23,18 @@ export function alternatesFor(
   };
 }
 
+// Het deelplaatje (public/og.jpg, gebouwd met scripts/og.mjs).
+//
+// Dit staat hier als losse constante omdat Next metadata alléén ondiep
+// samenvoegt: een pagina die zelf `openGraph` zet, gooit die van de layout
+// compleet weg — inclusief de afbeelding. Elke pagina hieronder zette een
+// eigen titel en beschrijving, dus stond er sitebreed nergens een og:image
+// en liet elke gedeelde link een leeg kaartje zien. Wie hier een nieuw veld
+// bij zet, moet dat dus ook in de layout en op de homepage meenemen.
+export const OG_IMAGES = [
+  { url: "/og.jpg", width: 1200, height: 630, alt: "Sonnenwiese, Maria Alm" },
+];
+
 // Standaard-metadata voor een contentpagina. De titel wordt door het
 // template in de locale-layout aangevuld met de sitenaam.
 export function buildMetadata({
@@ -44,6 +56,7 @@ export function buildMetadata({
       title,
       description,
       url: pathFor(locale, route),
+      images: OG_IMAGES,
     },
   };
 }

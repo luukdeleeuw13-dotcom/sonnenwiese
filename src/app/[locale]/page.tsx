@@ -3,7 +3,7 @@ import { setRequestLocale, getTranslations } from "next-intl/server";
 import { useTranslations } from "next-intl";
 import { use } from "react";
 import { Link } from "@/i18n/navigation";
-import { alternatesFor } from "@/lib/metadata";
+import { alternatesFor, OG_IMAGES } from "@/lib/metadata";
 import { pathFor } from "@/lib/routes";
 import Hero from "@/components/ui/Hero";
 import HighlightCard from "@/components/ui/HighlightCard";
@@ -27,6 +27,7 @@ export async function generateMetadata({
       title: t("siteTitle"),
       description: t("siteDescription"),
       url: pathFor(locale, ""),
+      images: OG_IMAGES,
     },
   };
 }
