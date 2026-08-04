@@ -20,6 +20,7 @@
   },
   "common": {
     "photoComingSoon": "Foto folgt",
+    "priceFrom": "Ab {price}",
     "bookCta": "Verfügbarkeit ansehen",
     "contactCta": "Anfrage stellen",
     "questionCta": "Stell deine Frage"

@@ -8,6 +8,7 @@ import { SITE_URL } from "@/lib/config";
 import { OG_IMAGES } from "@/lib/metadata";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import StickyCta from "@/components/layout/StickyCta";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -76,6 +77,7 @@ export default async function LocaleLayout({
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />
+          <StickyCta />
         </NextIntlClientProvider>
       </body>
     </html>

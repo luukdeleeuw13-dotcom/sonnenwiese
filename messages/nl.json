@@ -20,6 +20,7 @@
   },
   "common": {
     "photoComingSoon": "Foto volgt",
+    "priceFrom": "Vanaf {price}",
     "bookCta": "Bekijk beschikbaarheid",
     "contactCta": "Doe een aanvraag",
     "questionCta": "Stel je vraag"

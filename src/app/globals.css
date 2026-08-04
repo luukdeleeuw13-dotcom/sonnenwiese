@@ -62,6 +62,15 @@ body {
       transform: scale(1);
     }
   }
+
+  /* De zwevende knop schuift omhoog in plaats van te verschijnen. Alleen hier,
+     binnen de reduced-motion-voorwaarde: wie geen beweging wil, krijgt de balk
+     gewoon zonder overgang — hij staat er dan meteen of niet. */
+  .sticky-cta {
+    transition:
+      opacity 0.25s ease-out,
+      transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
 }
 
 /* react-day-picker in het warm-alpine palet. `body .rdp-root` wint qua
