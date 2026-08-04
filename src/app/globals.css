@@ -109,7 +109,9 @@ body .rdp-root {
     transparent
   );
   --rdp-today-color: var(--color-sun-dark);
-  --rdp-selected-border: 2px solid var(--color-meadow-dark);
+  /* Geen rand om geselecteerde dagen: die tekende een kadertje om elk vakje
+     apart, en dat is precies wat de doorlopende band hieronder wil vermijden. */
+  --rdp-selected-border: none;
 }
 
 /* Bevestigde (bezette) periodes */
@@ -118,4 +120,54 @@ body .rdp-booked:not(.rdp-selected) {
   color: var(--color-timber);
   text-decoration: line-through;
   border-radius: 0;
+}
+
+/* Een gekozen week als één doorlopende band, niet als zeven losse bolletjes.
+   Er wordt per hele week verhuurd, dus een selectie is altijd een aaneengesloten
+   rij — dat mag je zien. De kalender begint bovendien op zaterdag, waardoor elke
+   regel precies één verhuurweek is en de band nooit halverwege afbreekt.
+
+   De ruimte tussen de dagen gaat naar nul zodat de vakjes elkaar raken; tussen
+   de weken blijft lucht staan. */
+body .rdp-month_grid {
+  border-spacing: 0 3px;
+}
+
+body .rdp-day.rdp-selected {
+  background: var(--color-meadow);
+  color: var(--color-snow);
+}
+
+/* De achtergrond zit nu op het tabelvakje; het knopje erin moet doorzichtig
+   worden, anders tekent react-day-picker er zijn eigen bolletje overheen. */
+body .rdp-day.rdp-selected .rdp-day_button {
+  background: transparent;
+  border: 0;
+  color: inherit;
+  font-weight: 600;
+}
+
+/* Alleen de uiteinden van een band krijgen een ronding. Andersom geredeneerd
+   dan je zou verwachten: élke gekozen dag is rond, en de kant die tegen een
+   volgende gekozen dag aan ligt wordt weer platgeslagen. Dat werkt ook als een
+   week in de vorige maand begint — dan staat er in deze maand een losse staart
+   die niet vooraan de rij begint, en die hoort nog steeds rond te zijn. */
+body .rdp-day.rdp-selected {
+  border-radius: 999px;
+}
+
+/* Alleen afvlakken tegen een buur die ook écht getekend wordt. Dagen uit de
+   vorige of volgende maand staan als lege cellen in het raster met
+   `visibility: hidden`: ze zijn wél geselecteerd en hebben wél een
+   achtergrondkleur, maar je ziet ze niet. Zonder deze uitzondering kreeg de
+   eerste zichtbare dag van een week die in de vorige maand begon een platte
+   linkerkant tegen niets aan. */
+body .rdp-day.rdp-selected:has(+ .rdp-day.rdp-selected:not(.rdp-hidden)) {
+  border-start-end-radius: 0;
+  border-end-end-radius: 0;
+}
+
+body .rdp-day.rdp-selected:not(.rdp-hidden) + .rdp-day.rdp-selected {
+  border-start-start-radius: 0;
+  border-end-start-radius: 0;
 }
