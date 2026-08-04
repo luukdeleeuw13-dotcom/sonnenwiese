@@ -33,7 +33,9 @@ export default function AvailabilityCalendar({
   // Het beginpunt van een selectie die nog kan groeien. Na de tweede klik
   // is de selectie af en begint een volgende klik overnieuw.
   const [anchor, setAnchor] = useState<Date | undefined>();
-  const [overlap, setOverlap] = useState(false);
+  // "bezet" is een fout — er kan niets — en staat er rood bij. "verplaatst"
+  // is alleen uitleg: er is wél iets gebeurd, maar iets anders dan je dacht.
+  const [melding, setMelding] = useState<"bezet" | "verplaatst" | undefined>();
 
   const today = new Date();
   today.setHours(0, 0, 0, 0);
@@ -57,27 +59,43 @@ export default function AvailabilityCalendar({
   const isFree = (from: Date, to: Date) =>
     !bookedRanges.some((r) => from < toDate(r.to) && to > toDate(r.from));
 
-  const select = (from: Date, to: Date): boolean => {
-    if (!isFree(from, to)) {
-      // Niet stilzwijgend negeren: de gast klikte ergens op, dus vertel
-      // waarom er niets gebeurt.
-      setOverlap(true);
-      return false;
-    }
-    setOverlap(false);
-    onSelect({ from, to });
+  // Een nieuwe selectie van één week, die daarna nog kan groeien. Geeft terug
+  // of het gelukt is; is de week zelf niet helemaal vrij, dan verandert er
+  // niets aan wat er staat.
+  const beginOpnieuw = (week: Date): boolean => {
+    const einde = addDays(week, 7);
+    if (!isFree(week, einde)) return false;
+    onSelect({ from: week, to: einde });
+    setAnchor(week);
     return true;
   };
 
   const handleClick = (day: Date) => {
     const week = startOfRentalWeek(day);
-    // Nog geen open selectie, of er is er al één afgerond, of er wordt
-    // terugwaarts geklikt: begin opnieuw bij deze ene week.
-    if (!anchor || !range?.from || week < anchor) {
-      if (select(week, addDays(week, 7))) setAnchor(week);
+    // Een beginpunt telt alleen zolang de selectie waar het bij hoort ook
+    // echt op het scherm staat.
+    const begin = range?.from ? anchor : undefined;
+
+    if (begin && week > begin) {
+      const einde = addDays(week, 7);
+      if (isFree(begin, einde)) {
+        onSelect({ from: begin, to: einde });
+        setAnchor(undefined);
+        setMelding(undefined);
+        return;
+      }
+      // Uitrekken kan niet: er ligt een bezette periode tussenin. In plaats
+      // van de klik weg te gooien wordt deze week het nieuwe beginpunt — dat
+      // is wat iemand die daar klikt bedoelt. Hiervóór bleef het oude
+      // beginpunt staan, waardoor élke volgende klik verderop dezelfde
+      // melding gaf en de enige uitweg was om je eerste week nóg eens aan te
+      // klikken.
+      setMelding(beginOpnieuw(week) ? "verplaatst" : "bezet");
       return;
     }
-    if (select(anchor, addDays(week, 7))) setAnchor(undefined);
+
+    // Eerste klik, tweede klik op dezelfde week, of terug in de tijd.
+    setMelding(beginOpnieuw(week) ? undefined : "bezet");
   };
 
   return (
@@ -100,9 +118,14 @@ export default function AvailabilityCalendar({
         numberOfMonths={1}
         className="mx-auto"
       />
-      {overlap && (
-        <p role="status" className="mt-1 text-sm text-red-700">
-          {t("calendarOverlap")}
+      {melding && (
+        <p
+          role="status"
+          className={`mt-1 text-sm ${
+            melding === "bezet" ? "text-red-700" : "text-timber"
+          }`}
+        >
+          {t(melding === "bezet" ? "calendarWeekBooked" : "calendarOverlap")}
         </p>
       )}
     </>
