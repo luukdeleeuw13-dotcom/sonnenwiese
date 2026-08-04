@@ -9,6 +9,7 @@ import Hero from "@/components/ui/Hero";
 import HighlightCard from "@/components/ui/HighlightCard";
 import PhotoMosaic from "@/components/ui/PhotoMosaic";
 import SeasonSection from "@/components/ui/SeasonSection";
+import Testimonials from "@/components/ui/Testimonials";
 import Reveal from "@/components/ui/Reveal";
 import { MIN_WEEK_PRICE_CENTS, formatPrice } from "@/lib/booking/seasons";
 
@@ -191,6 +192,13 @@ export default function HomePage({
           </Reveal>
         </div>
       </section>
+
+      {/* Gaststemmen vlak voor de vraag om te boeken: het laatste zetje komt
+          niet van wat wij over het huis zeggen. Rendert niets zolang er nog
+          geen citaten in de taalbestanden staan. */}
+      <Reveal>
+        <Testimonials />
+      </Reveal>
 
       {/* Afsluiter: de pagina eindigde eerst met een linkje naar een andere
           pagina. Nu eindigt hij met de vraag waar het om gaat.
