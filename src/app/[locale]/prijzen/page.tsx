@@ -60,9 +60,11 @@ function highSeasonDates(
     .map((r) => range(r.from, r.to))
     .join(" · ");
 }
-const includedKeys = ["energy", "internet"] as const;
+const includedKeys = ["energy", "internet", "parking"] as const;
 const extrasKeys = ["linen"] as const;
-const paymentKeys = ["when", "pets"] as const;
+// "Geen borg" staat bewust vlak achter "meer dan de huur betaal je niet": het
+// is dezelfde geruststelling, en dit is de plek waar iemand aan geld denkt.
+const paymentKeys = ["when", "deposit", "pets"] as const;
 
 export default function PricingPage({
   params,

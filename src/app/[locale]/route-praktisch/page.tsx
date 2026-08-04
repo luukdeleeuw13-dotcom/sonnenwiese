@@ -71,6 +71,14 @@ export default function PracticalPage({
         </a>
       </section>
 
+      {/* Direct onder de kaart: je hebt net gezien waar het huis staat, dan is
+          "en waar zet ik de auto" de volgende vraag. De betaalmail belooft
+          bovendien dat het parkeren op de site staat — tot nu toe stond het
+          er nergens. */}
+      <Section title={t("parkingTitle")}>
+        <p>{t("parkingText")}</p>
+      </Section>
+
       <Section title={t("arrivalTitle")}>
         <p>{t("arrivalText")}</p>
       </Section>

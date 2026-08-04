@@ -182,7 +182,8 @@
     "includedTitle": "Included",
     "included": {
       "energy": "Electricity and water",
-      "internet": "Internet and satellite TV (with Dutch channels)"
+      "internet": "Internet and satellite TV (with Dutch channels)",
+      "parking": "One private parking space"
     },
     "extrasTitle": "Bring your own",
     "extras": {
@@ -191,6 +192,7 @@
     "paymentTitle": "Good to know",
     "payment": {
       "when": "Well before you travel you'll receive a payment request for the rent, to be transferred to our Austrian account. The amount must be received before you arrive. The rent is all you pay.",
+      "deposit": "We don't ask for a deposit.",
       "pets": "Pets are welcome — please let us know in advance."
     },
     "cta": "Check availability"
@@ -292,6 +294,8 @@
     "questionsText": "Send a request via the availability page, or ask your question through the question form — we're happy to help.",
     "mapTitle": "Location",
     "mapOpenGoogle": "Open in Google Maps",
+    "parkingTitle": "Parking",
+    "parkingText": "The apartment has one private parking space. If you come with two cars, there's also an open area where you can park freely.",
     "rules": {
       "smoking": "Smoking is not allowed in the apartment",
       "pets": "Pets are welcome — please let us know in advance",

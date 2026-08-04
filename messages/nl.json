@@ -182,7 +182,8 @@
     "includedTitle": "Inbegrepen",
     "included": {
       "energy": "Elektriciteit en water",
-      "internet": "Internet en satelliet-tv (met Nederlandse zenders)"
+      "internet": "Internet en satelliet-tv (met Nederlandse zenders)",
+      "parking": "Eén eigen parkeerplaats"
     },
     "extrasTitle": "Zelf meenemen",
     "extras": {
@@ -191,6 +192,7 @@
     "paymentTitle": "Goed om te weten",
     "payment": {
       "when": "Ruim voor vertrek krijg je een betaalverzoek voor de huur, over te maken naar onze Oostenrijkse rekening. Het bedrag moet binnen zijn vóór je aankomt. Meer dan de huur betaal je niet.",
+      "deposit": "Een borg vragen we niet.",
       "pets": "Huisdieren zijn welkom — graag vooraf even melden."
     },
     "cta": "Bekijk beschikbaarheid"
@@ -292,6 +294,8 @@
     "questionsText": "Doe een aanvraag via de beschikbaarheidspagina, of stel je vraag via het vragenformulier — we helpen je graag.",
     "mapTitle": "Locatie",
     "mapOpenGoogle": "Openen in Google Maps",
+    "parkingTitle": "Parkeren",
+    "parkingText": "Bij het appartement hoort één eigen parkeerplaats. Kom je met twee auto's, dan is er ook een open plek waar je vrij mag staan.",
     "rules": {
       "smoking": "Roken is in het appartement niet toegestaan",
       "pets": "Huisdieren zijn welkom — graag vooraf even melden",

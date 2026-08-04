@@ -182,7 +182,8 @@
     "includedTitle": "Inklusive",
     "included": {
       "energy": "Strom und Wasser",
-      "internet": "Internet und Satelliten-TV (mit niederländischen Sendern)"
+      "internet": "Internet und Satelliten-TV (mit niederländischen Sendern)",
+      "parking": "Ein eigener Parkplatz"
     },
     "extrasTitle": "Selbst mitbringen",
     "extras": {
@@ -191,6 +192,7 @@
     "paymentTitle": "Gut zu wissen",
     "payment": {
       "when": "Rechtzeitig vor der Abreise erhältst du eine Zahlungsaufforderung für die Miete auf unser österreichisches Konto. Der Betrag muss vor deiner Anreise eingegangen sein. Mehr als die Miete zahlst du nicht.",
+      "deposit": "Eine Kaution verlangen wir nicht.",
       "pets": "Haustiere sind willkommen — bitte vorher kurz melden."
     },
     "cta": "Verfügbarkeit ansehen"
@@ -292,6 +294,8 @@
     "questionsText": "Stelle eine Anfrage über die Verfügbarkeitsseite oder schick uns deine Frage über das Frageformular — wir helfen gerne weiter.",
     "mapTitle": "Lage",
     "mapOpenGoogle": "In Google Maps öffnen",
+    "parkingTitle": "Parken",
+    "parkingText": "Zur Wohnung gehört ein eigener Parkplatz. Kommst du mit zwei Autos, gibt es außerdem eine offene Fläche, auf der du frei stehen darfst.",
     "rules": {
       "smoking": "Rauchen ist in der Wohnung nicht gestattet",
       "pets": "Haustiere sind willkommen — bitte vorher kurz melden",
