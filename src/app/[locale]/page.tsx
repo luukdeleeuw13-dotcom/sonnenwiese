@@ -70,7 +70,7 @@ export default function HomePage({
       <Hero
         title={t("heroTitle")}
         subtitle={t("heroSubtitle")}
-        src="/photos/omgeving-hochkonig-zomer.jpg"
+        src="/photos/omgeving-zomer-schuur.jpg"
         alt="Sonnenwiese, Maria Alm"
         cta={
           <Link
@@ -108,11 +108,11 @@ export default function HomePage({
           <PhotoMosaic
             cta={t("mosaicCta")}
             photos={[
-              { src: "/photos/omgeving-alpengloed-1.jpg", alt: t("mosaic.alpenglow") },
+              { src: "/photos/omgeving-winter-avondlicht.jpg", alt: t("mosaic.alpenglow") },
               { src: "/photos/woonkamer-1.jpg", alt: t("mosaic.living") },
-              { src: "/photos/omgeving-kerk-maria-alm.jpg", alt: t("mosaic.village") },
+              { src: "/photos/omgeving-zomer-kerk-bloemen.jpg", alt: t("mosaic.village") },
               { src: "/photos/keuken-1.jpg", alt: t("mosaic.kitchen") },
-              { src: "/photos/omgeving-maria-alm-lucht.jpg", alt: t("mosaic.aerial") },
+              { src: "/photos/omgeving-zomer-panorama.jpg", alt: t("mosaic.aerial") },
             ]}
           />
         </section>
@@ -129,7 +129,7 @@ export default function HomePage({
           cta={t("seasonCta")}
           href="/omgeving"
           image={{
-            src: "/photos/omgeving-hochkonig-winter.jpg",
+            src: "/photos/omgeving-winter-spiegeling.jpg",
             alt: t("winterEyebrow"),
           }}
         />
@@ -143,7 +143,7 @@ export default function HomePage({
           cta={t("seasonCta")}
           href="/omgeving"
           image={{
-            src: "/photos/omgeving-bergpanorama.jpg",
+            src: "/photos/omgeving-zomer-wandelpad.jpg",
             alt: t("summerEyebrow"),
           }}
         />

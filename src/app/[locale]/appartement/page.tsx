@@ -96,7 +96,7 @@ export default function ApartmentPage({
 
       <Section
         title={t("gardenTitle")}
-        image={{ alt: t("gardenTitle"), variant: "garden" }}
+        image={{ src: "/photos/tuin-1.jpg", alt: t("gardenTitle") }}
       >
         <p>{t("gardenText")}</p>
       </Section>

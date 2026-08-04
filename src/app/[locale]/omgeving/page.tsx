@@ -34,22 +34,42 @@ export default function SurroundingsPage({
 
   return (
     <>
-      <Hero title={t("title")} subtitle={t("intro")} alt={t("title")} size="small" />
+      <Hero
+        title={t("title")}
+        subtitle={t("intro")}
+        src="/photos/omgeving-winter-weide.jpg"
+        alt={t("title")}
+        size="small"
+      />
 
       <Section
         title={t("villageTitle")}
-        image={{ src: "/photos/omgeving-kerk-maria-alm.jpg", alt: t("villageTitle") }}
+        image={{
+          src: "/photos/omgeving-winter-dorpsstraat.jpg",
+          alt: t("villageTitle"),
+        }}
       >
         <p>{t("villageText")}</p>
       </Section>
 
-      {/* Winter/zomer-foto's van de omgeving volgen nog (eigen foto's van de
-          eigenaar) — bewust placeholder tot die zijn aangeleverd. */}
-      <Section title={t("winterTitle")} image={{ alt: t("winterTitle"), variant: "mountain" }} reverse>
+      <Section
+        title={t("winterTitle")}
+        image={{
+          src: "/photos/omgeving-winter-bergkapel.jpg",
+          alt: t("winterTitle"),
+        }}
+        reverse
+      >
         <p>{t("winterText")}</p>
       </Section>
 
-      <Section title={t("summerTitle")} image={{ alt: t("summerTitle"), variant: "mountain" }}>
+      <Section
+        title={t("summerTitle")}
+        image={{
+          src: "/photos/omgeving-zomer-bergkam.jpg",
+          alt: t("summerTitle"),
+        }}
+      >
         <p>{t("summerText")}</p>
       </Section>
 
@@ -81,10 +101,6 @@ export default function SurroundingsPage({
           </ul>
         </div>
       </section>
-
-      <p className="mx-auto max-w-5xl px-4 pb-8 text-xs text-timber/70">
-        {t("credits")}
-      </p>
     </>
   );
 }

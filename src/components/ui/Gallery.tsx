@@ -30,6 +30,10 @@ export default function Gallery({ photos }: { photos: GalleryPhoto[] }) {
                 src={photo.src}
                 alt={photo.alt}
                 fill
+                // Drie kolommen op desktop, twee op mobiel — zie het raster
+                // hierboven. Scheelt op de fotopagina flink, want daar staan
+                // ruim dertig foto's onder elkaar.
+                sizes="(min-width: 640px) 33vw, 50vw"
                 className="object-cover transition-transform hover:scale-105"
               />
             ) : (

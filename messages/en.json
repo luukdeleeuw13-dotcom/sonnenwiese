@@ -95,7 +95,40 @@
     "lightboxPrev": "Previous photo",
     "lightboxNext": "Next photo",
     "hallStorage": "Hallway & storage",
-    "toilet": "Toilet"
+    "toilet": "Toilet",
+    "captions": {
+      "garden": "The terrace and garden",
+      "summerBarn": "Hay barn below the Hochkönig",
+      "summerPath": "Walking path in the evening light",
+      "summerChurch": "The church of Maria Alm in summer",
+      "summerFarm": "Farmhouse on the road into the village",
+      "summerMarker": "Red-and-white trail marker in the forest",
+      "winterMirror": "The Hochkönig mirrored in meltwater",
+      "winterChapel": "Mountain chapel above the slopes",
+      "winterGondola": "Gondola through the snow-covered forest",
+      "winterMassif": "The Hochkönig massif above the valley",
+      "winterFieldChapel": "Small chapel in the snowy field",
+      "winterChurch": "The church of Maria Alm in winter",
+      "winterStreet": "The village street of Maria Alm",
+      "winterChalets": "Chalets on the snowy hillside",
+      "winterMeadow": "Snowy meadow below the mountains",
+      "winterHorses": "Horses at the feeder in the snow",
+      "winterHut": "Alpine hut with hearts in the shutters",
+      "winterDusk": "The village in the last light",
+      "winterNight1": "Maria Alm at night",
+      "winterNight2": "View over the lit village",
+      "summerPanorama": "View over the valley from the summit",
+      "summerRidge": "Trail along the mountain ridge",
+      "summerChurchFlowers": "The church behind a meadow in bloom",
+      "summerChurchMeadow": "The church with fresh snow on the peaks",
+      "summerAlpineHut": "Alpine hut high in the clouds",
+      "summerSignpost": "Yellow signposts at the pasture gate",
+      "summerBench": "Bench and wayside shrine under the tree",
+      "summerMarmots": "Marmots on the alpine meadow",
+      "winterRoad": "The road into the village in winter",
+      "winterChurchNight1": "The lit church on a winter evening",
+      "winterChurchNight2": "The church under the night sky"
+    }
   },
   "surroundings": {
     "title": "The surroundings",
@@ -112,8 +145,7 @@
       "skilift": "Ski lift — 5 min by car",
       "village": "Maria Alm centre — 10 min walk",
       "piste": "150 km of slopes in the Hochkönig ski area"
-    },
-    "credits": "Photos on this page: © Aconcagua and Geertivp, via Wikimedia Commons (CC BY-SA)."
+    }
   },
   "pricing": {
     "title": "Prices",

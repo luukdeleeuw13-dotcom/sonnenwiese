@@ -41,6 +41,10 @@ export default function Section({
                   src={image.src}
                   alt={image.alt}
                   fill
+                  // Halve kolom op desktop, volle breedte op mobiel. Zonder
+                  // deze hint stuurt Next de grootste variant ook naar een
+                  // telefoon, en dat is precies waar het minst bandbreedte is.
+                  sizes="(min-width: 640px) 50vw, 100vw"
                   className="object-cover"
                 />
               ) : (

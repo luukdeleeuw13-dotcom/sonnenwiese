@@ -95,7 +95,40 @@
     "lightboxPrev": "Vorige foto",
     "lightboxNext": "Volgende foto",
     "hallStorage": "Hal & berging",
-    "toilet": "Toilet"
+    "toilet": "Toilet",
+    "captions": {
+      "garden": "Het terras en de tuin",
+      "summerBarn": "Hooischuur onder de Hochkönig",
+      "summerPath": "Wandelpad in het avondlicht",
+      "summerChurch": "Het kerkje van Maria Alm in de zomer",
+      "summerFarm": "Boerderij aan de weg naar het dorp",
+      "summerMarker": "Rood-witte wegmarkering in het bos",
+      "winterMirror": "De Hochkönig weerspiegeld in het smeltwater",
+      "winterChapel": "Bergkapel boven de pistes",
+      "winterGondola": "Gondel door de besneeuwde bossen",
+      "winterMassif": "Het Hochkönig-massief boven het dal",
+      "winterFieldChapel": "Kapelletje in het besneeuwde veld",
+      "winterChurch": "Het kerkje van Maria Alm in de winter",
+      "winterStreet": "De dorpsstraat van Maria Alm",
+      "winterChalets": "Chalets tegen de besneeuwde helling",
+      "winterMeadow": "Besneeuwde weide onder de bergen",
+      "winterHorses": "Paarden bij de voerbak in de sneeuw",
+      "winterHut": "Almhut met hartjes in de luiken",
+      "winterDusk": "Het dorp in het laatste licht",
+      "winterNight1": "Maria Alm bij avond",
+      "winterNight2": "Uitzicht over het verlichte dorp",
+      "summerPanorama": "Uitzicht over het dal vanaf de bergtop",
+      "summerRidge": "Wandelpad over de bergkam",
+      "summerChurchFlowers": "Het kerkje achter een bloeiende weide",
+      "summerChurchMeadow": "Het kerkje met verse sneeuw op de toppen",
+      "summerAlpineHut": "Almhut hoog in de wolken",
+      "summerSignpost": "Gele wegwijzers bij het weidehek",
+      "summerBench": "Bankje en veldkapelletje onder de boom",
+      "summerMarmots": "Marmotten op de alpenweide",
+      "winterRoad": "De weg naar het dorp in de winter",
+      "winterChurchNight1": "Het verlichte kerkje op een winteravond",
+      "winterChurchNight2": "Het kerkje onder een nachtelijke hemel"
+    }
   },
   "surroundings": {
     "title": "De omgeving",
@@ -112,8 +145,7 @@
       "skilift": "Skilift — 5 min rijden",
       "village": "Centrum Maria Alm — 10 min lopen",
       "piste": "150 km piste in skigebied Hochkönig"
-    },
-    "credits": "Foto's op deze pagina: © Aconcagua en Geertivp, via Wikimedia Commons (CC BY-SA)."
+    }
   },
   "pricing": {
     "title": "Prijzen",

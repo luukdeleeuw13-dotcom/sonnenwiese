@@ -29,7 +29,6 @@ export default function GalleryPage({
   setRequestLocale(locale);
   const t = useTranslations("gallery");
   const ta = useTranslations("apartment");
-  const ts = useTranslations("surroundings");
 
   // Foto's van het appartement (aangeleverd door de eigenaar), per ruimte.
   const groups: { title: string; photos: GalleryPhoto[] }[] = [
@@ -58,20 +57,56 @@ export default function GalleryPage({
       title: ta("bathroomTitle"),
       photos: [{ src: "/photos/badkamer-1.jpg", alt: ta("bathroomTitle") }],
     },
+    {
+      title: ta("gardenTitle"),
+      photos: [{ src: "/photos/tuin-1.jpg", alt: t("captions.garden") }],
+    },
   ];
 
-  // Omgevingsfoto's volgen nog (eigenaar levert eigen foto's aan) —
-  // bewust placeholders i.p.v. de eerdere Wikimedia-stockfoto's.
-  const surroundingsSummer: GalleryPhoto[] = [
-    { alt: "Hochkönig", variant: "mountain" },
-    { alt: ts("villageTitle"), variant: "mountain" },
-    { alt: ts("summerTitle"), variant: "garden" },
-  ];
+  // Eigen foto's uit Maria Alm; elke foto heeft een eigen omschrijving, want
+  // "Omgeving 7" helpt niemand die de site voorgelezen krijgt. Bestandsnaam en
+  // sleutel lopen gelijk op, zodat een foto vervangen één regel blijft.
+  const toPhotos = (entries: [file: string, caption: string][]): GalleryPhoto[] =>
+    entries.map(([file, caption]) => ({
+      src: `/photos/${file}.jpg`,
+      alt: t(`captions.${caption}`),
+    }));
 
-  const surroundingsWinter: GalleryPhoto[] = [
-    { alt: ts("winterTitle"), variant: "mountain" },
-    { alt: `Hochkönig — ${t("winter")}`, variant: "mountain" },
-  ];
+  const surroundingsSummer = toPhotos([
+    ["omgeving-zomer-panorama", "summerPanorama"],
+    ["omgeving-zomer-bergkam", "summerRidge"],
+    ["omgeving-zomer-kerk-bloemen", "summerChurchFlowers"],
+    ["omgeving-zomer-schuur", "summerBarn"],
+    ["omgeving-zomer-wandelpad", "summerPath"],
+    ["omgeving-zomer-almhut", "summerAlpineHut"],
+    ["omgeving-zomer-kerk-weide", "summerChurchMeadow"],
+    ["omgeving-zomer-kerk", "summerChurch"],
+    ["omgeving-zomer-boerderij", "summerFarm"],
+    ["omgeving-zomer-wegwijzer", "summerSignpost"],
+    ["omgeving-zomer-wandelmarkering", "summerMarker"],
+    ["omgeving-zomer-bankje", "summerBench"],
+    ["omgeving-zomer-marmotten", "summerMarmots"],
+  ]);
+
+  const surroundingsWinter = toPhotos([
+    ["omgeving-winter-spiegeling", "winterMirror"],
+    ["omgeving-winter-bergkapel", "winterChapel"],
+    ["omgeving-winter-gondel", "winterGondola"],
+    ["omgeving-winter-hochkonig", "winterMassif"],
+    ["omgeving-winter-kapel-weide", "winterFieldChapel"],
+    ["omgeving-winter-kerk", "winterChurch"],
+    ["omgeving-winter-kerk-nacht-1", "winterChurchNight1"],
+    ["omgeving-winter-kerk-nacht-2", "winterChurchNight2"],
+    ["omgeving-winter-dorpsstraat", "winterStreet"],
+    ["omgeving-winter-chalets", "winterChalets"],
+    ["omgeving-winter-weg", "winterRoad"],
+    ["omgeving-winter-weide", "winterMeadow"],
+    ["omgeving-winter-paarden", "winterHorses"],
+    ["omgeving-winter-almhut", "winterHut"],
+    ["omgeving-winter-avondlicht", "winterDusk"],
+    ["omgeving-winter-dorp-nacht-1", "winterNight1"],
+    ["omgeving-winter-dorp-nacht-2", "winterNight2"],
+  ]);
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-10">

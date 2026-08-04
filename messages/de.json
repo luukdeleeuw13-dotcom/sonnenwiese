@@ -95,7 +95,40 @@
     "lightboxPrev": "Vorheriges Foto",
     "lightboxNext": "Nächstes Foto",
     "hallStorage": "Flur & Abstellraum",
-    "toilet": "WC"
+    "toilet": "WC",
+    "captions": {
+      "garden": "Die Terrasse und der Garten",
+      "summerBarn": "Heustadel unterhalb des Hochkönigs",
+      "summerPath": "Wanderweg im Abendlicht",
+      "summerChurch": "Die Kirche von Maria Alm im Sommer",
+      "summerFarm": "Bauernhof am Weg ins Dorf",
+      "summerMarker": "Rot-weiße Wegmarkierung im Wald",
+      "winterMirror": "Der Hochkönig spiegelt sich im Schmelzwasser",
+      "winterChapel": "Bergkapelle über den Pisten",
+      "winterGondola": "Gondel durch verschneite Wälder",
+      "winterMassif": "Das Hochkönig-Massiv über dem Tal",
+      "winterFieldChapel": "Kapelle im verschneiten Feld",
+      "winterChurch": "Die Kirche von Maria Alm im Winter",
+      "winterStreet": "Die Dorfstraße von Maria Alm",
+      "winterChalets": "Chalets am verschneiten Hang",
+      "winterMeadow": "Verschneite Wiese unter den Bergen",
+      "winterHorses": "Pferde an der Raufe im Schnee",
+      "winterHut": "Almhütte mit Herzen in den Fensterläden",
+      "winterDusk": "Das Dorf im letzten Licht",
+      "winterNight1": "Maria Alm am Abend",
+      "winterNight2": "Blick über das beleuchtete Dorf",
+      "summerPanorama": "Blick über das Tal vom Gipfel",
+      "summerRidge": "Wanderweg über den Bergkamm",
+      "summerChurchFlowers": "Die Kirche hinter einer blühenden Wiese",
+      "summerChurchMeadow": "Die Kirche mit frischem Schnee auf den Gipfeln",
+      "summerAlpineHut": "Almhütte hoch in den Wolken",
+      "summerSignpost": "Gelbe Wegweiser am Weidegatter",
+      "summerBench": "Bank und Marterl unter dem Baum",
+      "summerMarmots": "Murmeltiere auf der Almwiese",
+      "winterRoad": "Der Weg ins Dorf im Winter",
+      "winterChurchNight1": "Die beleuchtete Kirche an einem Winterabend",
+      "winterChurchNight2": "Die Kirche unter dem Nachthimmel"
+    }
   },
   "surroundings": {
     "title": "Die Umgebung",
@@ -112,8 +145,7 @@
       "skilift": "Skilift — 5 Autominuten",
       "village": "Ortszentrum Maria Alm — 10 Gehminuten",
       "piste": "150 km Piste im Skigebiet Hochkönig"
-    },
-    "credits": "Fotos auf dieser Seite: © Aconcagua und Geertivp, über Wikimedia Commons (CC BY-SA)."
+    }
   },
   "pricing": {
     "title": "Preise",
