@@ -10,6 +10,7 @@ import HighlightCard from "@/components/ui/HighlightCard";
 import PhotoMosaic from "@/components/ui/PhotoMosaic";
 import SeasonSection from "@/components/ui/SeasonSection";
 import Reveal from "@/components/ui/Reveal";
+import { MIN_WEEK_PRICE_CENTS, formatPrice } from "@/lib/booking/seasons";
 
 export async function generateMetadata({
   params,
@@ -74,12 +75,22 @@ export default function HomePage({
         src="/photos/omgeving-zomer-schuur.jpg"
         alt="Sonnenwiese, Maria Alm"
         cta={
-          <Link
-            href="/beschikbaarheid"
-            className="inline-block rounded-lg bg-sun px-6 py-3.5 text-base font-semibold text-snow shadow-lg transition-colors hover:bg-sun-dark"
-          >
-            {t("heroCta")}
-          </Link>
+          <>
+            <Link
+              href="/beschikbaarheid"
+              className="inline-block rounded-lg bg-sun px-6 py-3.5 text-base font-semibold text-snow shadow-lg transition-colors hover:bg-sun-dark"
+            >
+              {t("heroCta")}
+            </Link>
+            {/* Het laagste weektarief stond alleen op de prijzenpagina, twee
+                klikken diep. Voor acht personen is het opvallend weinig, en dat
+                is precies het soort ding dat je meteen wilt weten. */}
+            <p className="mt-3 text-sm text-cream drop-shadow">
+              {t("priceFrom", {
+                price: formatPrice(MIN_WEEK_PRICE_CENTS, locale),
+              })}
+            </p>
+          </>
         }
       />
 

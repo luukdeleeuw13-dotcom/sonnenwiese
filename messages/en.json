@@ -28,6 +28,7 @@
     "heroTitle": "Welcome to Maria Alm",
     "heroSubtitle": "Our family home on the edge of Maria Alm, overlooking the Hochkönig mountains. Sleeps 6 to 8, summer and winter alike.",
     "heroCta": "Check availability",
+    "priceFrom": "From {price} per week",
     "highlightsTitle": "At a glance",
     "highlightGuests": "6–8 guests",
     "highlightGuestsText": "Three bedrooms, a spacious living room and a sunny garden — plenty of room for the whole group.",
@@ -153,20 +154,16 @@
     "tableTitle": "Rent per week",
     "rows": {
       "winterHigh": {
-        "label": "Winter — high season (school holidays)",
-        "price": "€ 1,850"
+        "label": "Winter — high season (school holidays)"
       },
       "winterLow": {
-        "label": "Winter — low season",
-        "price": "€ 800"
+        "label": "Winter — low season"
       },
       "summerHigh": {
-        "label": "Summer — high season",
-        "price": "€ 700"
+        "label": "Summer — high season"
       },
       "summerLow": {
-        "label": "Summer — low season",
-        "price": "€ 450"
+        "label": "Summer — low season"
       }
     },
     "seasons": {
@@ -203,6 +200,10 @@
     "calendarLegendSelected": "Your selection",
     "calendarHint": "We rent by the full week, Saturday to Saturday. Click the week you'd like to come — click a second week to stay longer.",
     "calendarOverlap": "There's a booked week between your first and last week. Please pick a period that is free throughout.",
+    "priceWeeks": "{count, plural, =1 {# week} other {# weeks}}",
+    "priceTotal": "Total",
+    "priceNote": "This is the full rent — you pay nothing on top.",
+    "priceUnknown": "The price for these weeks isn't set yet. Just ask and we'll work it out for you.",
     "formTitle": "Send a request",
     "questionTitle": "Doesn't a full week fit?",
     "questionText": "We rent Saturday to Saturday, but something else isn't out of the question — just ask. Any other question about the apartment lands here too.",

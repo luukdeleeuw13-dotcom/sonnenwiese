@@ -28,6 +28,7 @@
     "heroTitle": "Willkommen in Maria Alm",
     "heroSubtitle": "Unser Familienhaus am Rande von Maria Alm, mit Blick auf das Hochkönig-Massiv. Für 6 bis 8 Personen, im Sommer und im Winter.",
     "heroCta": "Verfügbarkeit ansehen",
+    "priceFrom": "Ab {price} pro Woche",
     "highlightsTitle": "Auf einen Blick",
     "highlightGuests": "6–8 Personen",
     "highlightGuestsText": "Drei Schlafzimmer, ein geräumiges Wohnzimmer und ein sonniger Garten — genug Platz für die ganze Gruppe.",
@@ -153,20 +154,16 @@
     "tableTitle": "Mietpreis pro Woche",
     "rows": {
       "winterHigh": {
-        "label": "Winter — Hochsaison (Schulferien)",
-        "price": "€ 1.850"
+        "label": "Winter — Hochsaison (Schulferien)"
       },
       "winterLow": {
-        "label": "Winter — Nebensaison",
-        "price": "€ 800"
+        "label": "Winter — Nebensaison"
       },
       "summerHigh": {
-        "label": "Sommer — Hochsaison",
-        "price": "€ 700"
+        "label": "Sommer — Hochsaison"
       },
       "summerLow": {
-        "label": "Sommer — Nebensaison",
-        "price": "€ 450"
+        "label": "Sommer — Nebensaison"
       }
     },
     "seasons": {
@@ -203,6 +200,10 @@
     "calendarLegendSelected": "Deine Auswahl",
     "calendarHint": "Vermietet wird pro ganze Woche, von Samstag bis Samstag. Klick die Woche an, in der du kommen möchtest — für einen längeren Aufenthalt klickst du eine zweite Woche an.",
     "calendarOverlap": "Zwischen deiner ersten und letzten Woche liegt eine belegte Woche. Wähle bitte einen Zeitraum, der durchgehend frei ist.",
+    "priceWeeks": "{count, plural, =1 {# Woche} other {# Wochen}}",
+    "priceTotal": "Gesamt",
+    "priceNote": "Das ist die vollständige Miete — mehr zahlst du nicht.",
+    "priceUnknown": "Für diesen Zeitraum steht der Preis noch nicht fest. Frag einfach nach, dann rechnen wir es für dich aus.",
     "formTitle": "Anfrage stellen",
     "questionTitle": "Passt keine ganze Woche?",
     "questionText": "Wir vermieten von Samstag bis Samstag, aber etwas anderes ist nicht ausgeschlossen — frag ruhig nach. Auch alle übrigen Fragen zur Wohnung sind hier richtig.",

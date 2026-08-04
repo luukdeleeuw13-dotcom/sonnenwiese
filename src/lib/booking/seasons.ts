@@ -12,6 +12,23 @@ export const WEEK_PRICE_CENTS: Record<SeasonKey, number> = {
   summerLow: 45_000,
 };
 
+// Het laagste weektarief, voor de "vanaf"-regel op de homepage. Afgeleid en
+// niet apart ingetypt: een prijsverhoging mag nergens een oud bedrag laten
+// staan, en dit is precies het soort regel dat je vergeet bij te werken.
+export const MIN_WEEK_PRICE_CENTS = Math.min(...Object.values(WEEK_PRICE_CENTS));
+
+// Bedragen naar het scherm, in de opmaak van de bezoeker: "€ 1.850" voor een
+// Nederlander, "1.850 €" voor een Duitser. De centen blijven weg zolang ze nul
+// zijn — alle weekprijzen zijn hele euro's, en "€ 1.850,00" leest als een nota
+// in plaats van als een prijs.
+export function formatPrice(cents: number, locale: string): string {
+  return (cents / 100).toLocaleString(locale, {
+    style: "currency",
+    currency: "EUR",
+    minimumFractionDigits: cents % 100 === 0 ? 0 : 2,
+  });
+}
+
 export const SEASON_LABELS: Record<SeasonKey, string> = {
   winterHigh: "winter — hoogseizoen",
   winterLow: "winter — laagseizoen",

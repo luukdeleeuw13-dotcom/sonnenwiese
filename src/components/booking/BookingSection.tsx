@@ -5,6 +5,7 @@ import type { DateRange } from "react-day-picker";
 import { useTranslations } from "next-intl";
 import AvailabilityCalendar from "./AvailabilityCalendar";
 import BookingForm from "./BookingForm";
+import PriceSummary from "./PriceSummary";
 
 export type BookedRange = { from: string; to: string }; // yyyy-MM-dd
 
@@ -59,6 +60,7 @@ export default function BookingSection({
               {t("calendarLegendSelected")}
             </span>
           </div>
+          <PriceSummary range={range} />
         </div>
       </section>
 

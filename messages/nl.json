@@ -28,6 +28,7 @@
     "heroTitle": "Welkom in Maria Alm",
     "heroSubtitle": "Ons familiehuis aan de rand van Maria Alm, met uitzicht op het Hochkönig-gebergte. Voor 6 tot 8 personen, zomer én winter.",
     "heroCta": "Bekijk beschikbaarheid",
+    "priceFrom": "Vanaf {price} per week",
     "highlightsTitle": "In het kort",
     "highlightGuests": "6–8 personen",
     "highlightGuestsText": "Drie slaapkamers, ruime woonkamer en een zonnige tuin — genoeg plek voor het hele gezelschap.",
@@ -153,20 +154,16 @@
     "tableTitle": "Huurprijs per week",
     "rows": {
       "winterHigh": {
-        "label": "Winter — hoogseizoen (schoolvakanties)",
-        "price": "€ 1.850"
+        "label": "Winter — hoogseizoen (schoolvakanties)"
       },
       "winterLow": {
-        "label": "Winter — laagseizoen",
-        "price": "€ 800"
+        "label": "Winter — laagseizoen"
       },
       "summerHigh": {
-        "label": "Zomer — hoogseizoen",
-        "price": "€ 700"
+        "label": "Zomer — hoogseizoen"
       },
       "summerLow": {
-        "label": "Zomer — laagseizoen",
-        "price": "€ 450"
+        "label": "Zomer — laagseizoen"
       }
     },
     "seasons": {
@@ -203,6 +200,10 @@
     "calendarLegendSelected": "Jouw selectie",
     "calendarHint": "De verhuur gaat per hele week, van zaterdag tot zaterdag. Klik de week aan waarin je wilt komen — klik een tweede week aan om langer te blijven.",
     "calendarOverlap": "Tussen je eerste en laatste week zit een bezette week. Kies een periode die helemaal vrij is.",
+    "priceWeeks": "{count, plural, =1 {# week} other {# weken}}",
+    "priceTotal": "Totaal",
+    "priceNote": "Dit is de volledige huur — meer betaal je niet.",
+    "priceUnknown": "Voor deze periode staat de prijs nog niet vast. Stel gerust je vraag, dan rekenen we het voor je uit.",
     "formTitle": "Aanvraag doen",
     "questionTitle": "Past er geen hele week?",
     "questionText": "We verhuren van zaterdag tot zaterdag, maar daarbuiten is niet onmogelijk — vraag het gerust. Ook alle andere vragen over het appartement komen hier goed terecht.",

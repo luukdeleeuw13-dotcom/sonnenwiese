@@ -6,7 +6,11 @@ import { format } from "date-fns";
 import { nl, de, enGB } from "date-fns/locale";
 import { Link } from "@/i18n/navigation";
 import { buildMetadata } from "@/lib/metadata";
-import { HIGH_SEASONS } from "@/lib/booking/seasons";
+import {
+  HIGH_SEASONS,
+  WEEK_PRICE_CENTS,
+  formatPrice,
+} from "@/lib/booking/seasons";
 
 export async function generateMetadata({
   params,
@@ -88,8 +92,11 @@ export default function PricingPage({
                 <td className="px-6 py-3.5 text-timber">
                   {t(`rows.${key}.label`)}
                 </td>
+                {/* Het bedrag komt uit dezelfde tabel als de nota, niet uit de
+                    vertalingen. Anders staat een prijswijziging op vier plekken
+                    (drie talen plus de rekensom) en vergeet je er één. */}
                 <td className="whitespace-nowrap px-6 py-3.5 text-right font-semibold text-bark">
-                  {t(`rows.${key}.price`)}
+                  {formatPrice(WEEK_PRICE_CENTS[key], locale)}
                 </td>
               </tr>
             ))}
