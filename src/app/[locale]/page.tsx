@@ -7,6 +7,7 @@ import { alternatesFor, OG_IMAGES } from "@/lib/metadata";
 import { pathFor } from "@/lib/routes";
 import Hero from "@/components/ui/Hero";
 import HighlightCard from "@/components/ui/HighlightCard";
+import PhotoBand from "@/components/ui/PhotoBand";
 import PhotoMosaic from "@/components/ui/PhotoMosaic";
 import SeasonSection from "@/components/ui/SeasonSection";
 import Testimonials from "@/components/ui/Testimonials";
@@ -67,6 +68,9 @@ export default function HomePage({
   const { locale } = use(params);
   setRequestLocale(locale);
   const t = useTranslations("home");
+  // De fotoband hergebruikt het bijschrift dat deze foto op de fotopagina al
+  // heeft: zelfde foto, zelfde omschrijving, en hij blijft vanzelf gelijk.
+  const tg = useTranslations("gallery");
 
   return (
     <>
@@ -159,6 +163,15 @@ export default function HomePage({
             src: "/photos/omgeving-zomer-wandelpad.jpg",
             alt: t("summerEyebrow"),
           }}
+        />
+      </Reveal>
+
+      {/* Even niets. Na twee grote verhalende blokken en vóór de praktische
+          kaartjes één foto over de volle breedte, zonder tekst erop. */}
+      <Reveal>
+        <PhotoBand
+          src="/photos/omgeving-winter-kapel-weide.jpg"
+          alt={tg("captions.winterFieldChapel")}
         />
       </Reveal>
 

@@ -71,6 +71,31 @@ body {
       opacity 0.25s ease-out,
       transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
   }
+
+  /* Trage inzoom op de brede fotoband, hetzelfde idee als bij de hero maar
+     langzamer: de band krijgt er diepte van in plaats van als een sticker mee
+     te schuiven.
+
+     Hier stond eerst een parallax via `animation-timeline: view()`. Dat is
+     mooier — geen JavaScript, de foto beweegt met de scrollpositie mee — maar
+     Lightning CSS gooit dat blok bij het bouwen compleet weg, omdat scroll-
+     gestuurde animaties buiten de browserdoelen van Tailwind vallen (Firefox
+     kent ze niet). Het stond dus wel in globals.css en niet in de uitgeleverde
+     stylesheet. Deze variant haalt het niet, maar komt wel echt bij de
+     bezoeker aan. */
+  .photo-band {
+    animation: photo-band 18s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes photo-band {
+    from {
+      transform: scale(1.08);
+    }
+
+    to {
+      transform: scale(1);
+    }
+  }
 }
 
 /* react-day-picker in het warm-alpine palet. `body .rdp-root` wint qua
