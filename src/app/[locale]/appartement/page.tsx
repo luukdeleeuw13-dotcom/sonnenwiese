@@ -46,7 +46,18 @@ export default function ApartmentPage({
 
   return (
     <>
-      <Hero title={t("title")} subtitle={t("intro")} alt={t("title")} size="small" />
+      {/* Geen foto van het gebouw hierboven — dat is niet waar iemand voor
+          komt, en het pand is nu eenmaal geen plaatje. De woonkamer over de
+          volle breedte is wél wat je huurt: één blik en je ziet dat het ruimer
+          is dan een appartement doet vermoeden. Deze opname is bovendien het
+          scherpst van alles wat we hebben (1170 px breed in plaats van 1024). */}
+      <Hero
+        title={t("title")}
+        subtitle={t("intro")}
+        src="/photos/woonkamer-3.jpg"
+        alt={t("livingTitle")}
+        size="small"
+      />
 
       <Section
         title={t("livingTitle")}
