@@ -6,6 +6,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { format } from "date-fns";
 import { nl, de, enGB } from "date-fns/locale";
 import { Link } from "@/i18n/navigation";
+import { MAX_GUESTS } from "@/lib/booking/capacity";
 import BookingConfirmation from "./BookingConfirmation";
 
 const dateLocales = { nl, de, en: enGB } as const;
@@ -101,10 +102,13 @@ export default function BookingForm({
     }
   };
 
+  // max gaat naar elke foutmelding mee; alleen die over het aantal personen
+  // gebruikt hem. Zo hoeft het maximum niet ook nog eens in drie vertalingen
+  // te staan — dan zou een extra bed daar stilletjes achterblijven.
   const err = (key: keyof FieldErrors) =>
     errors[key] ? (
       <p className="mt-1 text-sm text-red-700">
-        {t(`validation.${errors[key]}`)}
+        {t(`validation.${errors[key]}`, { max: MAX_GUESTS })}
       </p>
     ) : null;
 
@@ -181,7 +185,7 @@ export default function BookingForm({
           onChange={(e) => setGuests(Number(e.target.value))}
           className={inputClass}
         >
-          {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
+          {Array.from({ length: MAX_GUESTS }, (_, i) => i + 1).map((n) => (
             <option key={n} value={n}>
               {n}
             </option>

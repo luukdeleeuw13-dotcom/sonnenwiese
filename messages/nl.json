@@ -20,18 +20,16 @@
   },
   "common": {
     "photoComingSoon": "Foto volgt",
-    "priceFrom": "Vanaf {price}",
     "bookCta": "Bekijk beschikbaarheid",
     "contactCta": "Doe een aanvraag",
     "questionCta": "Stel je vraag"
   },
   "home": {
     "heroTitle": "Welkom in Maria Alm",
-    "heroSubtitle": "Ons familiehuis aan de rand van Maria Alm, met uitzicht op het Hochkönig-gebergte. Voor 6 tot 8 personen, zomer én winter.",
+    "heroSubtitle": "Ons familiehuis aan de rand van Maria Alm, met uitzicht op het Hochkönig-gebergte. Voor 7 personen, zomer én winter.",
     "heroCta": "Bekijk beschikbaarheid",
-    "priceFrom": "Vanaf {price} per week",
     "highlightsTitle": "In het kort",
-    "highlightGuests": "6–8 personen",
+    "highlightGuests": "7 personen",
     "highlightGuestsText": "Drie slaapkamers, ruime woonkamer en een zonnige tuin — genoeg plek voor het hele gezelschap.",
     "highlightSki": "Skigebied Hochkönig",
     "highlightSkiText": "150 km piste voor de deur: de skilift is 5 minuten rijden en de skibus stopt op 300 meter.",
@@ -63,20 +61,20 @@
   },
   "apartment": {
     "title": "Het appartement",
-    "intro": "Het appartement is in 2004 nieuw gebouwd en ingericht, en biedt comfortabel plek aan 6 tot 8 personen. Alles is er: een moderne keuken, drie slaapkamers, een zonnige tuin en een fantastisch uitzicht op de helling van het Hochkönig-gebergte.",
+    "intro": "Het appartement is in 2004 nieuw gebouwd en ingericht, en biedt comfortabel plek aan 7 personen. Alles is er: een moderne keuken, drie slaapkamers, een zonnige tuin en een fantastisch uitzicht op de helling van het Hochkönig-gebergte.",
     "livingTitle": "Woonkamer",
     "livingText": "Een gezellige woonkamer met een ruime bank — dé plek om na een dag skiën of wandelen samen te komen. Satelliet-tv met Nederlandse zenders en internet zijn aanwezig.",
     "kitchenTitle": "Keuken",
     "kitchenText": "De moderne keuken is volledig uitgerust, met combi-oven en vaatwasser. Groot genoeg om met het hele gezelschap te koken.",
     "bedroomsTitle": "Drie slaapkamers",
-    "bedroomsText": "Twee slaapkamers met een tweepersoonsbed en een derde slaapkamer met een stapelbed en een eenpersoonsbed. Zo slaapt iedereen — van 6 tot 8 personen — comfortabel.",
+    "bedroomsText": "Twee slaapkamers met een tweepersoonsbed en een derde slaapkamer met een stapelbed en een eenpersoonsbed. Samen zeven bedden, dus niemand slaapt op de bank.",
     "bathroomTitle": "Badkamer & toilet",
     "bathroomText": "Een complete badkamer en een apart toilet, zodat het 's ochtends nooit dringen is.",
     "gardenTitle": "Zonnige tuin",
     "gardenText": "De tuin ligt op de zon en heeft een tuinset — perfect voor een lange zomeravond of een kop koffie met uitzicht op de bergen.",
     "amenitiesTitle": "Alle voorzieningen",
     "amenities": {
-      "guests": "Geschikt voor 6–8 personen",
+      "guests": "Geschikt voor 7 personen",
       "bedrooms": "3 slaapkamers (2x tweepersoonsbed, 1x stapelbed + eenpersoonsbed)",
       "kitchen": "Moderne keuken met combi-oven en vaatwasser",
       "washer": "Wasmachine en droger",
@@ -246,7 +244,7 @@
       "datesInvalid": "De vertrekdatum moet na de aankomstdatum liggen.",
       "datesPast": "De aankomstdatum moet in de toekomst liggen.",
       "datesWholeWeeks": "We verhuren per hele week, van zaterdag tot zaterdag. Kies je weken in de kalender.",
-      "guestsInvalid": "Kies een aantal personen tussen 1 en 8.",
+      "guestsInvalid": "Kies een aantal personen tussen 1 en {max}.",
       "datesUnavailable": "Deze periode is (deels) al bezet. Kies een andere periode in de kalender."
     },
     "privacyNote": "We gebruiken je gegevens alleen om deze aanvraag te beantwoorden en verwijderen ze na een jaar. Meer daarover lees je in onze <link>privacyverklaring</link>."
@@ -355,7 +353,7 @@
   },
   "meta": {
     "siteTitle": "Sonnenwiese — vakantieappartement Maria Alm",
-    "siteDescription": "Vakantieappartement voor 6–8 personen aan de rand van Maria Alm, Salzburgerland. Skigebied Hochkönig op 5 minuten, zomer en winter."
+    "siteDescription": "Vakantieappartement voor 7 personen aan de rand van Maria Alm, Salzburgerland. Skigebied Hochkönig op 5 minuten, zomer en winter."
   },
   "email": {
     "confirmSubject": "Je verblijf in Sonnenwiese is bevestigd ({from} – {to})",

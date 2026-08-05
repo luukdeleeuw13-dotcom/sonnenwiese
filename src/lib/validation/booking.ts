@@ -1,5 +1,6 @@
 import type { BookingInput } from "@/lib/supabase/types";
 import { isChangeoverDate } from "@/lib/booking/weeks";
+import { MAX_GUESTS } from "@/lib/booking/capacity";
 
 const LOCALES = ["nl", "de", "en"] as const;
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -50,7 +51,7 @@ export function validateBooking(raw: unknown): BookingValidationResult {
   }
 
   const guests = typeof body.guests === "number" ? body.guests : NaN;
-  if (!Number.isInteger(guests) || guests < 1 || guests > 8) {
+  if (!Number.isInteger(guests) || guests < 1 || guests > MAX_GUESTS) {
     errors.guests = "guestsInvalid";
   }
 

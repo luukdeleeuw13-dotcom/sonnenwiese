@@ -20,18 +20,16 @@
   },
   "common": {
     "photoComingSoon": "Foto folgt",
-    "priceFrom": "Ab {price}",
     "bookCta": "Verfügbarkeit ansehen",
     "contactCta": "Anfrage stellen",
     "questionCta": "Stell deine Frage"
   },
   "home": {
     "heroTitle": "Willkommen in Maria Alm",
-    "heroSubtitle": "Unser Familienhaus am Rande von Maria Alm, mit Blick auf das Hochkönig-Massiv. Für 6 bis 8 Personen, im Sommer und im Winter.",
+    "heroSubtitle": "Unser Familienhaus am Rande von Maria Alm, mit Blick auf das Hochkönig-Massiv. Für 7 Personen, im Sommer und im Winter.",
     "heroCta": "Verfügbarkeit ansehen",
-    "priceFrom": "Ab {price} pro Woche",
     "highlightsTitle": "Auf einen Blick",
-    "highlightGuests": "6–8 Personen",
+    "highlightGuests": "7 Personen",
     "highlightGuestsText": "Drei Schlafzimmer, ein geräumiges Wohnzimmer und ein sonniger Garten — genug Platz für die ganze Gruppe.",
     "highlightSki": "Skigebiet Hochkönig",
     "highlightSkiText": "150 km Piste vor der Tür: der Skilift ist 5 Autominuten entfernt, der Skibus hält in 300 Metern.",
@@ -63,20 +61,20 @@
   },
   "apartment": {
     "title": "Die Wohnung",
-    "intro": "Die Wohnung wurde 2004 neu gebaut und eingerichtet und bietet bequem Platz für 6 bis 8 Personen. Alles ist da: eine moderne Küche, drei Schlafzimmer, ein sonniger Garten und ein herrlicher Blick auf den Hang des Hochkönig-Massivs.",
+    "intro": "Die Wohnung wurde 2004 neu gebaut und eingerichtet und bietet bequem Platz für 7 Personen. Alles ist da: eine moderne Küche, drei Schlafzimmer, ein sonniger Garten und ein herrlicher Blick auf den Hang des Hochkönig-Massivs.",
     "livingTitle": "Wohnzimmer",
     "livingText": "Ein gemütliches Wohnzimmer mit großem Sofa — der perfekte Ort, um nach einem Tag auf der Piste oder in den Bergen zusammenzukommen. Satelliten-TV mit niederländischen Sendern und Internet sind vorhanden.",
     "kitchenTitle": "Küche",
     "kitchenText": "Die moderne Küche ist voll ausgestattet, mit Kombi-Backofen und Geschirrspüler. Groß genug, um mit der ganzen Gruppe zu kochen.",
     "bedroomsTitle": "Drei Schlafzimmer",
-    "bedroomsText": "Zwei Schlafzimmer mit Doppelbett und ein drittes Schlafzimmer mit Etagenbett und Einzelbett. So schläft jeder — von 6 bis 8 Personen — bequem.",
+    "bedroomsText": "Zwei Schlafzimmer mit Doppelbett und ein drittes Schlafzimmer mit Etagenbett und Einzelbett. Zusammen sieben Betten — niemand muss auf dem Sofa schlafen.",
     "bathroomTitle": "Bad & WC",
     "bathroomText": "Ein komplettes Badezimmer und ein separates WC, damit es morgens nie eng wird.",
     "gardenTitle": "Sonniger Garten",
     "gardenText": "Der Garten liegt in der Sonne und ist mit Gartenmöbeln ausgestattet — perfekt für lange Sommerabende oder einen Kaffee mit Bergblick.",
     "amenitiesTitle": "Alle Ausstattungen",
     "amenities": {
-      "guests": "Geeignet für 6–8 Personen",
+      "guests": "Geeignet für 7 Personen",
       "bedrooms": "3 Schlafzimmer (2x Doppelbett, 1x Etagenbett + Einzelbett)",
       "kitchen": "Moderne Küche mit Kombi-Backofen und Geschirrspüler",
       "washer": "Waschmaschine und Trockner",
@@ -246,7 +244,7 @@
       "datesInvalid": "Das Abreisedatum muss nach dem Anreisedatum liegen.",
       "datesPast": "Das Anreisedatum muss in der Zukunft liegen.",
       "datesWholeWeeks": "Wir vermieten pro ganze Woche, von Samstag bis Samstag. Wähle deine Wochen im Kalender.",
-      "guestsInvalid": "Wähle eine Personenzahl zwischen 1 und 8.",
+      "guestsInvalid": "Wähle eine Personenzahl zwischen 1 und {max}.",
       "datesUnavailable": "Dieser Zeitraum ist (teilweise) bereits belegt. Wähle einen anderen Zeitraum im Kalender."
     },
     "privacyNote": "Wir verwenden Ihre Angaben ausschließlich zur Beantwortung dieser Anfrage und löschen sie nach einem Jahr. Mehr dazu in unserer <link>Datenschutzerklärung</link>."
@@ -355,7 +353,7 @@
   },
   "meta": {
     "siteTitle": "Sonnenwiese — Ferienwohnung Maria Alm",
-    "siteDescription": "Ferienwohnung für 6–8 Personen am Rande von Maria Alm, Salzburger Land. Skigebiet Hochkönig in 5 Minuten, Sommer und Winter."
+    "siteDescription": "Ferienwohnung für 7 Personen am Rande von Maria Alm, Salzburger Land. Skigebiet Hochkönig in 5 Minuten, Sommer und Winter."
   },
   "email": {
     "confirmSubject": "Dein Aufenthalt in der Sonnenwiese ist bestätigt ({from} – {to})",

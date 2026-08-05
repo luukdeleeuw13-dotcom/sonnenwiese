@@ -20,18 +20,16 @@
   },
   "common": {
     "photoComingSoon": "Photo coming soon",
-    "priceFrom": "From {price}",
     "bookCta": "Check availability",
     "contactCta": "Send a request",
     "questionCta": "Ask your question"
   },
   "home": {
     "heroTitle": "Welcome to Maria Alm",
-    "heroSubtitle": "Our family home on the edge of Maria Alm, overlooking the Hochkönig mountains. Sleeps 6 to 8, summer and winter alike.",
+    "heroSubtitle": "Our family home on the edge of Maria Alm, overlooking the Hochkönig mountains. Sleeps 7, summer and winter alike.",
     "heroCta": "Check availability",
-    "priceFrom": "From {price} per week",
     "highlightsTitle": "At a glance",
-    "highlightGuests": "6–8 guests",
+    "highlightGuests": "7 guests",
     "highlightGuestsText": "Three bedrooms, a spacious living room and a sunny garden — plenty of room for the whole group.",
     "highlightSki": "Hochkönig ski area",
     "highlightSkiText": "150 km of slopes on your doorstep: the ski lift is a 5-minute drive and the ski bus stops 300 metres away.",
@@ -63,20 +61,20 @@
   },
   "apartment": {
     "title": "The apartment",
-    "intro": "Newly built and furnished in 2004, the apartment comfortably sleeps 6 to 8 people. Everything is here: a modern kitchen, three bedrooms, a sunny garden and a wonderful view of the Hochkönig mountainside.",
+    "intro": "Newly built and furnished in 2004, the apartment comfortably sleeps 7. Everything is here: a modern kitchen, three bedrooms, a sunny garden and a wonderful view of the Hochkönig mountainside.",
     "livingTitle": "Living room",
     "livingText": "A cosy living room with a large sofa — the place to gather after a day of skiing or hiking. Satellite TV with Dutch channels and internet are available.",
     "kitchenTitle": "Kitchen",
     "kitchenText": "The modern kitchen is fully equipped, with a combi oven and dishwasher. Big enough to cook for the whole group.",
     "bedroomsTitle": "Three bedrooms",
-    "bedroomsText": "Two bedrooms with a double bed and a third bedroom with a bunk bed and a single bed. Everyone — from 6 to 8 guests — sleeps comfortably.",
+    "bedroomsText": "Two bedrooms with a double bed and a third bedroom with a bunk bed and a single bed. Seven beds in total, so nobody has to sleep on the sofa.",
     "bathroomTitle": "Bathroom & toilet",
     "bathroomText": "A full bathroom and a separate toilet, so mornings never get crowded.",
     "gardenTitle": "Sunny garden",
     "gardenText": "The garden catches the sun and comes with garden furniture — perfect for long summer evenings or a coffee with a mountain view.",
     "amenitiesTitle": "All amenities",
     "amenities": {
-      "guests": "Sleeps 6–8 guests",
+      "guests": "Sleeps 7 guests",
       "bedrooms": "3 bedrooms (2x double bed, 1x bunk bed + single bed)",
       "kitchen": "Modern kitchen with combi oven and dishwasher",
       "washer": "Washing machine and dryer",
@@ -246,7 +244,7 @@
       "datesInvalid": "The departure date must be after the arrival date.",
       "datesPast": "The arrival date must be in the future.",
       "datesWholeWeeks": "We rent by the full week, Saturday to Saturday. Please pick your weeks in the calendar.",
-      "guestsInvalid": "Choose a number of guests between 1 and 8.",
+      "guestsInvalid": "Choose a number of guests between 1 and {max}.",
       "datesUnavailable": "This period is (partly) already booked. Please pick a different period in the calendar."
     },
     "privacyNote": "We use your details only to answer this request and delete them after a year. There's more about that in our <link>privacy statement</link>."
@@ -355,7 +353,7 @@
   },
   "meta": {
     "siteTitle": "Sonnenwiese — holiday apartment Maria Alm",
-    "siteDescription": "Holiday apartment for 6–8 guests on the edge of Maria Alm, Salzburgerland. Hochkönig ski area 5 minutes away, summer and winter."
+    "siteDescription": "Holiday apartment for 7 guests on the edge of Maria Alm, Salzburgerland. Hochkönig ski area 5 minutes away, summer and winter."
   },
   "email": {
     "confirmSubject": "Your stay at Sonnenwiese is confirmed ({from} – {to})",

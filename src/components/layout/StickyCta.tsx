@@ -1,9 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
-import { MIN_WEEK_PRICE_CENTS, formatPrice } from "@/lib/booking/seasons";
 
 // Zwevende balk met de prijs en de knop, alleen op een telefoon.
 //
@@ -12,8 +11,6 @@ import { MIN_WEEK_PRICE_CENTS, formatPrice } from "@/lib/booking/seasons";
 // waardoor hij wil boeken. Deze balk vangt dat gat op.
 export default function StickyCta() {
   const t = useTranslations("footer");
-  const tc = useTranslations("common");
-  const locale = useLocale();
   const pathname = usePathname();
   const [zichtbaar, setZichtbaar] = useState(false);
 
@@ -65,14 +62,15 @@ export default function StickyCta() {
       // De thuisknopbalk van een iPhone zit onder de onderrand van het scherm.
       style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
     >
-      <div className="flex items-center justify-between gap-3 px-4 py-3">
-        <span className="whitespace-nowrap text-sm font-semibold text-bark">
-          {tc("priceFrom", { price: formatPrice(MIN_WEEK_PRICE_CENTS, locale) })}
-        </span>
+      {/* Hier stond het laagste weektarief naast de knop. Dat is eruit: het
+          laagste bedrag hoort bij de rustigste zomerweek, en als eerste
+          kennismaking met de prijs zegt het meer over die ene week dan over
+          wat je gaat betalen. De knop mag nu de volle breedte hebben. */}
+      <div className="px-4 py-3">
         <Link
           href="/beschikbaarheid"
           tabIndex={zichtbaar ? undefined : -1}
-          className="rounded-lg bg-sun px-4 py-2.5 text-sm font-semibold text-snow transition-colors hover:bg-sun-dark"
+          className="block rounded-lg bg-sun px-4 py-3 text-center text-sm font-semibold text-snow transition-colors hover:bg-sun-dark"
         >
           {t("availabilityCta")}
         </Link>

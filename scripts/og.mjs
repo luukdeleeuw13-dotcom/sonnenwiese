@@ -16,7 +16,7 @@ const BRON = "public/photos/omgeving-zomer-schuur.jpg";
 const DOEL = "public/og.jpg";
 
 const titel = "Sonnenwiese";
-const onder = "Vakantieappartement voor 6–8 personen · Maria Alm, Oostenrijk";
+const onder = "Vakantieappartement voor 7 personen · Maria Alm, Oostenrijk";
 
 const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
 
