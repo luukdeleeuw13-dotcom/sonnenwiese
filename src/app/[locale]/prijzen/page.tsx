@@ -45,7 +45,7 @@ function highSeasonDates(
   const day = (iso: string, pattern: string) =>
     format(new Date(`${iso}T00:00:00`), pattern, { locale: dateLocale });
 
-  // Maand en jaar alleen herhalen waar ze verschillen: "13 – 27 februari 2027"
+  // Maand en jaar alleen herhalen waar ze verschillen: "6 – 27 februari 2027"
   // leest nu eenmaal prettiger dan datzelfde jaartal twee keer.
   const range = (from: string, to: string) => {
     const sameYear = from.slice(0, 4) === to.slice(0, 4);

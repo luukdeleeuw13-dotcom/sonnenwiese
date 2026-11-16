@@ -61,6 +61,20 @@ export default function SurroundingsPage({
         reverse
       >
         <p>{t("winterText")}</p>
+        <p>
+          {t.rich("pisteMapText", {
+            link: (chunks) => (
+              <a
+                href="https://map.hochkoenig.at"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-meadow-dark underline-offset-4 hover:underline"
+              >
+                {chunks}
+              </a>
+            ),
+          })}
+        </p>
       </Section>
 
       <Section

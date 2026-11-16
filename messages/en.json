@@ -16,7 +16,8 @@
     "location": "Maria Alm, Salzburgerland, Austria",
     "availabilityCta": "Check availability",
     "questions": "Questions",
-    "privacy": "Privacy"
+    "privacy": "Privacy",
+    "admin": "Admin"
   },
   "common": {
     "photoComingSoon": "Photo coming soon",
@@ -139,6 +140,7 @@
     "villageText": "An authentic Austrian mountain village with a charming centre: shops, restaurants and cafés a 10-minute walk from the apartment. The famous church with its tall spire is the heart of the village.",
     "winterTitle": "Winter: Hochkönig ski area",
     "winterText": "Maria Alm is part of the Hochkönig ski area, part of Ski Amadé: 150 kilometres of slopes for all levels. The nearest ski lift is a 5-minute drive and the ski bus stops 300 metres from the house. Cross-country skiing, tobogganing and winter hiking are also plentiful.",
+    "pisteMapText": "Curious how the area fits together? The <link>interactive Hochkönig piste map</link> shows every slope and lift, and which ones are open right now.",
     "summerTitle": "Summer: hiking and mountains",
     "summerText": "In summer Maria Alm is a paradise for hikers and cyclists. From gentle walks through the meadows to serious mountain hikes in the Hochkönig massif — you step straight from the house into nature. In summer, cable cars take you up without the climb, too.",
     "distancesTitle": "Distances",
@@ -300,7 +302,7 @@
       "ski": "Please keep skis and ski boots in the ski room in the basement",
       "trash": "You dispose of household waste (including glass and paper) yourself",
       "kitchen": "Please leave the kitchen — including oven and dishwasher — clean",
-      "key": "Lost key: € 20 fee"
+      "key": "Lost key: € 50 fee"
     }
   },
   "privacy": {

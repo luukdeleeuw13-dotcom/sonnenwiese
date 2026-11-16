@@ -8,7 +8,7 @@ export type SeasonKey = "winterHigh" | "winterLow" | "summerHigh" | "summerLow";
 export const WEEK_PRICE_CENTS: Record<SeasonKey, number> = {
   winterHigh: 185_000,
   winterLow: 80_000,
-  summerHigh: 70_000,
+  summerHigh: 80_000,
   summerLow: 45_000,
 };
 
@@ -52,7 +52,7 @@ export const HIGH_SEASONS: {
   // Kerst- en nieuwjaarsvakantie
   { season: "winterHigh", from: "2026-12-19", to: "2027-01-02" },
   // Semesterferien
-  { season: "winterHigh", from: "2027-02-13", to: "2027-02-27" },
+  { season: "winterHigh", from: "2027-02-06", to: "2027-02-27" },
   // Zomervakantie
   { season: "summerHigh", from: "2027-07-10", to: "2027-09-04" },
 ];

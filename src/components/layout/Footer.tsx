@@ -1,3 +1,4 @@
+import NextLink from "next/link";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import FooterCta from "./FooterCta";
@@ -25,6 +26,16 @@ export default function Footer() {
             >
               {t("privacy")}
             </Link>
+            {/* De Link van Next zelf, niet die van next-intl: /admin valt
+                buiten de taalroutes (zie proxy.ts), dus een taalprefix
+                ervoor zou op een 404 uitkomen. */}
+            <NextLink
+              href="/admin"
+              rel="nofollow"
+              className="underline-offset-4 hover:text-cream hover:underline"
+            >
+              {t("admin")}
+            </NextLink>
           </div>
         </div>
         <FooterCta />

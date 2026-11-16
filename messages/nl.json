@@ -16,7 +16,8 @@
     "location": "Maria Alm, Salzburgerland, Oostenrijk",
     "availabilityCta": "Bekijk beschikbaarheid",
     "questions": "Vragen",
-    "privacy": "Privacy"
+    "privacy": "Privacy",
+    "admin": "Beheer"
   },
   "common": {
     "photoComingSoon": "Foto volgt",
@@ -139,6 +140,7 @@
     "villageText": "Een authentiek Oostenrijks bergdorp met een gezellig centrum: winkels, restaurants en cafés op 10 minuten lopen van het appartement. Het beroemde kerkje met de hoge spits is het middelpunt van het dorp.",
     "winterTitle": "Winter: skigebied Hochkönig",
     "winterText": "Maria Alm hoort bij skigebied Hochkönig, onderdeel van Ski Amadé: 150 kilometer piste voor alle niveaus. De dichtstbijzijnde skilift ligt op 5 minuten rijden en de skibus stopt op 300 meter van het huis. Ook langlaufen, rodelen en winterwandelen kan er volop.",
+    "pisteMapText": "Benieuwd hoe het gebied in elkaar zit? Op de <link>interactieve pistekaart van Hochkönig</link> zie je alle pistes en liften, en welke er op dat moment open zijn.",
     "summerTitle": "Zomer: wandelen en bergen",
     "summerText": "In de zomer is Maria Alm een paradijs voor wandelaars en fietsers. Van rustige wandelingen door de weilanden tot stevige bergtochten in het Hochkönig-massief — je stapt vanaf het huis zo de natuur in. Kabelbanen brengen je in de zomer ook zonder klimwerk naar boven.",
     "distancesTitle": "Afstanden",
@@ -300,7 +302,7 @@
       "ski": "Ski's en skischoenen graag in de skiruimte in de kelder",
       "trash": "Huisvuil (ook glas en papier) voer je zelf af",
       "kitchen": "Laat de keuken — inclusief oven en vaatwasser — schoon achter",
-      "key": "Zoekgeraakte sleutel: € 20 vergoeding"
+      "key": "Zoekgeraakte sleutel: € 50 vergoeding"
     }
   },
   "privacy": {

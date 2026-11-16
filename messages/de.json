@@ -16,7 +16,8 @@
     "location": "Maria Alm, Salzburger Land, Österreich",
     "availabilityCta": "Verfügbarkeit ansehen",
     "questions": "Fragen",
-    "privacy": "Datenschutz"
+    "privacy": "Datenschutz",
+    "admin": "Verwaltung"
   },
   "common": {
     "photoComingSoon": "Foto folgt",
@@ -139,6 +140,7 @@
     "villageText": "Ein authentisches österreichisches Bergdorf mit gemütlichem Ortskern: Geschäfte, Restaurants und Cafés in 10 Gehminuten von der Wohnung. Die berühmte Kirche mit ihrem hohen Turm ist der Mittelpunkt des Dorfes.",
     "winterTitle": "Winter: Skigebiet Hochkönig",
     "winterText": "Maria Alm gehört zum Skigebiet Hochkönig, Teil von Ski Amadé: 150 Kilometer Piste für alle Könnerstufen. Der nächste Skilift ist 5 Autominuten entfernt, der Skibus hält 300 Meter vom Haus. Auch Langlaufen, Rodeln und Winterwandern sind reichlich möglich.",
+    "pisteMapText": "Neugierig, wie das Gebiet aufgebaut ist? Der <link>interaktive Pistenplan der Region Hochkönig</link> zeigt alle Pisten und Lifte — und welche gerade geöffnet sind.",
     "summerTitle": "Sommer: Wandern und Berge",
     "summerText": "Im Sommer ist Maria Alm ein Paradies für Wanderer und Radfahrer. Von gemütlichen Spaziergängen durch die Wiesen bis zu anspruchsvollen Bergtouren im Hochkönig-Massiv — direkt vom Haus aus geht es in die Natur. Die Bergbahnen bringen dich im Sommer auch ohne Kletterei nach oben.",
     "distancesTitle": "Entfernungen",
@@ -300,7 +302,7 @@
       "ski": "Ski und Skischuhe bitte in den Skiraum im Keller",
       "trash": "Hausmüll (auch Glas und Papier) entsorgst du selbst",
       "kitchen": "Bitte die Küche — inklusive Backofen und Geschirrspüler — sauber hinterlassen",
-      "key": "Verlorener Schlüssel: € 20 Gebühr"
+      "key": "Verlorener Schlüssel: € 50 Gebühr"
     }
   },
   "privacy": {
