@@ -10,6 +10,7 @@ export default function Hero({
   src,
   alt,
   size = "large",
+  tone = "warm",
 }: {
   title: string;
   subtitle?: string;
@@ -17,6 +18,9 @@ export default function Hero({
   src?: string;
   alt: string;
   size?: "large" | "small";
+  // De kleur van de waas onder de tekst. Warm bruin past bij gras en hout;
+  // boven sneeuw oogt datzelfde bruin als een vlek, daar is koel blauw beter.
+  tone?: "warm" | "cool";
 }) {
   return (
     <section
@@ -38,7 +42,15 @@ export default function Hero({
         ) : (
           <Placeholder variant="mountain" />
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-bark/70 via-bark/10 to-transparent" />
+        <div
+          className={`absolute inset-0 bg-gradient-to-t to-transparent ${
+            tone === "cool"
+              ? // Sterker dan de warme waas: witte letters op sneeuw hebben
+                // meer ondergrond nodig dan op gras.
+                "from-sky-dark/90 via-sky-dark/35"
+              : "from-bark/70 via-bark/10"
+          }`}
+        />
       </div>
       <div className="relative mx-auto w-full max-w-5xl px-4 pb-10 pt-24 sm:pb-14">
         <h1 className="font-display text-4xl font-semibold text-snow drop-shadow sm:text-5xl">

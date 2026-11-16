@@ -80,7 +80,7 @@ export default function SurroundingsPage({
       <Section
         title={t("summerTitle")}
         image={{
-          src: "/photos/omgeving-zomer-bergkam.jpg",
+          src: "/photos/omgeving-zomer-nevelzee.jpg",
           alt: t("summerTitle"),
         }}
       >

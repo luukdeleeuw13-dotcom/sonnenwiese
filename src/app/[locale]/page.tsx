@@ -12,6 +12,13 @@ import PhotoMosaic from "@/components/ui/PhotoMosaic";
 import SeasonSection from "@/components/ui/SeasonSection";
 import Testimonials from "@/components/ui/Testimonials";
 import Reveal from "@/components/ui/Reveal";
+import { currentSiteSeason } from "@/lib/season";
+
+// De voorpagina wisselt met het seizoen (zie lib/season.ts), maar blijft een
+// vooraf gebouwde pagina. Elk uur wordt hij opnieuw opgebouwd, zodat de
+// wissel op 1 november en 1 maart vanzelf gebeurt en niet pas bij de
+// eerstvolgende deploy.
+export const revalidate = 3600;
 
 export async function generateMetadata({
   params,
@@ -49,6 +56,12 @@ const icons = {
       <path d="M9 8V5" />
     </svg>
   ),
+  hike: (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="17.5" cy="6" r="2.2" />
+      <path d="M3 20 9.5 9l4 6.5 2.5-3.5L21 20Z" />
+    </svg>
+  ),
   village: (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
       <path d="M4 21V10l5-4 5 4v11" />
@@ -71,12 +84,57 @@ export default function HomePage({
   // heeft: zelfde foto, zelfde omschrijving, en hij blijft vanzelf gelijk.
   const tg = useTranslations("gallery");
 
+  // Het seizoen bepaalt welke foto's bovenaan staan, welk van de twee
+  // seizoensblokken eerst komt en welke kleur de accenten hebben. De tekst
+  // van de pagina blijft dezelfde: het huis is hetzelfde huis.
+  const winter = currentSiteSeason() === "winter";
+
+  const winterBlock = (
+    <Reveal>
+      <SeasonSection
+        reverse={!winter}
+        tone={winter ? "sky" : "sand"}
+        eyebrow={t("winterEyebrow")}
+        title={t("winterTitle")}
+        text={t("winterText")}
+        cta={t("seasonCta")}
+        href="/omgeving"
+        image={{
+          src: "/photos/omgeving-winter-spiegeling.jpg",
+          alt: t("winterEyebrow"),
+        }}
+      />
+    </Reveal>
+  );
+  const summerBlock = (
+    <Reveal>
+      <SeasonSection
+        reverse={winter}
+        tone={winter ? "sand" : "meadow"}
+        eyebrow={t("summerEyebrow")}
+        title={t("summerTitle")}
+        text={t("summerText")}
+        cta={t("seasonCta")}
+        href="/omgeving"
+        image={{
+          src: "/photos/omgeving-zomer-bergblik-2.jpg",
+          alt: t("summerEyebrow"),
+        }}
+      />
+    </Reveal>
+  );
+
   return (
     <>
       <Hero
         title={t("heroTitle")}
         subtitle={t("heroSubtitle")}
-        src="/photos/omgeving-zomer-schuur.jpg"
+        src={
+          winter
+            ? "/photos/omgeving-winter-aberg.jpg"
+            : "/photos/omgeving-zomer-prinzensee.jpg"
+        }
+        tone={winter ? "cool" : "warm"}
         alt="Sonnenwiese, Maria Alm"
         cta={
           <Link
@@ -113,55 +171,50 @@ export default function HomePage({
           <h2 className="sr-only">{t("mosaicTitle")}</h2>
           <PhotoMosaic
             cta={t("mosaicCta")}
-            photos={[
-              { src: "/photos/omgeving-winter-avondlicht.jpg", alt: t("mosaic.alpenglow") },
-              { src: "/photos/woonkamer-1.jpg", alt: t("mosaic.living") },
-              { src: "/photos/omgeving-zomer-kerk-bloemen.jpg", alt: t("mosaic.village") },
-              { src: "/photos/keuken-1.jpg", alt: t("mosaic.kitchen") },
-              { src: "/photos/omgeving-zomer-panorama.jpg", alt: t("mosaic.aerial") },
-            ]}
+            // Drie foto's van buiten in het seizoen van nu, met de woonkamer
+            // en de keuken ertussen — die zijn het hele jaar hetzelfde.
+            photos={
+              winter
+                ? [
+                    { src: "/photos/omgeving-winter-avondlicht.jpg", alt: t("mosaic.alpenglow") },
+                    { src: "/photos/woonkamer-1.jpg", alt: t("mosaic.living") },
+                    { src: "/photos/omgeving-winter-kerk.jpg", alt: t("mosaic.snowChurch") },
+                    { src: "/photos/keuken-1.jpg", alt: t("mosaic.kitchen") },
+                    { src: "/photos/omgeving-winter-gondel.jpg", alt: t("mosaic.gondola") },
+                  ]
+                : [
+                    { src: "/photos/omgeving-zomer-jufenkapel.jpg", alt: t("mosaic.chapel") },
+                    { src: "/photos/woonkamer-1.jpg", alt: t("mosaic.living") },
+                    { src: "/photos/omgeving-zomer-kerk-bloemen.jpg", alt: t("mosaic.village") },
+                    { src: "/photos/keuken-1.jpg", alt: t("mosaic.kitchen") },
+                    { src: "/photos/omgeving-zomer-panorama.jpg", alt: t("mosaic.aerial") },
+                  ]
+            }
           />
         </section>
       </Reveal>
 
       {/* Twee seizoenen tegenover elkaar, tegen de schermranden aan en van
           kant wisselend. Het huis wordt zomer én winter verhuurd; dat mag je
-          op de homepage zien in plaats van lezen. */}
-      <Reveal>
-        <SeasonSection
-          eyebrow={t("winterEyebrow")}
-          title={t("winterTitle")}
-          text={t("winterText")}
-          cta={t("seasonCta")}
-          href="/omgeving"
-          image={{
-            src: "/photos/omgeving-winter-spiegeling.jpg",
-            alt: t("winterEyebrow"),
-          }}
-        />
-      </Reveal>
-      <Reveal>
-        <SeasonSection
-          reverse
-          eyebrow={t("summerEyebrow")}
-          title={t("summerTitle")}
-          text={t("summerText")}
-          cta={t("seasonCta")}
-          href="/omgeving"
-          image={{
-            src: "/photos/omgeving-zomer-wandelpad.jpg",
-            alt: t("summerEyebrow"),
-          }}
-        />
-      </Reveal>
+          op de homepage zien in plaats van lezen. Het seizoen van nu staat
+          bovenaan en in kleur, het andere volgt. */}
+      {winter ? winterBlock : summerBlock}
+      {winter ? summerBlock : winterBlock}
 
       {/* Even niets. Na twee grote verhalende blokken en vóór de praktische
           kaartjes één foto over de volle breedte, zonder tekst erop. */}
       <Reveal>
-        <PhotoBand
-          src="/photos/omgeving-winter-kapel-weide.jpg"
-          alt={tg("captions.winterFieldChapel")}
-        />
+        {winter ? (
+          <PhotoBand
+            src="/photos/omgeving-winter-kapel-weide.jpg"
+            alt={tg("captions.winterFieldChapel")}
+          />
+        ) : (
+          <PhotoBand
+            src="/photos/omgeving-zomer-bergblik-1.jpg"
+            alt={t("bandSummer")}
+          />
+        )}
       </Reveal>
 
       <section className="mx-auto max-w-5xl px-4 py-12 sm:py-16">
@@ -178,12 +231,21 @@ export default function HomePage({
             />
           </Reveal>
           <Reveal className="h-full" delay={90}>
-            <HighlightCard
-              icon={icons.ski}
-              title={t("highlightSki")}
-              text={t("highlightSkiText")}
-              href="https://www.hochkoenig.at/en/winter/ski-area/ski-fun-in-the-hochkoenig-ski-region.html"
-            />
+            {/* Het middelste kaartje gaat over wat je nu buiten doet. */}
+            {winter ? (
+              <HighlightCard
+                icon={icons.ski}
+                title={t("highlightSki")}
+                text={t("highlightSkiText")}
+                href="https://www.hochkoenig.at/en/winter/ski-area/ski-fun-in-the-hochkoenig-ski-region.html"
+              />
+            ) : (
+              <HighlightCard
+                icon={icons.hike}
+                title={t("highlightHike")}
+                text={t("highlightHikeText")}
+              />
+            )}
           </Reveal>
           <Reveal className="h-full" delay={180}>
             <HighlightCard
@@ -209,7 +271,11 @@ export default function HomePage({
           een crème kier ertussen zien eruit als een weeffout. */}
       <Reveal>
         <section className="mx-auto max-w-5xl px-4 pb-4">
-          <div className="rounded-card bg-meadow-dark px-6 py-12 text-center text-cream sm:px-10 sm:py-16">
+          <div
+            className={`rounded-card px-6 py-12 text-center text-cream sm:px-10 sm:py-16 ${
+              winter ? "bg-sky-dark" : "bg-meadow-dark"
+            }`}
+          >
             <h2 className="font-display text-2xl font-semibold sm:text-3xl">
               {t("closingTitle")}
             </h2>

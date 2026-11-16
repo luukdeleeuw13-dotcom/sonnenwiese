@@ -14,6 +14,7 @@ export default function SeasonSection({
   href,
   image,
   reverse = false,
+  tone = "sand",
 }: {
   eyebrow: string;
   title: string;
@@ -22,7 +23,17 @@ export default function SeasonSection({
   href: "/omgeving" | "/appartement";
   image: { src: string; alt: string };
   reverse?: boolean;
+  // Het seizoen dat nu speelt krijgt zijn eigen kleur: blauw in de winter,
+  // groen in de zomer. Het andere blijft zandkleurig op de achtergrond.
+  tone?: "sand" | "sky" | "meadow";
 }) {
+  const background = {
+    sand: "bg-sand/50",
+    sky: "bg-sky/15",
+    meadow: "bg-meadow/10",
+  }[tone];
+  const accent = tone === "sky" ? "text-sky-dark" : "text-meadow-dark";
+
   return (
     <section className="grid items-stretch md:grid-cols-2">
       <div
@@ -40,14 +51,16 @@ export default function SeasonSection({
       </div>
 
       <div
-        className={`flex items-center bg-sand/50 px-6 py-10 sm:px-10 md:py-16 ${
+        className={`flex items-center ${background} px-6 py-10 sm:px-10 md:py-16 ${
           reverse ? "md:order-1 md:justify-end" : ""
         }`}
       >
         {/* De tekst blijft leesbaar smal, ook als het blok zelf half zo breed
             is als het scherm. */}
         <div className="max-w-md">
-          <p className="font-display text-sm uppercase tracking-[0.18em] text-meadow-dark">
+          <p
+            className={`font-display text-sm uppercase tracking-[0.18em] ${accent}`}
+          >
             {eyebrow}
           </p>
           <h2 className="mt-2 font-display text-2xl font-semibold text-bark sm:text-3xl">
@@ -56,7 +69,7 @@ export default function SeasonSection({
           <p className="mt-4 leading-relaxed text-timber">{text}</p>
           <Link
             href={href}
-            className="mt-5 inline-block font-semibold text-meadow-dark underline-offset-4 hover:underline"
+            className={`mt-5 inline-block font-semibold ${accent} underline-offset-4 hover:underline`}
           >
             {cta} →
           </Link>
