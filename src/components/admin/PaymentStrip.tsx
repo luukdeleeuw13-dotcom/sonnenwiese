@@ -16,8 +16,7 @@ import {
 import {
   describeWeeks,
   estimatePrice,
-  SEASONS_VALID_FROM,
-  SEASONS_VALID_UNTIL,
+  type SeasonTable,
 } from "@/lib/booking/seasons";
 import { paymentDetails } from "@/lib/config";
 import type { BookingRow } from "@/lib/supabase/types";
@@ -44,9 +43,13 @@ const primaryStyles =
 export default function PaymentStrip({
   booking,
   today,
+  seasonTable,
 }: {
   booking: BookingRow;
   today: string;
+  // `null` als de seizoenstabel niet opgehaald kon worden: dan is er geen
+  // voorstel, en dat is beter dan een voorstel uit een verouderde tabel.
+  seasonTable: SeasonTable | null;
 }) {
   const state = paymentState(booking);
   const attention = needsAttention(booking, today);
@@ -54,8 +57,10 @@ export default function PaymentStrip({
   // Voorstel uit de seizoenstabel. Het blijft een vóórstel: er staat een knop
   // om het over te nemen, niet een bedrag dat zichzelf invult. Een afspraak
   // met een gast kan van de tabel afwijken, en dan hoort de tabel te wijken.
-  const estimate = estimatePrice(booking.start_date, booking.end_date);
-  const suggestion = estimate.ok ? estimate.totalCents : null;
+  const estimate = seasonTable
+    ? estimatePrice(booking.start_date, booking.end_date, seasonTable)
+    : null;
+  const suggestion = estimate?.ok ? estimate.totalCents : null;
   const matchesTable = suggestion !== null && booking.price_cents === suggestion;
 
   // Het betaalverzoek kan pas weg als er een bedrag is én een rekening om het
@@ -64,6 +69,9 @@ export default function PaymentStrip({
   const hasAmount = typeof booking.price_cents === "number";
   const hasAccount = paymentDetails() !== null;
   const canSendInvoice = hasAmount && hasAccount;
+  // Een boeking die in het beheerscherm zelf is ingevoerd kan zonder
+  // mailadres zijn. Dan valt er niets te versturen, hoe compleet de rest is.
+  const hasEmail = Boolean(booking.email);
 
   return (
     <div
@@ -123,7 +131,7 @@ export default function PaymentStrip({
       <div className="mt-3 flex flex-wrap items-center gap-2">
         {state === "todo" && (
           <>
-            {canSendInvoice && (
+            {canSendInvoice && hasEmail && (
               <form action={sendInvoice}>
                 <input type="hidden" name="id" value={booking.id} />
                 <button className={primaryStyles}>
@@ -138,8 +146,14 @@ export default function PaymentStrip({
               <input type="hidden" name="id" value={booking.id} />
               <input type="hidden" name="field" value="invoice_sent_at" />
               <input type="hidden" name="value" value="on" />
-              <button className={canSendInvoice ? buttonStyles : primaryStyles}>
-                {canSendInvoice ? "✓ Zelf al gedaan" : "✓ Nota verstuurd"}
+              <button
+                className={
+                  canSendInvoice && hasEmail ? buttonStyles : primaryStyles
+                }
+              >
+                {canSendInvoice && hasEmail
+                  ? "✓ Zelf al gedaan"
+                  : "✓ Nota verstuurd"}
               </button>
             </form>
           </>
@@ -234,13 +248,20 @@ export default function PaymentStrip({
             </p>
           )}
 
-          {estimate.ok && matchesTable && (
+          {state === "todo" && hasAccount && !hasEmail && (
+            <p className="mb-1.5">
+              Bij dit verblijf staat geen mailadres, dus de site kan het
+              betaalverzoek niet zelf sturen.
+            </p>
+          )}
+
+          {estimate?.ok && matchesTable && (
             <span>
               Volgens de seizoenstabel: {describeWeeks(estimate.weeks)}.
             </span>
           )}
 
-          {estimate.ok && !matchesTable && (
+          {estimate?.ok && !matchesTable && (
             <form
               action={applySuggestedPrice}
               className="flex flex-wrap items-center gap-2"
@@ -260,19 +281,27 @@ export default function PaymentStrip({
           {/* Buiten de looptijd van de tabel rekent de site bewust niets uit.
               Beter een lege plek die om aandacht vraagt dan een bedrag uit een
               verlopen schoolvakantiekalender. */}
-          {!estimate.ok && estimate.reason === "before-table" && (
+          {seasonTable && estimate?.ok === false && estimate.reason === "before-table" && (
             <span>
               De seizoenstabel begint pas op{" "}
-              {fmtDayYear(`${SEASONS_VALID_FROM}T00:00:00`)} — dit verblijf valt
-              in het seizoen daarvóór, dus vul het bedrag met de hand in.
+              {fmtDayYear(`${seasonTable.validFrom}T00:00:00`)} — dit verblijf
+              valt in het seizoen daarvóór, dus vul het bedrag met de hand in.
             </span>
           )}
 
-          {!estimate.ok && estimate.reason === "after-table" && (
+          {seasonTable && estimate?.ok === false && estimate.reason === "after-table" && (
             <span>
               De seizoenstabel loopt tot{" "}
-              {fmtDayYear(`${SEASONS_VALID_UNTIL}T00:00:00`)} — vul het bedrag
-              met de hand in, of werk de tabel bij.
+              {fmtDayYear(`${seasonTable.validUntil}T00:00:00`)} — vul het
+              bedrag met de hand in, of werk de tabel hieronder bij onder
+              “Prijzen en seizoenen”.
+            </span>
+          )}
+
+          {!seasonTable && (
+            <span>
+              De seizoenstabel kon niet worden opgehaald, dus er is nu geen
+              voorstel. Het bedrag met de hand invullen kan wel.
             </span>
           )}
         </div>

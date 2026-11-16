@@ -8,7 +8,7 @@ import type { BookingRow } from "@/lib/supabase/types";
 // zelden geboekt, en langer maakt de strook onleesbaar.
 const WEEKS_AHEAD = 53;
 
-type WeekState = "free" | "guest" | "block" | "pending";
+type WeekState = "free" | "guest" | "family" | "block" | "pending";
 
 type Week = {
   start: string; // yyyy-MM-dd, de aankomstzaterdag
@@ -23,6 +23,7 @@ type Week = {
 const styles: Record<WeekState, string> = {
   free: "border-sand bg-cream text-timber",
   guest: "border-meadow-dark bg-meadow text-snow",
+  family: "border-meadow-dark bg-meadow/20 text-meadow-dark",
   block: "border-bark bg-bark text-cream",
   pending: "border-sun-dark bg-sun text-snow",
 };
@@ -30,6 +31,7 @@ const styles: Record<WeekState, string> = {
 const legend: { state: WeekState; label: string }[] = [
   { state: "free", label: "Vrij" },
   { state: "guest", label: "Gast" },
+  { state: "family", label: "Familie" },
   { state: "pending", label: "Aanvraag" },
   { state: "block", label: "Blokkade" },
 ];
@@ -66,7 +68,11 @@ function buildWeeks(bookings: BookingRow[]): Week[] {
     // nog een hoopvolle aanvraag voor dezelfde week open.
     const confirmed = hits.find((b) => b.status === "confirmed");
     let state: WeekState = "free";
-    if (confirmed) state = isOwnerBlock(confirmed) ? "block" : "guest";
+    if (confirmed) {
+      if (isOwnerBlock(confirmed)) state = "block";
+      // Familie is een gast zonder nota (zie 0003_payments.sql).
+      else state = confirmed.invoice_required === false ? "family" : "guest";
+    }
     else if (hits.length > 0) state = "pending";
 
     weeks.push({
@@ -81,6 +87,7 @@ function buildWeeks(bookings: BookingRow[]): Week[] {
         detail:
           `${fmtShort(b.start_date)} – ${fmtShort(b.end_date)}` +
           (isOwnerBlock(b) ? "" : ` · ${b.guests} pers.`) +
+          (!isOwnerBlock(b) && b.invoice_required === false ? " · familie" : "") +
           (b.status === "pending" ? " · aanvraag" : ""),
       })),
     });

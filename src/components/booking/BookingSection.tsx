@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl";
 import AvailabilityCalendar from "./AvailabilityCalendar";
 import BookingForm from "./BookingForm";
 import PriceSummary from "./PriceSummary";
+import type { SeasonTable } from "@/lib/booking/seasons";
 
 export type BookedRange = { from: string; to: string }; // yyyy-MM-dd
 
@@ -14,9 +15,12 @@ export type BookedRange = { from: string; to: string }; // yyyy-MM-dd
 export default function BookingSection({
   bookedRanges,
   unavailable = false,
+  seasonTable,
 }: {
   bookedRanges: BookedRange[];
   unavailable?: boolean;
+  // `null` als de prijzen niet opgehaald konden worden.
+  seasonTable: SeasonTable | null;
 }) {
   const t = useTranslations("availability");
   const [range, setRange] = useState<DateRange | undefined>();
@@ -60,7 +64,7 @@ export default function BookingSection({
               {t("calendarLegendSelected")}
             </span>
           </div>
-          <PriceSummary range={range} />
+          <PriceSummary range={range} table={seasonTable} />
         </div>
       </section>
 

@@ -159,7 +159,7 @@
   },
   "pricing": {
     "title": "Prijzen",
-    "intro": "Huren gaat per week: van zaterdag 15.00 uur tot zaterdag 10.00 uur. Dit zijn de prijzen voor winter 2026/2027 en zomer 2027. Past een hele week niet bij je plannen? Stel gerust een vraag — er is vaak meer mogelijk dan de kalender laat zien.",
+    "intro": "Huren gaat per week: van zaterdag 15.00 uur tot zaterdag 10.00 uur. Past een hele week niet bij je plannen? Stel gerust een vraag — er is vaak meer mogelijk dan de kalender laat zien.",
     "tableTitle": "Huurprijs per week",
     "rows": {
       "winterHigh": {
@@ -183,7 +183,8 @@
       "summerLow": "Laagseizoen zomer",
       "winterLowValue": "de overige weken van december tot en met maart",
       "summerLowValue": "alle overige weken van het jaar",
-      "note": "De verhuurweek loopt van zaterdag tot zaterdag. Een week telt als hoogseizoen als hij daar helemaal binnen valt."
+      "note": "De verhuurweek loopt van zaterdag tot zaterdag. Een week telt als hoogseizoen als hij daar helemaal binnen valt.",
+      "validUntil": "Deze prijzen gelden voor aankomst tot en met {date}."
     },
     "includedTitle": "Inbegrepen",
     "included": {

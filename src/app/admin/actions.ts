@@ -12,11 +12,34 @@ import {
 import { getSupabaseServerClient } from "@/lib/supabase/server";
 import { sendGuestEmail } from "@/lib/email/sendGuestEmail";
 import { sendPaymentEmail } from "@/lib/email/sendPaymentEmail";
+import { formatLongDate } from "@/lib/email/localeDate";
 import { paymentDetails, primaryOwnerEmail } from "@/lib/config";
 import { isOwnerBlock } from "@/lib/admin/bookings";
 import { parseEuro } from "@/lib/admin/payments";
-import { estimatePrice } from "@/lib/booking/seasons";
+import {
+  estimatePrice,
+  parseSeasonTable,
+  SEASON_KEYS,
+  type HighSeason,
+  type SeasonKey,
+} from "@/lib/booking/seasons";
+import {
+  loadSeasonTableOrNull,
+  saveSeasonTable,
+} from "@/lib/booking/seasonTable";
+import { isChangeoverDate } from "@/lib/booking/weeks";
+import { MAX_GUESTS } from "@/lib/booking/capacity";
+import type { FormState } from "@/lib/admin/forms";
 import type { BookingRow } from "@/lib/supabase/types";
+
+const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+function isDate(value: string): boolean {
+  if (!DATE_RE.test(value)) return false;
+  const date = new Date(`${value}T00:00:00Z`);
+  return !Number.isNaN(date.getTime()) && date.toISOString().slice(0, 10) === value;
+}
 
 export async function login(formData: FormData) {
   const password = String(formData.get("password") ?? "");
@@ -68,8 +91,9 @@ export async function setBookingStatus(formData: FormData) {
     return;
   }
 
-  // Handmatige blokkades (blokkeer-formulier) krijgen geen gastmail.
-  if (!isOwnerBlock(booking)) {
+  // Handmatige blokkades (blokkeer-formulier) krijgen geen gastmail, en een
+  // zelf ingevoerde boeking zonder mailadres evenmin.
+  if (!isOwnerBlock(booking) && booking.email) {
     try {
       await sendGuestEmail(booking, status);
     } catch (e) {
@@ -190,7 +214,13 @@ export async function applySuggestedPrice(formData: FormData) {
     .single<Pick<BookingRow, "start_date" | "end_date">>();
   if (!booking) return;
 
-  const estimate = estimatePrice(booking.start_date, booking.end_date);
+  const seasons = await loadSeasonTableOrNull();
+  if (!seasons) return;
+  const estimate = estimatePrice(
+    booking.start_date,
+    booking.end_date,
+    seasons.table,
+  );
   if (!estimate.ok) return;
 
   const { error } = await supabase
@@ -273,4 +303,233 @@ export async function blockPeriod(formData: FormData) {
   });
   if (error) console.error("Admin: block failed:", error);
   revalidatePath("/admin");
+}
+
+// Een boeking die buiten de site om is afgesproken — aan de telefoon, op een
+// verjaardag — alsnog in de agenda zetten. Hij staat meteen als bevestigd:
+// er valt niets meer te accepteren, de afspraak is er al.
+//
+// Familie of gast is hier dezelfde schakelaar als de knop "Geen nota nodig"
+// bij een bestaande boeking (invoice_required). Voor familie komt er dus geen
+// nota, geen betaalverzoek en geen betaalcontrole; al het andere is gelijk.
+export async function addBooking(
+  _previous: FormState,
+  formData: FormData,
+): Promise<FormState> {
+  await requireAdmin();
+
+  const text = (name: string) => String(formData.get(name) ?? "").trim();
+  const startDate = text("startDate");
+  const endDate = text("endDate");
+  const fullName = text("fullName").slice(0, 200);
+  const email = text("email").slice(0, 200);
+  const phone = text("phone").slice(0, 50);
+  const note = text("note").slice(0, 2000);
+  const guests = Number(text("guests"));
+  const family = text("kind") === "family";
+  const notify = formData.get("notify") === "on";
+  const rawLocale = text("locale");
+  const locale = rawLocale === "de" || rawLocale === "en" ? rawLocale : "nl";
+
+  if (!isDate(startDate) || !isDate(endDate)) {
+    return { ok: false, message: "Vul een aankomst- en een vertrekdatum in." };
+  }
+  if (endDate <= startDate) {
+    return { ok: false, message: "De vertrekdatum moet na de aankomstdatum liggen." };
+  }
+  if (!fullName) {
+    return { ok: false, message: "Vul een naam in." };
+  }
+  if (!Number.isInteger(guests) || guests < 1 || guests > MAX_GUESTS) {
+    return {
+      ok: false,
+      message: `Het aantal personen moet tussen 1 en ${MAX_GUESTS} liggen.`,
+    };
+  }
+  if (email && !EMAIL_RE.test(email)) {
+    return { ok: false, message: "Dat mailadres klopt niet." };
+  }
+  // Een betalende gast krijgt het betaalverzoek per mail; zonder adres loopt
+  // dat later vast op een moment dat niemand er meer aan denkt. Familie
+  // krijgt geen nota, dus daar mag het adres leeg blijven.
+  if (!family && !email) {
+    return {
+      ok: false,
+      message:
+        "Vul een mailadres in — dat is nodig om straks het betaalverzoek te sturen. Bij familie mag het leeg blijven.",
+    };
+  }
+  if (notify && !email) {
+    return {
+      ok: false,
+      message: "Zonder mailadres kan er geen bevestiging verstuurd worden.",
+    };
+  }
+
+  const supabase = getSupabaseServerClient();
+
+  // Dezelfde regel als bij een aanvraag via de site: wat al bevestigd is,
+  // wordt niet dubbel geboekt. Ook een eigen blokkade telt — die moet dan
+  // eerst weg.
+  const { data: overlapping, error: overlapError } = await supabase
+    .from("bookings")
+    .select("full_name,start_date,end_date")
+    .eq("status", "confirmed")
+    .lt("start_date", endDate)
+    .gt("end_date", startDate)
+    .limit(1);
+  if (overlapError) {
+    console.error("Admin: overlap controleren mislukt:", overlapError);
+    return { ok: false, message: "De agenda kon niet worden nagekeken. Probeer het zo nog eens." };
+  }
+  if (overlapping && overlapping.length > 0) {
+    return {
+      ok: false,
+      message: `Die periode overlapt met “${overlapping[0].full_name}” (${formatLongDate(overlapping[0].start_date, "nl")} tot ${formatLongDate(overlapping[0].end_date, "nl")}). Er is niets toegevoegd.`,
+    };
+  }
+
+  const { data: inserted, error } = await supabase
+    .from("bookings")
+    .insert({
+      status: "confirmed",
+      start_date: startDate,
+      end_date: endDate,
+      guests,
+      full_name: fullName,
+      // De kolom mag niet leeg zijn (not null), een lege tekst mag wel. Overal
+      // waar gemaild wordt staat een controle op een leeg adres.
+      email,
+      phone: phone || null,
+      message: note || null,
+      locale,
+      invoice_required: !family,
+    })
+    .select("*")
+    .single<BookingRow>();
+  if (error || !inserted) {
+    console.error("Admin: boeking toevoegen mislukt:", error);
+    return { ok: false, message: "De boeking kon niet worden opgeslagen. Probeer het zo nog eens." };
+  }
+  revalidatePath("/admin");
+
+  if (notify) {
+    try {
+      await sendGuestEmail(inserted, "confirmed");
+    } catch (e) {
+      console.error("Admin: bevestiging bij handmatige boeking mislukt:", e);
+      return {
+        ok: true,
+        message: `${fullName} staat in de agenda, maar de bevestigingsmail kon niet worden verzonden. Neem zelf even contact op.`,
+      };
+    }
+    return {
+      ok: true,
+      message: `${fullName} staat in de agenda en heeft een bevestiging gekregen.`,
+    };
+  }
+  return { ok: true, message: `${fullName} staat in de agenda.` };
+}
+
+// De prijzen en seizoenen opslaan. Alles tegelijk en niet per veld: de vier
+// prijzen, de hoogseizoenen en de looptijd vormen samen één tabel, en een
+// half bijgewerkte tabel (nieuwe prijzen bij de vakanties van vorig jaar)
+// rekent bedragen uit die niemand zo bedoeld heeft.
+export async function saveSeasons(
+  _previous: FormState,
+  formData: FormData,
+): Promise<FormState> {
+  await requireAdmin();
+
+  const prices = {} as Record<SeasonKey, number>;
+  for (const key of SEASON_KEYS) {
+    const cents = parseEuro(String(formData.get(`price_${key}`) ?? ""));
+    if (typeof cents !== "number" || cents <= 0) {
+      return {
+        ok: false,
+        message:
+          "Eén van de prijzen kon ik niet lezen — er is niets gewijzigd. Schrijf een bedrag als 1850 of 1850,00.",
+      };
+    }
+    prices[key] = cents;
+  }
+
+  const seasons = formData.getAll("hs_season").map(String);
+  const froms = formData.getAll("hs_from").map(String);
+  const tos = formData.getAll("hs_to").map(String);
+  const highSeasons: HighSeason[] = [];
+  for (let i = 0; i < seasons.length; i++) {
+    const from = (froms[i] ?? "").trim();
+    const to = (tos[i] ?? "").trim();
+    // Een regel zonder datums is een regel die iemand heeft leeggemaakt.
+    if (!from && !to) continue;
+    const season = seasons[i];
+    if (season !== "winterHigh" && season !== "summerHigh") {
+      return { ok: false, message: "Kies bij elke periode winter of zomer." };
+    }
+    if (!isDate(from) || !isDate(to)) {
+      return {
+        ok: false,
+        message: "Bij een hoogseizoen ontbreekt een begin- of einddatum.",
+      };
+    }
+    if (to <= from) {
+      return {
+        ok: false,
+        message: "Bij een hoogseizoen ligt de einddatum niet na de begindatum.",
+      };
+    }
+    // Een week telt alleen als hoogseizoen als hij er helemaal binnen valt.
+    // Een periode die op een woensdag begint zou de eerste week dus
+    // stilletjes als laagseizoen laten rekenen — vandaar zaterdagen.
+    if (!isChangeoverDate(from) || !isChangeoverDate(to)) {
+      return {
+        ok: false,
+        message:
+          "Een hoogseizoen loopt van zaterdag tot zaterdag, net als de verhuurweken. Eén van de datums is geen zaterdag.",
+      };
+    }
+    highSeasons.push({ season, from, to });
+  }
+
+  highSeasons.sort((a, b) => a.from.localeCompare(b.from));
+  for (let i = 1; i < highSeasons.length; i++) {
+    if (highSeasons[i].from < highSeasons[i - 1].to) {
+      return {
+        ok: false,
+        message: "Twee hoogseizoenen overlappen elkaar. Er is niets gewijzigd.",
+      };
+    }
+  }
+
+  const validFrom = String(formData.get("validFrom") ?? "").trim();
+  const validUntil = String(formData.get("validUntil") ?? "").trim();
+  if (!isDate(validFrom) || !isDate(validUntil) || validUntil <= validFrom) {
+    return {
+      ok: false,
+      message:
+        "Vul in van wanneer tot wanneer deze prijzen gelden, met de einddatum na de begindatum.",
+    };
+  }
+
+  const table = parseSeasonTable({ prices, highSeasons, validFrom, validUntil });
+  if (!table) {
+    return { ok: false, message: "De tabel klopt niet. Er is niets gewijzigd." };
+  }
+
+  const result = await saveSeasonTable(table);
+  if (!result.ok) {
+    return {
+      ok: false,
+      message: result.missingTable
+        ? "Opslaan kan nog niet: in Supabase moet eerst migratie 0005_settings.sql worden uitgevoerd."
+        : "De prijzen konden niet worden opgeslagen. Probeer het zo nog eens.",
+    };
+  }
+
+  // De prijzenpagina is vooraf gebouwd; zonder dit seintje zou hij tot een
+  // uur lang de oude bedragen tonen.
+  revalidatePath("/[locale]/prijzen", "page");
+  revalidatePath("/admin");
+  return { ok: true, message: "Opgeslagen. De prijzenpagina en de kalender rekenen er nu mee." };
 }

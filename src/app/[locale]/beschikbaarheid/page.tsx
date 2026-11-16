@@ -5,6 +5,7 @@ import {
   isSupabaseConfigured,
 } from "@/lib/supabase/server";
 import { buildMetadata } from "@/lib/metadata";
+import { loadSeasonTableOrNull } from "@/lib/booking/seasonTable";
 import { Link } from "@/i18n/navigation";
 import BookingSection, {
   type BookedRange,
@@ -71,7 +72,13 @@ export default async function AvailabilityPage({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("availability");
-  const availability = await getConfirmedRanges();
+  // De kalender en de prijzen komen uit twee losse vragen aan de database.
+  // Lukt die van de prijzen niet, dan blijft de kalender gewoon werken en
+  // staat er bij de gekozen week dat de prijs volgt.
+  const [availability, seasons] = await Promise.all([
+    getConfirmedRanges(),
+    loadSeasonTableOrNull(),
+  ]);
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-10">
@@ -87,6 +94,7 @@ export default async function AvailabilityPage({
       <BookingSection
         bookedRanges={availability.ranges}
         unavailable={!availability.ok}
+        seasonTable={seasons?.table ?? null}
       />
 
       {/* Staat bewust buiten BookingSection: juist als de kalender het niet

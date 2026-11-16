@@ -159,7 +159,7 @@
   },
   "pricing": {
     "title": "Preise",
-    "intro": "Vermietet wird wochenweise: von Samstag 15.00 Uhr bis Samstag 10.00 Uhr. Dies sind die Preise für Winter 2026/2027 und Sommer 2027. Passt eine ganze Woche nicht in deine Pläne? Stell uns ruhig eine Frage — oft lässt sich mehr einrichten, als der Kalender zeigt.",
+    "intro": "Vermietet wird wochenweise: von Samstag 15.00 Uhr bis Samstag 10.00 Uhr. Passt eine ganze Woche nicht in deine Pläne? Stell uns ruhig eine Frage — oft lässt sich mehr einrichten, als der Kalender zeigt.",
     "tableTitle": "Mietpreis pro Woche",
     "rows": {
       "winterHigh": {
@@ -183,7 +183,8 @@
       "summerLow": "Nebensaison Sommer",
       "winterLowValue": "die übrigen Wochen von Dezember bis einschließlich März",
       "summerLowValue": "alle übrigen Wochen des Jahres",
-      "note": "Die Mietwoche läuft von Samstag bis Samstag. Eine Woche zählt als Hochsaison, wenn sie vollständig in einen dieser Zeiträume fällt."
+      "note": "Die Mietwoche läuft von Samstag bis Samstag. Eine Woche zählt als Hochsaison, wenn sie vollständig in einen dieser Zeiträume fällt.",
+      "validUntil": "Diese Preise gelten für Anreisen bis einschließlich {date}."
     },
     "includedTitle": "Inklusive",
     "included": {

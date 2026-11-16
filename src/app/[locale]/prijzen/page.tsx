@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
 import { setRequestLocale, getTranslations } from "next-intl/server";
-import { useTranslations } from "next-intl";
-import { use } from "react";
 import { format } from "date-fns";
 import { nl, de, enGB } from "date-fns/locale";
 import { Link } from "@/i18n/navigation";
 import { buildMetadata } from "@/lib/metadata";
-import {
-  HIGH_SEASONS,
-  WEEK_PRICE_CENTS,
-  formatPrice,
-} from "@/lib/booking/seasons";
+import { formatPrice, type HighSeason } from "@/lib/booking/seasons";
+import { loadSeasonTable } from "@/lib/booking/seasonTable";
+
+// De prijzen komen uit de database en veranderen hooguit een paar keer per
+// jaar. De pagina blijft dus gewoon vooraf gebouwd; het beheerscherm ververst
+// hem meteen na het opslaan (zie saveSeasons in admin/actions.ts), en dit uur
+// is alleen het vangnet voor als dat seintje ooit verloren gaat.
+export const revalidate = 3600;
 
 export async function generateMetadata({
   params,
@@ -30,20 +31,28 @@ export async function generateMetadata({
 const rowKeys = ["winterHigh", "winterLow", "summerHigh", "summerLow"] as const;
 
 // De hoogseizoensdatums komen uit dezelfde tabel als waarmee de nota wordt
-// berekend (lib/booking/seasons.ts). Ze hier nóg een keer intypen zou betekenen
-// dat de site en de rekensom volgend jaar stilletjes uit elkaar gaan lopen.
+// berekend. Ze hier nóg een keer intypen zou betekenen dat de site en de
+// rekensom volgend jaar stilletjes uit elkaar gaan lopen.
 const dateLocales = { nl, de, en: enGB } as const;
 
+// Duits zet een punt achter het dagnummer: "19. Dezember", niet "19 Dezember".
+function dayPattern(locale: string): string {
+  return locale === "de" ? "d." : "d";
+}
+
+function formatDay(iso: string, pattern: string, locale: string): string {
+  const dateLocale =
+    dateLocales[locale as keyof typeof dateLocales] ?? dateLocales.nl;
+  return format(new Date(`${iso}T00:00:00`), pattern, { locale: dateLocale });
+}
+
 function highSeasonDates(
+  highSeasons: HighSeason[],
   season: "winterHigh" | "summerHigh",
   locale: string,
 ): string {
-  const dateLocale =
-    dateLocales[locale as keyof typeof dateLocales] ?? dateLocales.nl;
-  // Duits zet een punt achter het dagnummer: "19. Dezember", niet "19 Dezember".
-  const d = locale === "de" ? "d." : "d";
-  const day = (iso: string, pattern: string) =>
-    format(new Date(`${iso}T00:00:00`), pattern, { locale: dateLocale });
+  const d = dayPattern(locale);
+  const day = (iso: string, pattern: string) => formatDay(iso, pattern, locale);
 
   // Maand en jaar alleen herhalen waar ze verschillen: "6 – 27 februari 2027"
   // leest nu eenmaal prettiger dan datzelfde jaartal twee keer.
@@ -56,7 +65,8 @@ function highSeasonDates(
     return `${day(from, `${d} MMMM yyyy`)} – ${day(to, `${d} MMMM yyyy`)}`;
   };
 
-  return HIGH_SEASONS.filter((r) => r.season === season)
+  return highSeasons
+    .filter((r) => r.season === season)
     .map((r) => range(r.from, r.to))
     .join(" · ");
 }
@@ -66,14 +76,30 @@ const extrasKeys = ["linen"] as const;
 // is dezelfde geruststelling, en dit is de plek waar iemand aan geld denkt.
 const paymentKeys = ["when", "deposit", "pets"] as const;
 
-export default function PricingPage({
+export default async function PricingPage({
   params,
 }: {
   params: Promise<{ locale: string }>;
 }) {
-  const { locale } = use(params);
+  const { locale } = await params;
   setRequestLocale(locale);
-  const t = useTranslations("pricing");
+  const t = await getTranslations("pricing");
+  // Bewust zonder vangnet: lukt het ophalen niet, dan mislukt deze render en
+  // blijft de vorige versie van de pagina staan. Dat is beter dan terugvallen
+  // op de prijzen uit de code, die er net zo betrouwbaar uitzien als ze
+  // verouderd kunnen zijn.
+  const { table } = await loadSeasonTable();
+  const seasonRows = (
+    [
+      ["winterHigh", highSeasonDates(table.highSeasons, "winterHigh", locale)],
+      ["summerHigh", highSeasonDates(table.highSeasons, "summerHigh", locale)],
+      ["winterLow", t("seasons.winterLowValue")],
+      ["summerLow", t("seasons.summerLowValue")],
+    ] as const
+  )
+    // Een hoogseizoen zonder periodes (de eigenaar heeft ze nog niet
+    // ingevuld) krijgt geen lege regel.
+    .filter(([, value]) => value !== "");
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-10">
@@ -98,7 +124,7 @@ export default function PricingPage({
                     vertalingen. Anders staat een prijswijziging op vier plekken
                     (drie talen plus de rekensom) en vergeet je er één. */}
                 <td className="whitespace-nowrap px-6 py-3.5 text-right font-semibold text-bark">
-                  {formatPrice(WEEK_PRICE_CENTS[key], locale)}
+                  {formatPrice(table.prices[key], locale)}
                 </td>
               </tr>
             ))}
@@ -113,14 +139,7 @@ export default function PricingPage({
           {t("seasons.title")}
         </h2>
         <dl className="mt-3 space-y-2.5">
-          {(
-            [
-              ["winterHigh", highSeasonDates("winterHigh", locale)],
-              ["summerHigh", highSeasonDates("summerHigh", locale)],
-              ["winterLow", t("seasons.winterLowValue")],
-              ["summerLow", t("seasons.summerLowValue")],
-            ] as const
-          ).map(([key, value]) => (
+          {seasonRows.map(([key, value]) => (
             <div key={key} className="sm:flex sm:gap-3">
               <dt className="font-semibold text-bark sm:w-52 sm:shrink-0">
                 {t(`seasons.${key}`)}
@@ -129,7 +148,16 @@ export default function PricingPage({
             </div>
           ))}
         </dl>
-        <p className="mt-4 text-sm text-timber">{t("seasons.note")}</p>
+        <p className="mt-4 text-sm text-timber">
+          {t("seasons.note")}{" "}
+          {t("seasons.validUntil", {
+            date: formatDay(
+              table.validUntil,
+              `${dayPattern(locale)} MMMM yyyy`,
+              locale,
+            ),
+          })}
+        </p>
       </div>
 
       <div className="mt-6 grid gap-6 sm:grid-cols-2">

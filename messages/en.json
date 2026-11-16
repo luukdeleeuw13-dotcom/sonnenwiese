@@ -159,7 +159,7 @@
   },
   "pricing": {
     "title": "Prices",
-    "intro": "Rental is per week: from Saturday 3 pm to Saturday 10 am. These are the prices for winter 2026/2027 and summer 2027. If a full week doesn't fit your plans, do ask — more is often possible than the calendar shows.",
+    "intro": "Rental is per week: from Saturday 3 pm to Saturday 10 am. If a full week doesn't fit your plans, do ask — more is often possible than the calendar shows.",
     "tableTitle": "Rent per week",
     "rows": {
       "winterHigh": {
@@ -183,7 +183,8 @@
       "summerLow": "Low season, summer",
       "winterLowValue": "the remaining weeks from December through March",
       "summerLowValue": "all other weeks of the year",
-      "note": "A rental week runs Saturday to Saturday. A week counts as high season if it falls entirely within one of these periods."
+      "note": "A rental week runs Saturday to Saturday. A week counts as high season if it falls entirely within one of these periods.",
+      "validUntil": "These prices apply to arrivals up to and including {date}."
     },
     "includedTitle": "Included",
     "included": {

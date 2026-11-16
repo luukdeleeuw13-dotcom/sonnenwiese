@@ -7,6 +7,7 @@ import {
   paymentState,
 } from "@/lib/admin/payments";
 import PaymentStrip from "./PaymentStrip";
+import type { SeasonTable } from "@/lib/booking/seasons";
 import type { BookingRow } from "@/lib/supabase/types";
 
 function fmtLong(date: string): string {
@@ -54,9 +55,11 @@ function todoLine(guests: BookingRow[], today: string): string | null {
 export default function NextGuest({
   guests,
   today,
+  seasonTable,
 }: {
   guests: BookingRow[];
   today: string;
+  seasonTable: SeasonTable | null;
 }) {
   const next = guests[0];
 
@@ -89,13 +92,19 @@ export default function NextGuest({
         {fmtLong(next.start_date)} — {fmtLong(next.end_date)}
       </p>
       <p className="mt-1 text-sm text-timber">
-        {next.guests} pers. ·{" "}
-        <a
-          href={`mailto:${next.email}`}
-          className="underline-offset-2 hover:underline"
-        >
-          {next.email}
-        </a>
+        {next.guests} pers.
+        {/* Een zelf ingevoerde boeking kan zonder mailadres zijn. */}
+        {next.email && (
+          <>
+            {" · "}
+            <a
+              href={`mailto:${next.email}`}
+              className="underline-offset-2 hover:underline"
+            >
+              {next.email}
+            </a>
+          </>
+        )}
         {next.phone && (
           <>
             {" · "}
@@ -109,7 +118,9 @@ export default function NextGuest({
         )}
       </p>
 
-      {knowsPayment && <PaymentStrip booking={next} today={today} />}
+      {knowsPayment && (
+        <PaymentStrip booking={next} today={today} seasonTable={seasonTable} />
+      )}
 
       {todo && (
         <p className="mt-3 border-t border-sand pt-3 text-sm text-timber">

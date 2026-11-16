@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { isAdmin } from "@/lib/admin/auth";
 import {
   getSupabaseServerClient,
@@ -10,6 +11,10 @@ import { hasPaymentColumns } from "@/lib/admin/payments";
 import WeekPlanner from "@/components/admin/WeekPlanner";
 import NextGuest from "@/components/admin/NextGuest";
 import PaymentStrip from "@/components/admin/PaymentStrip";
+import AddBookingForm from "@/components/admin/AddBookingForm";
+import SeasonTableForm from "@/components/admin/SeasonTableForm";
+import { loadSeasonTableOrNull } from "@/lib/booking/seasonTable";
+import type { SeasonTable } from "@/lib/booking/seasons";
 import {
   login,
   logout,
@@ -41,12 +46,27 @@ function fmtDate(d: string): string {
   });
 }
 
+// Terug naar de site. Vanuit het beheerscherm was er geen weg terug dan de
+// adresbalk; deze link staat daarom ook op het inlogscherm.
+function BackToSite() {
+  return (
+    <Link
+      href="/"
+      className="text-sm text-timber underline-offset-2 hover:underline"
+    >
+      ← Naar de site
+    </Link>
+  );
+}
+
 function BookingCard({
   booking,
   today,
+  seasonTable,
 }: {
   booking: BookingRow;
   today: string;
+  seasonTable: SeasonTable | null;
 }) {
   const status = statusLabels[booking.status] ?? statusLabels.pending;
   // Handmatige blokkades: aangemaakt via het blokkeer-formulier (eigen
@@ -66,22 +86,35 @@ function BookingCard({
         <p className="font-semibold text-bark">
           {fmtDate(booking.start_date)} — {fmtDate(booking.end_date)}
         </p>
-        <span
-          className={`rounded-full px-3 py-1 text-xs font-semibold ${status.className}`}
-        >
-          {isBlock ? "Blokkade" : status.label}
+        <span className="flex items-center gap-2">
+          {/* Familie is geen aparte status maar een eigenschap van het
+              verblijf: bevestigd, alleen zonder nota. */}
+          {!isBlock && booking.invoice_required === false && (
+            <span className="rounded-full bg-sand px-3 py-1 text-xs font-semibold text-timber">
+              Familie
+            </span>
+          )}
+          <span
+            className={`rounded-full px-3 py-1 text-xs font-semibold ${status.className}`}
+          >
+            {isBlock ? "Blokkade" : status.label}
+          </span>
         </span>
       </div>
       <p className="mt-1 text-sm text-timber">
         {booking.full_name}
         {!isBlock && <> · {booking.guests} pers. · {booking.locale}</>}
       </p>
-      {!isBlock && (
+      {/* Een zelf ingevoerde boeking kan zonder mailadres of telefoon zijn. */}
+      {!isBlock && (booking.email || booking.phone) && (
         <p className="mt-1 text-sm text-timber">
-          <a href={`mailto:${booking.email}`} className="underline-offset-2 hover:underline">
-            {booking.email}
-          </a>
-          {booking.phone && <> · {booking.phone}</>}
+          {booking.email && (
+            <a href={`mailto:${booking.email}`} className="underline-offset-2 hover:underline">
+              {booking.email}
+            </a>
+          )}
+          {booking.email && booking.phone && " · "}
+          {booking.phone}
         </p>
       )}
       {booking.message && (
@@ -89,7 +122,13 @@ function BookingCard({
           {booking.message}
         </p>
       )}
-      {showPayment && <PaymentStrip booking={booking} today={today} />}
+      {showPayment && (
+        <PaymentStrip
+          booking={booking}
+          today={today}
+          seasonTable={seasonTable}
+        />
+      )}
       <div className="mt-3 flex flex-wrap gap-2">
         {booking.status !== "confirmed" && (
           <form action={setBookingStatus}>
@@ -213,7 +252,8 @@ export default async function AdminPage({
   if (!loggedIn) {
     return (
       <div className="mx-auto max-w-sm px-4 py-20">
-        <h1 className="font-display text-3xl font-semibold text-bark">
+        <BackToSite />
+        <h1 className="mt-4 font-display text-3xl font-semibold text-bark">
           Beheer
         </h1>
         <p className="mt-2 text-timber">
@@ -247,13 +287,18 @@ export default async function AdminPage({
   }
 
   const supabase = getSupabaseServerClient();
-  const [bookingResult, inquiryResult] = await Promise.all([
+  const [bookingResult, inquiryResult, seasons] = await Promise.all([
     supabase.from("bookings").select("*").order("start_date", { ascending: true }),
     supabase
       .from("inquiries")
       .select("*")
       .order("created_at", { ascending: false }),
+    // `null` als de seizoenstabel niet opgehaald kon worden. Dan staat er bij
+    // de boekingen geen prijsvoorstel en kan de tabel niet bewerkt worden;
+    // de rest van het scherm werkt gewoon.
+    loadSeasonTableOrNull(),
   ]);
+  const seasonTable = seasons?.table ?? null;
   const bookings = (bookingResult.data ?? []) as BookingRow[];
   const inquiries = (inquiryResult.data ?? []) as InquiryRow[];
   // Zolang migratie 0002 nog niet in Supabase is uitgevoerd, bestaat de
@@ -285,11 +330,12 @@ export default async function AdminPage({
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-10">
-      <div className="flex items-center justify-between">
+      <BackToSite />
+      <div className="mt-3 flex flex-wrap items-center justify-between gap-x-6 gap-y-2">
         <h1 className="font-display text-3xl font-semibold text-bark">
           Beheer
         </h1>
-        <div className="flex items-center gap-4">
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
           {/* Bewust een gewone <a>: /admin/export is geen pagina maar een
               CSV-download. Met <Link> zou Next client-side willen navigeren
               en komt het bestand niet binnen. */}
@@ -348,7 +394,11 @@ export default async function AdminPage({
             "Het betaalverzoek kon niet worden verzonden. De nota staat nog als niet-verstuurd; probeer het zo nog eens."}
         </p>
       )}
-      <NextGuest guests={upcomingGuests} today={today} />
+      <NextGuest
+        guests={upcomingGuests}
+        today={today}
+        seasonTable={seasonTable}
+      />
 
       <h2 className="mt-10 font-display text-xl font-semibold text-bark">
         Nieuwe aanvragen{" "}
@@ -363,7 +413,12 @@ export default async function AdminPage({
           <p className="text-sm text-timber">Geen openstaande aanvragen. 🎉</p>
         )}
         {pending.map((b) => (
-          <BookingCard key={b.id} booking={b} today={today} />
+          <BookingCard
+            key={b.id}
+            booking={b}
+            today={today}
+            seasonTable={seasonTable}
+          />
         ))}
       </div>
 
@@ -408,9 +463,23 @@ export default async function AdminPage({
           <p className="text-sm text-timber">Nog niets gepland.</p>
         )}
         {upcoming.map((b) => (
-          <BookingCard key={b.id} booking={b} today={today} />
+          <BookingCard
+            key={b.id}
+            booking={b}
+            today={today}
+            seasonTable={seasonTable}
+          />
         ))}
       </div>
+
+      <h2 className="mt-10 font-display text-xl font-semibold text-bark">
+        Boeking toevoegen
+      </h2>
+      <p className="mt-1 text-sm text-timber">
+        Voor een verblijf dat buiten de site om is afgesproken. Kies of het
+        een gast is of familie.
+      </p>
+      <AddBookingForm />
 
       <h2 className="mt-10 font-display text-xl font-semibold text-bark">
         Periode blokkeren
@@ -455,6 +524,27 @@ export default async function AdminPage({
         </button>
       </form>
 
+      <h2
+        id="prijzen"
+        className="mt-10 font-display text-xl font-semibold text-bark"
+      >
+        Prijzen en seizoenen
+      </h2>
+      <p className="mt-1 text-sm text-timber">
+        Wat hier staat geldt op de prijzenpagina, onder de kalender en als
+        voorstel bij elke nota.
+      </p>
+      {seasons ? (
+        <SeasonTableForm
+          table={seasons.table}
+          missingTable={seasons.missingTable}
+        />
+      ) : (
+        <p className="mt-3 rounded-card border border-red-200 bg-red-50 p-4 text-sm text-red-800">
+          De prijzen konden niet worden opgehaald. Laad de pagina zo nog eens.
+        </p>
+      )}
+
       {handledInquiries.length > 0 && (
         <>
           <h2 className="mt-10 font-display text-xl font-semibold text-bark">
@@ -475,7 +565,12 @@ export default async function AdminPage({
           </h2>
           <div className="mt-3 space-y-3">
             {rest.map((b) => (
-              <BookingCard key={b.id} booking={b} today={today} />
+              <BookingCard
+            key={b.id}
+            booking={b}
+            today={today}
+            seasonTable={seasonTable}
+          />
             ))}
           </div>
         </>

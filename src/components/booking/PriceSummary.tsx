@@ -7,6 +7,7 @@ import {
   estimatePrice,
   formatPrice,
   type SeasonKey,
+  type SeasonTable,
 } from "@/lib/booking/seasons";
 
 // Wat de gekozen weken kosten, meteen onder de kalender.
@@ -15,7 +16,13 @@ import {
 // jouw week hoogseizoen is en heen en weer klikken tussen twee pagina's —
 // terwijl de site die rekensom allang maakt voor de nota. Hier komt hetzelfde
 // bedrag uit als in de betaalmail, want het is letterlijk dezelfde functie.
-export default function PriceSummary({ range }: { range: DateRange | undefined }) {
+export default function PriceSummary({
+  range,
+  table,
+}: {
+  range: DateRange | undefined;
+  table: SeasonTable | null;
+}) {
   const t = useTranslations("availability");
   const tp = useTranslations("pricing");
   const locale = useLocale();
@@ -23,11 +30,14 @@ export default function PriceSummary({ range }: { range: DateRange | undefined }
   if (!range?.from || !range?.to) return null;
 
   const iso = (date: Date) => format(date, "yyyy-MM-dd");
-  const estimate = estimatePrice(iso(range.from), iso(range.to));
+  const estimate = table
+    ? estimatePrice(iso(range.from), iso(range.to), table)
+    : null;
 
   // Buiten de looptijd van de seizoenstabel weten we het niet, en dan zeggen we
   // dat ook. Een gokje hier zou een bedrag noemen dat de nota later tegenspreekt.
-  if (!estimate.ok) {
+  // Hetzelfde geldt als de tabel zelf niet opgehaald kon worden.
+  if (!estimate?.ok) {
     return (
       <p className="mt-3 border-t border-sand pt-3 text-sm text-timber">
         {t("priceUnknown")}

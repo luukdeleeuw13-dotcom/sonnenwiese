@@ -64,9 +64,13 @@ is dat geen luxe — die verstuurt persoonsgegevens.
 Staat er een bedrag bij een bevestigde boeking, dan zet één knop in `/admin`
 het betaalverzoek naar de gast op de post: bedrag, rekening, IBAN en
 betalingskenmerk, in de taal waarin de aanvraag binnenkwam. Het bedrag komt uit
-de seizoenstabel ([`src/lib/booking/seasons.ts`](src/lib/booking/seasons.ts)),
-maar wordt nooit vanzelf ingevuld — je neemt het over met een klik, of je typt
-iets anders.
+de seizoenstabel, maar wordt nooit vanzelf ingevuld — je neemt het over met een
+klik, of je typt iets anders.
+
+De seizoenstabel zelf — de vier weekprijzen, de hoogseizoenen en tot wanneer
+ze gelden — stel je bij in `/admin`, onder "Prijzen en seizoenen". Hij staat
+in de database (tabel `settings`); zolang daar niets is opgeslagen geldt de
+tabel uit [`src/lib/booking/seasons.ts`](src/lib/booking/seasons.ts).
 
 De rekening staat in twee env vars, `OWNER_IBAN` en `OWNER_ACCOUNT_NAME`.
 Ontbreekt er één, dan blijft de knop weg en zegt het beheerscherm waarom;
@@ -112,11 +116,16 @@ rechtsboven op `/admin`.
 4. En daarna
    [`supabase/migrations/0003_payments.sql`](supabase/migrations/0003_payments.sql)
    — die voegt de nota- en betaalstatus toe aan `bookings`.
-5. En tot slot
+5. Dan
    [`supabase/migrations/0004_payment_flow.sql`](supabase/migrations/0004_payment_flow.sql)
    — twee momenten erbij, zodat de betaalcontrole bijhoudt wat ze al gevraagd
    en gestuurd heeft.
-6. Ga naar **Settings → API** en noteer:
+6. En tot slot
+   [`supabase/migrations/0005_settings.sql`](supabase/migrations/0005_settings.sql)
+   — de tabel waarin het beheerscherm de prijzen en seizoenen bewaart. Zonder
+   deze migratie werkt de site gewoon, alleen kun je de prijzen dan nog niet
+   opslaan.
+7. Ga naar **Settings → API** en noteer:
    - de **Project URL** → env var `SUPABASE_URL`
    - de **service_role key** → env var `SUPABASE_SERVICE_ROLE_KEY`
 
