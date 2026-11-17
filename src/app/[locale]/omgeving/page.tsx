@@ -55,7 +55,7 @@ export default function SurroundingsPage({
       <Section
         title={t("winterTitle")}
         image={{
-          src: "/photos/omgeving-winter-bergkapel.jpg",
+          src: "/photos/omgeving-winter-aberg.jpg",
           alt: t("winterTitle"),
         }}
         reverse

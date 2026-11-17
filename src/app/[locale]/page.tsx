@@ -130,8 +130,10 @@ export default function HomePage({
         title={t("heroTitle")}
         subtitle={t("heroSubtitle")}
         src={
+          // In de winter het huis zelf: een piste zegt waar je bent, het huis
+          // zegt waar je slaapt.
           winter
-            ? "/photos/omgeving-winter-aberg.jpg"
+            ? "/photos/huis-winter.jpg"
             : "/photos/omgeving-zomer-prinzensee.jpg"
         }
         tone={winter ? "cool" : "warm"}

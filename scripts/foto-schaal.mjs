@@ -30,6 +30,7 @@ const DOEL_BREEDTE = 2048;
 // staat in het mozaïek en op de fotopagina, en is daar al scherp genoeg.
 const FOTOS = [
   "omgeving-zomer-schuur.jpg", // hero homepage
+  "huis-winter.jpg", // hero homepage in de winter
   "omgeving-winter-kapel-weide.jpg", // brede band homepage
   "omgeving-winter-weide.jpg", // hero /omgeving
   "woonkamer-3.jpg", // hero /appartement
